@@ -2,7 +2,10 @@
 
 import Image from "next/image";
 import { Crown } from "lucide-react";
-import { motion, useReducedMotion } from "framer-motion";
+import {
+  motion,
+  useReducedMotion,
+} from "framer-motion";
 
 import basketball from "@/public/images/hero/basket.png";
 import heroBg from "@/public/images/hero/hero.png";
@@ -368,7 +371,11 @@ export function Hero() {
                   bg-[#ffa313]
                 "
               >
-                <Crown size={16} fill="currentColor" strokeWidth={1.2} />
+                <Crown
+                  size={16}
+                  fill="currentColor"
+                  strokeWidth={1.2}
+                />
               </motion.span>
 
               <p
@@ -533,15 +540,15 @@ export function Hero() {
               sm:max-w-xl
               sm:translate-x-0
 
-              lg:right-0
-              lg:top-28
+              lg:-right-4
+              lg:top-[16%]
               lg:w-3/5
 
-              xl:-right-4
-              xl:top-24
+              xl:-right-6
               xl:w-1/2
             "
           >
+            {/* Entrance */}
             <motion.div
               initial={
                 reduceMotion
@@ -571,6 +578,7 @@ export function Hero() {
                 inset-0
               "
             >
+              {/* Floating */}
               <motion.div
                 className="
                   absolute
@@ -617,7 +625,8 @@ export function Hero() {
                     width: "130%",
                     transformOrigin: "100% 50%",
                     transform: "rotate(28deg)",
-                    background: "rgba(0, 27, 50, 0.42)",
+                    background:
+                      "rgba(0, 27, 50, 0.42)",
                     filter: "blur(9px)",
                     WebkitMaskImage:
                       "linear-gradient(to left, black 0%, black 60%, transparent 100%)",
@@ -643,11 +652,12 @@ export function Hero() {
                     sizes="
                       (max-width: 640px) 256px,
                       (max-width: 1024px) 60vw,
-                      50vw
+                      52vw
                     "
                     className="object-contain"
                     style={{
-                      filter: "drop-shadow(-8px 10px 12px rgba(0,0,0,0.10))",
+                      filter:
+                        "drop-shadow(-8px 10px 12px rgba(0,0,0,0.10))",
                     }}
                   />
                 </div>
