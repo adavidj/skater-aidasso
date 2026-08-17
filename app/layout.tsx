@@ -1,19 +1,8 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 
 import { ThemeProvider } from "@/components/shared/layout/themeProvider";
 
 import "./globals.css";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
   title: "Granger Health",
@@ -30,8 +19,15 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      className="antialiased"
     >
+      <head>
+        <link
+          href="https://fonts.cdnfonts.com/css/pp-neue-montreal"
+          rel="stylesheet"
+        />
+      </head>
+
       <body className="min-h-dvh overflow-x-clip">
         <ThemeProvider>{children}</ThemeProvider>
       </body>

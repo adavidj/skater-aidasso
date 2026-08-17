@@ -8,6 +8,8 @@ import basketball from "@/public/images/hero/basket.png";
 import heroBg from "@/public/images/hero/hero.png";
 
 import { Header } from "@/components/shared/layout/header";
+import { Container } from "@/components/ui/container";
+
 import { premiumEase } from "@/lib/motion";
 
 export function Hero() {
@@ -30,9 +32,9 @@ export function Hero() {
     >
       <Header />
 
-      {/* Background court */}
+      {/* Background */}
       <motion.div
-        className="absolute inset-0"
+        className="absolute inset-0 z-0"
         initial={
           reduceMotion
             ? false
@@ -63,11 +65,11 @@ export function Hero() {
         <div className="absolute inset-0 bg-[#007dae]/5" />
       </motion.div>
 
-      {/* Hero content */}
-      <div className="relative z-10 h-full w-full px-5 sm:px-7 lg:px-10 xl:px-12">
-        <div className="relative h-full w-full">
-          {/* Hero upper labels */}
-          <div className="absolute left-0 right-0 top-24 z-30 flex items-center justify-between">
+      {/* 1440px content grid */}
+      <Container className="relative z-10 h-full">
+        <div className="relative h-full w-full overflow-visible">
+          {/* Upper labels */}
+          <div className="absolute left-0 right-0 top-17 z-40 flex flex-col items-center gap-3 sm:top-24 sm:flex-row sm:justify-between sm:gap-0">
             <motion.span
               initial={
                 reduceMotion
@@ -87,12 +89,15 @@ export function Hero() {
                 ease: premiumEase,
               }}
               className="
+                order-2
                 text-[15px]
-                font-semibold
+                font-medium
                 uppercase
                 leading-none
-                tracking-tight
-                text-white/95
+                tracking-wide
+                text-white/85
+
+                sm:order-1
                 xl:text-[16px]
               "
             >
@@ -119,19 +124,23 @@ export function Hero() {
                 ease: premiumEase,
               }}
               className="
+                order-1
                 text-[15px]
-                font-semibold
+                font-medium
                 uppercase
                 leading-none
-                tracking-tight
-                text-white
+                tracking-wide
+                text-white/85
                 transition-opacity
                 duration-300
                 hover:opacity-60
+
+                max-sm:hidden
+                sm:order-2
                 xl:text-[16px]
               "
             >
-              <span className="inline-block border-b border-current pb-1">
+              <span className="inline-block border-b border-current text-white/85 pb-1">
                 Get in touch
               </span>
             </motion.a>
@@ -143,12 +152,25 @@ export function Hero() {
               absolute
               left-0
               top-[25%]
-              z-30
+              z-40
               max-w-120
+
               lg:left-(--wellness-column)
             "
           >
-            <h1 className="max-w-120 text-[42px] font-normal leading-[1.045] tracking-[-0.045em] sm:text-[46px] lg:text-[50px] xl:text-[54px]">
+            <h1
+              className="
+                max-w-120
+                text-[34px]
+                font-normal
+                leading-[1.045]
+                tracking-[-0.045em]
+
+                sm:text-[46px]
+                lg:text-[50px]
+                xl:text-[54px]
+              "
+            >
               <span className="block overflow-hidden pb-0.5">
                 <motion.span
                   className="block"
@@ -243,20 +265,71 @@ export function Hero() {
                   bg-[#ffa313]
                 "
               >
-                <Crown
-                  size={16}
-                  fill="currentColor"
-                  strokeWidth={1.2}
-                />
+                <Crown size={16} fill="currentColor" strokeWidth={1.2} />
               </motion.span>
 
-              <p className="text-[14px] font-normal tracking-[-0.02em] text-white/95 sm:text-[15px]">
+              <p
+                className="
+                  text-[14px]
+                  font-normal
+                  tracking-[-0.02em]
+                  text-white/95
+                  
+                  sm:text-[15px]
+                "
+              >
                 Improve your health — performance well
               </p>
             </motion.div>
           </div>
 
-          {/* Giant wordmark */}
+          {/* Get in touch — mobile only, centered above Granger */}
+          <motion.a
+            href="#contact"
+            initial={
+              reduceMotion
+                ? false
+                : {
+                    opacity: 0,
+                    y: 18,
+                  }
+            }
+            animate={{
+              opacity: 1,
+              y: 0,
+            }}
+            transition={{
+              duration: 0.85,
+              delay: 1.05,
+              ease: premiumEase,
+            }}
+            className="
+              absolute
+              bottom-[15%]
+              left-0
+              right-0
+              z-40
+              block
+              text-center
+              text-[15px]
+              font-medium
+              uppercase
+              leading-none
+              tracking-wide
+              text-white/85
+              transition-opacity
+              duration-300
+              hover:opacity-60
+
+              sm:hidden
+            "
+          >
+            <span className="inline-block border-b border-current text-white/85 pb-1">
+              Get in touch
+            </span>
+          </motion.a>
+
+          {/* Giant Granger */}
           <motion.div
             aria-hidden="true"
             initial={
@@ -283,23 +356,23 @@ export function Hero() {
               absolute
               bottom-[3%]
               left-0
-              z-10
+              
               w-full
-              font-bold
+              font-medium
             "
           >
             <svg
-              viewBox="0 0 1000 220"
+              viewBox="0 0 1000 280"
               preserveAspectRatio="none"
-              className="block aspect-1000/250 w-full"
+              className="block aspect-1000/240 w-full"
             >
               <text
                 x="0"
-                y="170"
+                y="205"
                 textLength="1000"
                 lengthAdjust="spacingAndGlyphs"
                 fill="currentColor"
-                fontSize={230}
+                fontSize={280}
               >
                 Granger
               </text>
@@ -334,14 +407,19 @@ export function Hero() {
             className="
               pointer-events-none
               absolute
-              right-[1%]
-              top-[15%]
+              right-[-1.8%]
+              top-[16%]
               z-20
               aspect-square
-              w-[clamp(480px,42vw,820px)]
+              w-[clamp(280px,52vw,830px)]
+
+              sm:right-[-1.8%]
+              max-sm:left-1/2
+              max-sm:top-[48%]
+              max-sm:-translate-x-1/2
+              max-sm:w-[clamp(280px,70vw,450px)]
             "
           >
-            {/* Floating ball + shadow */}
             <motion.div
               className="absolute inset-0 overflow-visible"
               animate={
@@ -363,14 +441,7 @@ export function Hero() {
                     }
               }
             >
-              {/*
-                Large soft oval shadow.
-
-                It is anchored beneath the left side of the ball.
-                Because its transform origin is on the right,
-                rotate(23deg) sends its left edge UP and LEFT,
-                toward Custom Wellness.
-              */}
+              {/* Single clean oval shadow */}
               <div
                 aria-hidden="true"
                 className="
@@ -380,58 +451,28 @@ export function Hero() {
                   rounded-[50%]
                 "
                 style={{
-                  left: "-146%",
+                  // 1. ANCRAGE SOUS LE BALLON (Remplace 'left' par 'right')
+                  right: "43%",
                   top: "34%",
-                  width: "202%",
-                  height: "58%",
-                  transformOrigin: "100% 50%",
-                  transform: "rotate(23deg)",
-                  background:
-                    "radial-gradient(ellipse at 94% 52%, rgba(0, 28, 52, 0.52) 0%, rgba(0, 30, 55, 0.42) 22%, rgba(0, 32, 58, 0.31) 44%, rgba(0, 34, 60, 0.19) 64%, rgba(0, 35, 62, 0.09) 80%, rgba(0, 35, 62, 0) 100%)",
-                  filter: "blur(10px)",
-                }}
-              />
+                  height: "56%",
 
-              {/* Wider feathered edge */}
-              <div
-                aria-hidden="true"
-                className="
-                  pointer-events-none
-                  absolute
-                  z-0
-                  rounded-[50%]
-                "
-                style={{
-                  left: "-154%",
-                  top: "30%",
-                  width: "210%",
-                  height: "68%",
-                  transformOrigin: "100% 50%",
-                  transform: "rotate(23deg)",
-                  background:
-                    "radial-gradient(ellipse at 94% 52%, rgba(0, 25, 47, 0.22) 0%, rgba(0, 28, 52, 0.17) 42%, rgba(0, 30, 55, 0.08) 72%, rgba(0, 30, 55, 0) 100%)",
-                  filter: "blur(24px)",
-                }}
-              />
+                  // 2. LONGUEUR PRÉCISE (Ajuste cette valeur pour définir la portée exacte)
+                  // Exemples : "100%" (très courte), "120%" (moyenne), "150%" (longue)
+                  width: "130%",
 
-              {/* Dense contact shadow below the ball */}
-              <div
-                aria-hidden="true"
-                className="
-                  pointer-events-none
-                  absolute
-                  z-1
-                  rounded-[50%]
-                "
-                style={{
-                  left: "-4%",
-                  top: "60%",
-                  width: "42%",
-                  height: "24%",
-                  transform: "rotate(18deg)",
-                  background:
-                    "radial-gradient(ellipse, rgba(0,0,0,0.30) 0%, rgba(0,0,0,0.16) 52%, rgba(0,0,0,0) 100%)",
-                  filter: "blur(16px)",
+                  // 3. ROTATION (Garde la forme exacte sans déformation)
+                  transformOrigin: "100% 50%",
+                  transform: "rotate(28deg)",
+
+                  // 4. RENDU VISUEL
+                  background: "rgba(0, 27, 50, 0.42)",
+                  filter: "blur(9px)",
+
+                  // Fondu propre sur la fin de l'ombre
+                  WebkitMaskImage:
+                    "linear-gradient(to left, black 0%, black 60%, transparent 100%)",
+                  maskImage:
+                    "linear-gradient(to left, black 0%, black 60%, transparent 100%)",
                 }}
               />
 
@@ -443,18 +484,17 @@ export function Hero() {
                   fill
                   priority
                   quality={100}
-                  sizes="820px"
+                  sizes="(max-width: 640px) 280px, (max-width: 1024px) 52vw, 830px"
                   className="object-contain"
                   style={{
-                    filter:
-                      "drop-shadow(-12px 16px 18px rgba(0, 0, 0, 0.15))",
+                    filter: "drop-shadow(-8px 10px 12px rgba(0,0,0,0.10))",
                   }}
                 />
               </div>
             </motion.div>
           </motion.div>
         </div>
-      </div>
+      </Container>
     </section>
   );
 }

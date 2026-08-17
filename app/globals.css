@@ -3,6 +3,7 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
+  --font-granger: "PP Neue Montreal";
   --background: #f4f4fa;
   --foreground: #090909;
 
@@ -25,18 +26,25 @@ body {
   margin: 0;
   padding: 0;
   width: 100%;
+  font-family: var(--font-granger);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   overflow-x: clip;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-granger);
 }
 
 button,
 a {
   -webkit-tap-highlight-color: transparent;
+}
+
+input,
+textarea,
+select {
+  font: inherit;
 }
 
 button {
