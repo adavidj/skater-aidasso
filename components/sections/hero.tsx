@@ -397,7 +397,7 @@ export function Hero() {
             </motion.div>
           </div>
 
-          {/* Get in touch mobile / tablet */}
+          {/* Mobile / tablet contact */}
           <motion.a
             href="#contact"
             initial={
@@ -519,7 +519,7 @@ export function Hero() {
             </svg>
           </motion.div>
 
-          {/* Basketball position */}
+          {/* Basketball */}
           <div
             className="
               pointer-events-none
@@ -540,12 +540,15 @@ export function Hero() {
               sm:max-w-xl
               sm:translate-x-0
 
+              lg:top-auto
+              lg:bottom-4
               lg:-right-4
-              lg:top-[16%]
               lg:w-3/5
+              lg:max-w-none
 
-              xl:-right-6
-              xl:w-1/2
+              xl:bottom-2
+              xl:-right-8
+              xl:w-3/5
             "
           >
             {/* Entrance */}
@@ -652,9 +655,11 @@ export function Hero() {
                     sizes="
                       (max-width: 640px) 256px,
                       (max-width: 1024px) 60vw,
-                      52vw
+                      60vw
                     "
-                    className="object-contain"
+                    className="
+                      object-contain
+                    "
                     style={{
                       filter:
                         "drop-shadow(-8px 10px 12px rgba(0,0,0,0.10))",
