@@ -94,6 +94,9 @@ export function Testimonials() {
 
         dark:bg-[#17191e]
 
+        sm:pt-14
+        sm:pb-18
+
         lg:pt-12
         lg:pb-16
       "
@@ -149,8 +152,8 @@ export function Testimonials() {
 
                 dark:text-white
 
-                sm:text-[44px]
-                md:text-[52px]
+                sm:text-[38px]
+                md:text-[44px]
 
                 lg:text-left
                 lg:text-[60px]
@@ -266,6 +269,9 @@ export function Testimonials() {
 
               grid
               gap-3
+
+              sm:mt-14
+              sm:gap-4
 
               lg:mt-14
               lg:grid-cols-[1.02fr_0.98fr]

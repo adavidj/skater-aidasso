@@ -111,6 +111,9 @@ export function CurrentEvents() {
 
         dark:bg-[#17191e]
 
+        sm:pt-10
+        sm:pb-18
+
         lg:pt-8
         lg:pb-16
       "
@@ -150,6 +153,8 @@ export function CurrentEvents() {
             text-white
 
             sm:px-8
+            sm:pt-10
+            sm:pb-10
 
             lg:px-10
             lg:pt-9
@@ -249,8 +254,8 @@ export function CurrentEvents() {
                 leading-[1.01]
                 tracking-[-0.045em]
 
-                sm:text-[43px]
-                md:text-[47px]
+                sm:text-[38px]
+                md:text-[43px]
                 lg:text-[50px]
                 xl:text-[55px]
               "
@@ -336,15 +341,17 @@ export function CurrentEvents() {
 
             {/* Partie interactive : liste des événements et image flottante. */}
           <div
-            className="
-              relative
+          className="
+            relative
 
-              mt-18
+            mt-18
 
-              lg:mt-22
+            sm:mt-22
 
-              xl:mt-24.5
-            "
+            lg:mt-22
+
+            xl:mt-24.5
+          "
           >
             {/* Aperçu visuel lié à l'événement actif, visible surtout sur desktop. */}
             <div
@@ -492,22 +499,23 @@ export function CurrentEvents() {
                           {/* Le libellé reste léger et un peu transparent. */}
                           <span
                             className="
-                              text-[20px]
-                              font-normal
-                              leading-none
-                              tracking-wide
+                            text-[20px]
+                            font-normal
+                            leading-none
+                            tracking-wide
 
-                              text-white/85
+                            text-white/85
 
-                              transition-colors
-                              duration-300
+                            transition-colors
+                            duration-300
 
-                              group-hover:text-white
+                            group-hover:text-white
 
-                              sm:text-[23px]
-                              lg:text-[25px]
+                            sm:text-[22px]
+                            md:text-[24px]
+                            lg:text-[25px]
 
-                              xl:text-[27px]
+                            xl:text-[27px]
                             "
                           >
                             {event.label}
@@ -674,7 +682,7 @@ export function CurrentEvents() {
                               text-white
 
                               sm:px-6
-                              sm:pr-65
+                              sm:pr-20
 
                               lg:px-8
                               lg:pr-125
@@ -697,7 +705,8 @@ export function CurrentEvents() {
                                 text-white
                                 opacity-100
 
-                                sm:text-[25px]
+                                sm:text-[23px]
+                                md:text-[25px]
                                 lg:text-[27px]
 
                                 xl:text-[29px]

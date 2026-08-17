@@ -21,13 +21,11 @@ export function Hero() {
       className="
         relative
         h-dvh
+        min-h-dvh
         w-full
         overflow-hidden
         bg-[#087ead]
         text-white
-
-        [--wellness-column:9.75rem]
-        xl:[--wellness-column:10rem]
       "
     >
       <Header />
@@ -59,17 +57,33 @@ export function Hero() {
           priority
           quality={100}
           sizes="100vw"
-          className="object-cover object-center"
+          className="
+            object-cover
+            object-center
+          "
         />
 
         <div className="absolute inset-0 bg-[#007dae]/5" />
       </motion.div>
 
-      {/* 1440px content grid */}
       <Container className="relative z-10 h-full">
         <div className="relative h-full w-full overflow-visible">
-          {/* Upper labels */}
-          <div className="absolute left-0 right-0 top-17 z-40 flex flex-col items-center gap-3 sm:top-24 sm:flex-row sm:justify-between sm:gap-0">
+          {/* Desktop labels */}
+          <div
+            className="
+              absolute
+              left-0
+              right-0
+              top-24
+              z-40
+
+              hidden
+              items-center
+              justify-between
+
+              lg:flex
+            "
+          >
             <motion.span
               initial={
                 reduceMotion
@@ -89,16 +103,14 @@ export function Hero() {
                 ease: premiumEase,
               }}
               className="
-                order-2
-                text-[15px]
+                text-sm
                 font-medium
                 uppercase
                 leading-none
                 tracking-wide
                 text-white/85
 
-                sm:order-1
-                xl:text-[16px]
+                xl:text-base
               "
             >
               Custom Wellness
@@ -124,54 +136,128 @@ export function Hero() {
                 ease: premiumEase,
               }}
               className="
-                order-1
-                text-[15px]
+                text-sm
                 font-medium
                 uppercase
                 leading-none
                 tracking-wide
                 text-white/85
+
                 transition-opacity
                 duration-300
+
                 hover:opacity-60
 
-                max-sm:hidden
-                sm:order-2
-                xl:text-[16px]
+                xl:text-base
               "
             >
-              <span className="inline-block border-b border-current text-white/85 pb-1">
+              <span
+                className="
+                  inline-block
+                  border-b
+                  border-current
+                  pb-1
+                "
+              >
                 Get in touch
               </span>
             </motion.a>
           </div>
 
-          {/* Intro copy */}
+          {/* Mobile / tablet label */}
           <div
             className="
               absolute
               left-0
-              top-[25%]
+              right-0
+              top-20
               z-40
-              max-w-120
 
-              lg:left-(--wellness-column)
+              flex
+              justify-center
+
+              text-center
+
+              sm:top-24
+
+              lg:hidden
+            "
+          >
+            <motion.span
+              initial={
+                reduceMotion
+                  ? false
+                  : {
+                      opacity: 0,
+                      y: -14,
+                    }
+              }
+              animate={{
+                opacity: 1,
+                y: 0,
+              }}
+              transition={{
+                duration: 0.8,
+                delay: 0.45,
+                ease: premiumEase,
+              }}
+              className="
+                text-sm
+                font-medium
+                uppercase
+                leading-none
+                tracking-wide
+                text-white/85
+
+                sm:text-base
+              "
+            >
+              Custom Wellness
+            </motion.span>
+          </div>
+
+          {/* Intro */}
+          <div
+            className="
+              absolute
+              left-1/2
+              top-1/4
+              z-40
+
+              w-full
+              max-w-md
+
+              -translate-x-1/2
+
+              text-center
+
+              sm:max-w-xl
+
+              lg:left-40
+              lg:max-w-lg
+              lg:translate-x-0
+              lg:text-left
             "
           >
             <h1
               className="
-                max-w-120
-                text-[34px]
+                text-4xl
                 font-normal
-                leading-[1.045]
-                tracking-[-0.045em]
+                leading-none
+                tracking-tighter
 
-                sm:text-[46px]
-                lg:text-[50px]
-                xl:text-[54px]
+                sm:text-5xl
+
+                xl:text-6xl
               "
             >
-              <span className="block overflow-hidden pb-0.5">
+              <span
+                className="
+                  block
+                  overflow-hidden
+                  pb-1
+                "
+              >
                 <motion.span
                   className="block"
                   initial={
@@ -194,7 +280,13 @@ export function Hero() {
                 </motion.span>
               </span>
 
-              <span className="block overflow-hidden pb-1">
+              <span
+                className="
+                  block
+                  overflow-hidden
+                  pb-1
+                "
+              >
                 <motion.span
                   className="block"
                   initial={
@@ -236,7 +328,16 @@ export function Hero() {
                 delay: 0.92,
                 ease: premiumEase,
               }}
-              className="mt-5 flex items-center gap-3"
+              className="
+                mt-5
+
+                flex
+                items-center
+                justify-center
+                gap-3
+
+                lg:justify-start
+              "
             >
               <motion.span
                 initial={
@@ -261,7 +362,9 @@ export function Hero() {
                   size-9
                   shrink-0
                   place-items-center
+
                   rounded-full
+
                   bg-[#ffa313]
                 "
               >
@@ -270,12 +373,16 @@ export function Hero() {
 
               <p
                 className="
-                  text-[14px]
+                  max-w-xs
+
+                  text-sm
                   font-normal
-                  tracking-[-0.02em]
+                  leading-snug
+                  tracking-tight
                   text-white/95
-                  
-                  sm:text-[15px]
+
+                  sm:max-w-none
+                  sm:text-base
                 "
               >
                 Improve your health — performance well
@@ -283,7 +390,7 @@ export function Hero() {
             </motion.div>
           </div>
 
-          {/* Get in touch — mobile only, centered above Granger */}
+          {/* Get in touch mobile / tablet */}
           <motion.a
             href="#contact"
             initial={
@@ -305,26 +412,40 @@ export function Hero() {
             }}
             className="
               absolute
-              bottom-[15%]
+              bottom-36
               left-0
               right-0
               z-40
-              block
+
               text-center
-              text-[15px]
+              text-sm
               font-medium
               uppercase
               leading-none
               tracking-wide
               text-white/85
+
               transition-opacity
               duration-300
+
               hover:opacity-60
 
-              sm:hidden
+              sm:bottom-56
+              sm:text-base
+
+              md:bottom-72
+
+              lg:hidden
             "
           >
-            <span className="inline-block border-b border-current text-white/85 pb-1">
+            <span
+              className="
+                inline-block
+                border-b
+                border-current
+                pb-1
+              "
+            >
               Get in touch
             </span>
           </motion.a>
@@ -354,17 +475,27 @@ export function Hero() {
             className="
               pointer-events-none
               absolute
-              bottom-[3%]
+              bottom-4
               left-0
-              
+              z-10
+
               w-full
+
               font-medium
+
+              sm:bottom-5
+
+              lg:bottom-6
             "
           >
             <svg
               viewBox="0 0 1000 280"
               preserveAspectRatio="none"
-              className="block aspect-1000/240 w-full"
+              className="
+                block
+                h-auto
+                w-full
+              "
             >
               <text
                 x="0"
@@ -373,126 +504,156 @@ export function Hero() {
                 lengthAdjust="spacingAndGlyphs"
                 fill="currentColor"
                 fontSize={280}
+                fontWeight={500}
+                fontFamily="var(--font-granger)"
               >
                 Granger
               </text>
             </svg>
           </motion.div>
 
-          {/* Basketball */}
-          <motion.div
-            initial={
-              reduceMotion
-                ? false
-                : {
-                    opacity: 0,
-                    x: 120,
-                    y: -25,
-                    scale: 0.86,
-                    rotate: 7,
-                  }
-            }
-            animate={{
-              opacity: 1,
-              x: 0,
-              y: 0,
-              scale: 1,
-              rotate: 0,
-            }}
-            transition={{
-              duration: 1.35,
-              delay: 0.35,
-              ease: premiumEase,
-            }}
+          {/* Basketball position */}
+          <div
             className="
               pointer-events-none
               absolute
-              right-[-1.8%]
-              top-[16%]
+              left-1/2
+              top-1/2
               z-20
-              aspect-square
-              w-[clamp(280px,52vw,830px)]
 
-              sm:right-[-1.8%]
-              max-sm:left-1/2
-              max-sm:top-[48%]
-              max-sm:-translate-x-1/2
-              max-sm:w-[clamp(280px,70vw,450px)]
+              aspect-square
+              w-64
+
+              -translate-x-1/2
+
+              sm:left-auto
+              sm:right-0
+              sm:top-1/3
+              sm:w-3/5
+              sm:max-w-xl
+              sm:translate-x-0
+
+              lg:right-0
+              lg:top-28
+              lg:w-3/5
+
+              xl:-right-4
+              xl:top-24
+              xl:w-1/2
             "
           >
             <motion.div
-              className="absolute inset-0 overflow-visible"
-              animate={
+              initial={
                 reduceMotion
-                  ? undefined
+                  ? false
                   : {
-                      y: [0, -9, 0],
-                      rotate: [0, -0.8, 0],
+                      opacity: 0,
+                      x: 100,
+                      y: -20,
+                      scale: 0.88,
+                      rotate: 7,
                     }
               }
-              transition={
-                reduceMotion
-                  ? undefined
-                  : {
-                      duration: 5.8,
-                      delay: 1.7,
-                      repeat: Infinity,
-                      ease: "easeInOut",
-                    }
-              }
+              animate={{
+                opacity: 1,
+                x: 0,
+                y: 0,
+                scale: 1,
+                rotate: 0,
+              }}
+              transition={{
+                duration: 1.35,
+                delay: 0.35,
+                ease: premiumEase,
+              }}
+              className="
+                absolute
+                inset-0
+              "
             >
-              {/* Single clean oval shadow */}
-              <div
-                aria-hidden="true"
+              <motion.div
                 className="
-                  pointer-events-none
                   absolute
-                  z-0
-                  rounded-[50%]
+                  inset-0
+                  overflow-visible
                 "
-                style={{
-                  // 1. ANCRAGE SOUS LE BALLON (Remplace 'left' par 'right')
-                  right: "43%",
-                  top: "34%",
-                  height: "56%",
+                animate={
+                  reduceMotion
+                    ? undefined
+                    : {
+                        y: [0, -9, 0],
+                        rotate: [0, -0.8, 0],
+                      }
+                }
+                transition={
+                  reduceMotion
+                    ? undefined
+                    : {
+                        duration: 5.8,
+                        delay: 1.7,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                      }
+                }
+              >
+                {/* Shadow */}
+                <div
+                  aria-hidden="true"
+                  className="
+                    pointer-events-none
+                    absolute
+                    z-0
 
-                  // 2. LONGUEUR PRÉCISE (Ajuste cette valeur pour définir la portée exacte)
-                  // Exemples : "100%" (très courte), "120%" (moyenne), "150%" (longue)
-                  width: "130%",
+                    hidden
 
-                  // 3. ROTATION (Garde la forme exacte sans déformation)
-                  transformOrigin: "100% 50%",
-                  transform: "rotate(28deg)",
+                    rounded-full
 
-                  // 4. RENDU VISUEL
-                  background: "rgba(0, 27, 50, 0.42)",
-                  filter: "blur(9px)",
-
-                  // Fondu propre sur la fin de l'ombre
-                  WebkitMaskImage:
-                    "linear-gradient(to left, black 0%, black 60%, transparent 100%)",
-                  maskImage:
-                    "linear-gradient(to left, black 0%, black 60%, transparent 100%)",
-                }}
-              />
-
-              {/* Ball */}
-              <div className="absolute inset-0 z-10">
-                <Image
-                  src={basketball}
-                  alt=""
-                  fill
-                  priority
-                  quality={100}
-                  sizes="(max-width: 640px) 280px, (max-width: 1024px) 52vw, 830px"
-                  className="object-contain"
+                    sm:block
+                  "
                   style={{
-                    filter: "drop-shadow(-8px 10px 12px rgba(0,0,0,0.10))",
+                    right: "43%",
+                    top: "34%",
+                    height: "56%",
+                    width: "130%",
+                    transformOrigin: "100% 50%",
+                    transform: "rotate(28deg)",
+                    background: "rgba(0, 27, 50, 0.42)",
+                    filter: "blur(9px)",
+                    WebkitMaskImage:
+                      "linear-gradient(to left, black 0%, black 60%, transparent 100%)",
+                    maskImage:
+                      "linear-gradient(to left, black 0%, black 60%, transparent 100%)",
                   }}
                 />
-              </div>
+
+                {/* Ball */}
+                <div
+                  className="
+                    absolute
+                    inset-0
+                    z-10
+                  "
+                >
+                  <Image
+                    src={basketball}
+                    alt=""
+                    fill
+                    priority
+                    quality={100}
+                    sizes="
+                      (max-width: 640px) 256px,
+                      (max-width: 1024px) 60vw,
+                      50vw
+                    "
+                    className="object-contain"
+                    style={{
+                      filter: "drop-shadow(-8px 10px 12px rgba(0,0,0,0.10))",
+                    }}
+                  />
+                </div>
+              </motion.div>
             </motion.div>
-          </motion.div>
+          </div>
         </div>
       </Container>
     </section>

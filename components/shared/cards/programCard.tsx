@@ -1,8 +1,9 @@
-/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import Image from "next/image";
+
 import { Flower, Radio } from "lucide-react";
+
 import { motion, useReducedMotion } from "framer-motion";
 
 import chemistryImage from "@/public/images/program/chemistry.jpg";
@@ -21,29 +22,44 @@ const profiles = [
 ];
 
 function ProfileStack({ size = "normal" }: { size?: "normal" | "small" }) {
-  const dimensions = size === "small" ? "size-[25px]" : "size-[28px]";
+  const dimensions = size === "small" ? "size-6" : "size-7";
 
   return (
-    <div className="flex shrink-0 items-center">
+    <div
+      className="
+        flex
+        shrink-0
+        items-center
+      "
+    >
       {profiles.map((profile, index) => (
         <span
           key={profile}
           className={`
-            relative
-            ${dimensions}
-            overflow-hidden
-            rounded-full
-            border-2
-            border-white
-            bg-[#dedede]
+              relative
+              ${dimensions}
 
-            ${index > 0 ? "-ml-2.5" : ""}
-          `}
+              overflow-hidden
+              rounded-full
+
+              border-2
+              border-white
+
+              bg-[#dedede]
+
+              ${index > 0 ? "-ml-2" : ""}
+            `}
           style={{
             zIndex: profiles.length - index,
           }}
         >
-          <img src={profile} alt="" className="h-full w-full object-cover" />
+          <Image
+            src={profile}
+            alt=""
+            fill
+            sizes="32px"
+            className="object-cover"
+          />
         </span>
       ))}
     </div>
@@ -53,9 +69,6 @@ function ProfileStack({ size = "normal" }: { size?: "normal" | "small" }) {
 export function ProgramCard({ variant, delay = 0 }: ProgramCardProps) {
   const reduceMotion = useReducedMotion();
 
-  /* =========================================================
-     COACH CARD
-  ========================================================= */
   if (variant === "coach") {
     return (
       <motion.article
@@ -84,47 +97,84 @@ export function ProgramCard({ variant, delay = 0 }: ProgramCardProps) {
         }}
         className="
           relative
+
           flex
-          min-h-81.25
+          min-h-80
+          w-full
           flex-col
+
           overflow-hidden
-          rounded-[27px]
+          rounded-3xl
+
           bg-[#050505]
-          p-6
+
+          p-5
+
           text-white
 
-          xl:min-h-87.5
+          sm:min-h-96
+          sm:p-7
+
+          lg:min-h-80
+          lg:p-6
+
+          xl:min-h-96
           xl:p-7
         "
       >
-        {/* TEXT + PROFILES */}
         <div
           className="
-            max-w-87.5
-            text-[28px]
-            font-normal
-            leading-[1.06]
-            tracking-[-0.045em]
+            mx-auto
+            w-full
+            max-w-xl
 
-            xl:text-[31px]
+            text-center
+            text-2xl
+            font-normal
+            leading-tight
+            tracking-tighter
+
+            sm:text-3xl
+
+            md:text-4xl
+
+            lg:mx-0
+            lg:max-w-sm
+            lg:text-left
+            lg:text-3xl
+
+            xl:text-4xl
           "
         >
           <span className="block">The coach experts</span>
 
-          {/* Profiles + text */}
-          <span className="my-1 flex items-center gap-2">
+          <span
+            className="
+              my-1
+
+              flex
+              flex-wrap
+              items-center
+              justify-center
+              gap-2
+
+              lg:justify-start
+            "
+          >
             <ProfileStack />
 
             <span>and simple</span>
           </span>
 
-          
           <span
             className="
               flex
+              flex-wrap
               items-center
-              gap-1.5
-              whitespace-nowrap
+              justify-center
+              gap-2
+
+              lg:justify-start
             "
           >
             <span>software</span>
@@ -137,7 +187,6 @@ export function ProgramCard({ variant, delay = 0 }: ProgramCardProps) {
           <span className="block">sportainment.</span>
         </div>
 
-        {/* FOOTER */}
         <motion.div
           initial={
             reduceMotion
@@ -157,18 +206,25 @@ export function ProgramCard({ variant, delay = 0 }: ProgramCardProps) {
             delay: delay + 0.32,
             ease: premiumEase,
           }}
-          className="mt-auto flex items-center justify-between"
+          className="
+            mt-auto
+            flex
+            items-center
+            justify-between
+            gap-4
+            pt-10
+          "
         >
-          {/* LIVE */}
           <div
             className="
               flex
               items-center
               gap-2
-              text-[15px]
+
+              text-sm
               font-medium
 
-              xl:text-[16px]
+              sm:text-base
             "
           >
             <Radio size={20} strokeWidth={1.8} />
@@ -176,19 +232,21 @@ export function ProgramCard({ variant, delay = 0 }: ProgramCardProps) {
             <span>Live</span>
           </div>
 
-          {/* GRANGER.COM */}
           <span
             className="
               rounded-full
+
               border
               border-white/55
-              px-3.5
-              py-1.5
-              text-[14px]
+
+              px-4
+              py-2
+
+              text-sm
               font-medium
               leading-none
 
-              xl:text-[15px]
+              sm:text-base
             "
           >
             granger.com
@@ -197,8 +255,6 @@ export function ProgramCard({ variant, delay = 0 }: ProgramCardProps) {
       </motion.article>
     );
   }
-
-  /* chemistry */
 
   return (
     <motion.article
@@ -227,17 +283,26 @@ export function ProgramCard({ variant, delay = 0 }: ProgramCardProps) {
       }}
       className="
         relative
-        min-h-81.25
+
+        min-h-96
+        w-full
+
         overflow-hidden
-        rounded-[27px]
+        rounded-3xl
+
         bg-[#5f7e48]
 
-        xl:min-h-87.5
+        lg:min-h-80
+
+        xl:min-h-96
       "
     >
-      {/* PHOTO */}
+      {/* Photo */}
       <motion.div
-        className="absolute inset-0"
+        className="
+          absolute
+          inset-0
+        "
         initial={
           reduceMotion
             ? false
@@ -260,24 +325,30 @@ export function ProgramCard({ variant, delay = 0 }: ProgramCardProps) {
           alt=""
           fill
           quality={100}
-          sizes="(max-width: 768px) 100vw, 430px"
-          className="object-cover object-center"
+          sizes="
+            (max-width: 1024px) 100vw,
+            50vw
+          "
+          className="
+            object-cover
+            object-center
+          "
         />
       </motion.div>
 
-      {/* GRADIENT */}
       <div
         className="
           absolute
           inset-0
+
           bg-linear-to-t
-          from-black/50
-          via-black/5
+          from-black/60
+          via-black/10
           to-transparent
         "
       />
 
-      {/* SPORTCENTER */}
+      {/* Sportcenter */}
       <motion.div
         initial={
           reduceMotion
@@ -302,23 +373,31 @@ export function ProgramCard({ variant, delay = 0 }: ProgramCardProps) {
           left-4
           top-4
           z-20
+
           rounded-full
+
           bg-white/25
-          px-3.5
+
+          px-3
           py-2
-          text-[13px]
+
+          text-xs
           font-medium
           leading-none
           text-white
+
           backdrop-blur-md
 
-          xl:text-[14px]
+          sm:left-5
+          sm:top-5
+          sm:px-4
+          sm:text-sm
         "
       >
         Sportcenter
       </motion.div>
 
-      {/* TOP RIGHT INFO CARD */}
+      {/* Membership */}
       <motion.div
         initial={
           reduceMotion
@@ -345,36 +424,54 @@ export function ProgramCard({ variant, delay = 0 }: ProgramCardProps) {
           right-4
           top-4
           z-20
+
           flex
           min-w-24
           flex-col
           items-center
-          rounded-[20px]
-          bg-white/24
+
+          rounded-2xl
+
+          bg-white/25
+
           px-3
           py-3
+
           text-center
           text-white
+
           backdrop-blur-lg
+
+          sm:right-5
+          sm:top-5
+          sm:min-w-28
         "
       >
-        {/* Coloured sport icon */}
         <div
           className="
             relative
+
             grid
             size-8
             place-items-center
+
             rounded-full
+
             bg-white
+
             shadow-sm
+
+            sm:size-9
           "
         >
           <span
             className="
               absolute
-              size-3.25
+
+              size-3
+
               rounded-full
+
               bg-[#FF5B14]
             "
           />
@@ -384,8 +481,11 @@ export function ProgramCard({ variant, delay = 0 }: ProgramCardProps) {
               absolute
               left-2
               top-2
-              size-1.25
+
+              size-1.5
+
               rounded-full
+
               bg-[#56C2D8]
             "
           />
@@ -394,10 +494,13 @@ export function ProgramCard({ variant, delay = 0 }: ProgramCardProps) {
         <span
           className="
             mt-2
-            text-[18px]
+
+            text-lg
             font-medium
             leading-none
-            tracking-[-0.03em]
+            tracking-tight
+
+            sm:text-xl
           "
         >
           2.88k
@@ -406,7 +509,8 @@ export function ProgramCard({ variant, delay = 0 }: ProgramCardProps) {
         <span
           className="
             mt-1
-            text-[11px]
+
+            text-xs
             font-medium
             leading-none
             text-white/80
@@ -416,7 +520,7 @@ export function ProgramCard({ variant, delay = 0 }: ProgramCardProps) {
         </span>
       </motion.div>
 
-      {/* BOTTOM CONTENT */}
+      {/* Bottom */}
       <motion.div
         initial={
           reduceMotion
@@ -441,43 +545,67 @@ export function ProgramCard({ variant, delay = 0 }: ProgramCardProps) {
           inset-x-0
           bottom-0
           z-20
+
+          flex
+          flex-col
+          items-center
+
           p-5
+
+          text-center
+
+          sm:p-7
+
+          lg:items-start
+          lg:p-5
+          lg:text-left
 
           xl:p-6
         "
       >
-        {/* MEMBERS */}
-        <div className="flex items-center gap-2.5">
+        <div
+          className="
+            flex
+            flex-wrap
+            items-center
+            justify-center
+            gap-2
+
+            lg:justify-start
+          "
+        >
           <ProfileStack size="small" />
 
           <span
             className="
-              whitespace-nowrap
-              text-[16px]
+              text-sm
               font-medium
               leading-none
-              tracking-[-0.02em]
+              tracking-tight
               text-white
 
-              xl:text-[17px]
+              sm:text-base
             "
           >
             1.20K Membership
           </span>
         </div>
 
-        {/* TITLE */}
         <h3
           className="
             mt-3
-            max-w-67.5
-            text-[30px]
+
+            text-3xl
             font-normal
-            leading-[0.96]
-            tracking-[-0.045em]
+            leading-none
+            tracking-tighter
             text-white
 
-            xl:text-[33px]
+            sm:text-4xl
+
+            lg:text-3xl
+
+            xl:text-4xl
           "
         >
           Chemistry
@@ -485,36 +613,37 @@ export function ProgramCard({ variant, delay = 0 }: ProgramCardProps) {
           Sports Partner
         </h3>
 
-        {/* LOCATION */}
         <div
           className="
-            mt-3
+            mt-4
+
             flex
             items-center
-            gap-1.5
+            justify-center
+            gap-2
+
             font-semibold
             uppercase
             tracking-wide
             text-white/85
+
+            lg:justify-start
           "
         >
-          
           <span
             className="
               flex
-              size-3.5
+              size-4
               shrink-0
               items-center
               justify-center
-              
+
               border
               border-white/75
-              text-[8px]
+
+              text-xs
               font-semibold
               leading-none
-
-              xl:size-3.75
-              xl:text-[9px]
             "
           >
             ©
@@ -522,10 +651,10 @@ export function ProgramCard({ variant, delay = 0 }: ProgramCardProps) {
 
           <span
             className="
-              text-[14px]
+              text-sm
               leading-none
 
-              xl:text-[15px]
+              sm:text-base
             "
           >
             NEW YORK, US

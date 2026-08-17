@@ -31,6 +31,9 @@ export function Benefits() {
         dark:bg-[#17191e]
         dark:text-white
 
+        sm:pt-24
+        sm:pb-14
+
         lg:pt-24
         lg:pb-12
       "
@@ -41,6 +44,8 @@ export function Benefits() {
             grid
             items-stretch
             gap-10
+
+            sm:gap-12
 
             lg:grid-cols-[440px_minmax(0,1fr)]
             lg:gap-8
@@ -90,6 +95,7 @@ export function Benefits() {
                 tracking-[-0.055em]
 
                 sm:text-[48px]
+                md:text-[52px]
                 lg:text-left
                 lg:text-[52px]
                 xl:text-[58px]
@@ -149,6 +155,9 @@ export function Benefits() {
                     shrink-0
                     overflow-hidden
                     rounded-[14px]
+
+                    md:h-11
+                    md:w-19
 
                     xl:h-11.25
                     xl:w-19.5
@@ -214,7 +223,7 @@ export function Benefits() {
                 delay: 0.35,
                 ease: premiumEase,
               }}
-              className="mt-8 flex flex-wrap items-center gap-3"
+              className="mt-8 flex flex-wrap items-center justify-center gap-3 lg:justify-start"
             >
               <div
                 className="
@@ -283,7 +292,7 @@ export function Benefits() {
                 delay: 0.5,
                 ease: premiumEase,
               }}
-              className="mt-16 space-y-2 xl:mt-20"
+              className="mt-16 space-y-2 sm:mt-20 xl:mt-20"
             >
               {benefitItems.map((item) => {
                 const isActive = activeItem === item.id;

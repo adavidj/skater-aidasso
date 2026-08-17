@@ -1,7 +1,9 @@
 "use client";
 
 import Image from "next/image";
+
 import { ArrowRight, Gift, Target, Zap } from "lucide-react";
+
 import { motion, useReducedMotion } from "framer-motion";
 
 import rightTennis from "@/public/images/benefits/right-tennis.jpg";
@@ -38,28 +40,42 @@ export function BenefitCard() {
       }}
       className="
         grid
-        min-h-127.5
+        w-full
+        gap-6
         overflow-hidden
-        rounded-4xl
+        rounded-3xl
         bg-white
-        gap-5
-        p-8
+        p-5
         text-[#111216]
 
         dark:bg-[#202228]
         dark:text-white
 
-        lg:grid-cols-[minmax(0,1fr)_275px]
+        sm:gap-8
+        sm:p-6
+
+        md:p-8
+
+        lg:grid-cols-5
         lg:gap-8
 
-        xl:grid-cols-[minmax(0,1fr)_310px]
         xl:gap-10
         xl:p-10
       "
     >
-      {/* LEFT CONTENT */}
-      <div className="flex min-h-107.5 flex-col">
-        {/* EST */}
+      {/* Content */}
+      <div
+        className="
+          flex
+          flex-col
+          items-center
+          text-center
+
+          lg:col-span-3
+          lg:items-start
+          lg:text-left
+        "
+      >
         <motion.div
           initial={
             reduceMotion
@@ -79,16 +95,27 @@ export function BenefitCard() {
             delay: 0.15,
             ease: premiumEase,
           }}
-          className="flex items-center gap-2.5"
+          className="
+            flex
+            items-center
+            gap-2
+          "
         >
           <Target size={18} strokeWidth={2} className="text-[#F15A32]" />
 
-          <span className="text-[15px] font-semibold tracking-[-0.02em] xl:text-[16px]">
+          <span
+            className="
+              text-sm
+              font-semibold
+              tracking-tight
+
+              sm:text-base
+            "
+          >
             EST — 1997
           </span>
         </motion.div>
 
-        {/* Description */}
         <motion.p
           initial={
             reduceMotion
@@ -110,25 +137,37 @@ export function BenefitCard() {
           }}
           className="
             mt-4
-            max-w-72.5
-            text-[16px]
+            max-w-sm
+
+            text-base
             font-normal
-            leading-[1.45]
-            tracking-[-0.018em]
+            leading-relaxed
+            tracking-tight
             text-black/60
 
             dark:text-white/60
 
+            sm:text-lg
+
+            lg:max-w-xs
+
             xl:mt-7
-            xl:text-[17px]
           "
         >
           Smart features designed to move with you — fast, flexible, and built
           for everyday action.
         </motion.p>
 
-        {/* Bottom */}
-        <div className="mt-auto max-lg:mt-0">
+        <div
+          className="
+            mt-10
+            w-full
+
+            sm:mt-12
+
+            lg:mt-auto
+          "
+        >
           <motion.h3
             initial={
               reduceMotion
@@ -149,12 +188,12 @@ export function BenefitCard() {
               ease: premiumEase,
             }}
             className="
-              text-[34px]
+              text-3xl
               font-normal
               leading-none
               tracking-tighter
 
-              xl:text-[38px]
+              sm:text-4xl
             "
           >
             Visionary
@@ -162,91 +201,99 @@ export function BenefitCard() {
             Precision Play
           </motion.h3>
 
-          {/* Join Now */}
-            <motion.a
+          <motion.a
             href="#program"
             whileHover={
-                reduceMotion
+              reduceMotion
                 ? undefined
                 : {
                     scale: 1.015,
-                    }
+                  }
             }
             whileTap={
-                reduceMotion
+              reduceMotion
                 ? undefined
                 : {
                     scale: 0.985,
-                    }
+                  }
             }
             className="
-                group
-                relative
-                max-lg:mx-auto
-                lg:mx-0
-                mt-6
-                flex
-                h-11
-                w-full
-                max-w-62.5
-                items-center
-                justify-between
-                overflow-hidden
-                rounded-full
-                bg-[#050505]
-                px-4
-                no-underline
+              group
+              relative
+
+              mx-auto
+              mt-6
+
+              flex
+              h-12
+              w-full
+              max-w-xs
+
+              items-center
+              justify-between
+
+              overflow-hidden
+              rounded-full
+
+              bg-[#050505]
+
+              px-4
+
+              no-underline
+
+              lg:mx-0
             "
-            >
+          >
             <span
-                className="
+              className="
                 relative
                 z-20
+
                 block
-                text-[14px]
+
+                text-sm
                 font-semibold
                 leading-none
                 text-white
-                "
-                style={{
-                color: "#ffffff",
-                }}
+              "
             >
-                Join Now!
+              Join Now!
             </span>
 
             <span
-                className="
+              className="
                 relative
                 z-20
+
                 grid
-                size-7
+                size-8
                 shrink-0
                 place-items-center
+
                 rounded-full
+
                 bg-white/10
                 text-white
-                "
-                style={{
-                color: "#ffffff",
-                }}
+              "
             >
-                <ArrowRight
+              <ArrowRight
                 size={16}
                 strokeWidth={1.8}
                 className="
-                    text-white
-                    transition-transform
-                    duration-300
-                    group-hover:translate-x-0.5
+                  text-white
+
+                  transition-transform
+                  duration-300
+
+                  group-hover:translate-x-0.5
                 "
-                />
+              />
             </span>
-            </motion.a>
+          </motion.a>
         </div>
       </div>
 
-      {/* TENNIS IMAGE */}
+      {/* Image */}
       <motion.div
         initial={
           reduceMotion
@@ -268,9 +315,18 @@ export function BenefitCard() {
         }}
         className="
           relative
-          min-h-107.5
+
+          h-64
+          w-full
+
           overflow-hidden
-          rounded-[28px]
+          rounded-3xl
+
+          sm:h-80
+
+          lg:col-span-2
+          lg:h-auto
+          lg:min-h-96
         "
       >
         <Image
@@ -278,11 +334,18 @@ export function BenefitCard() {
           alt=""
           fill
           quality={100}
-          sizes="310px"
-          className="object-cover object-center"
+          sizes="
+            (max-width: 640px) 100vw,
+            (max-width: 1024px) 90vw,
+            40vw
+          "
+          className="
+            object-cover
+            object-center
+          "
         />
 
-        {/* February */}
+        {/* Sale */}
         <motion.div
           initial={
             reduceMotion
@@ -307,13 +370,18 @@ export function BenefitCard() {
             right-3
             top-3
             z-20
+
             flex
             h-8
             items-center
             gap-2
+
             rounded-full
+
             bg-white
+
             px-3
+
             text-xs
             font-medium
             text-black
@@ -350,71 +418,103 @@ export function BenefitCard() {
             bottom-4
             left-4
             z-30
-            w-41
+
+            w-40
+
             overflow-hidden
-            rounded-[22px]
+            rounded-2xl
+
             text-black
-            shadow-[0_12px_26px_rgba(0,0,0,0.10)]
+            shadow-xl
+
+            sm:w-44
           "
         >
-          {/* White stats body */}
           <div
             className="
-              rounded-t-[22px]
+              rounded-t-2xl
+
               bg-white
+
               px-4
               pb-3
               pt-4
             "
           >
-            <div className="text-center text-[11px] text-black/55">
+            <div
+              className="
+                text-center
+                text-xs
+                text-black/55
+              "
+            >
               Tenis Outdor
             </div>
 
-            <div className="mt-2 flex items-end justify-between">
+            <div
+              className="
+                mt-2
+
+                flex
+                items-end
+                justify-between
+              "
+            >
               <CountUp
                 from={0}
                 to={86}
                 duration={2}
                 suffix="%"
                 className="
-                  text-[31px]
+                  text-3xl
                   font-medium
                   leading-none
                   tracking-tighter
                 "
               />
 
-              <span className="pb-0.5 text-[10px] font-medium text-black/65">
+              <span
+                className="
+                  pb-0.5
+
+                  text-xs
+                  font-medium
+                  text-black/65
+                "
+              >
                 Member
               </span>
             </div>
           </div>
 
-          {/* Bottom translucent strip */}
           <div
             className="
               relative
+
               h-8
+
               overflow-hidden
-              rounded-b-[22px]
+              rounded-b-2xl
+
               bg-white/25
+
               backdrop-blur-md
             "
           >
-            {/* Subtle white blur on the remaining side */}
             <div
               className="
                 absolute
                 inset-y-0
                 right-0
-                w-[34%]
+
+                w-1/3
+
                 bg-white/20
+
                 backdrop-blur-lg
               "
             />
 
-            {/* Boost */}
             <motion.div
               initial={
                 reduceMotion
@@ -440,13 +540,17 @@ export function BenefitCard() {
                 inset-y-0
                 left-0
                 z-10
+
                 flex
-                w-[66%]
+                w-2/3
+
                 items-center
                 justify-center
                 gap-1.5
+
                 bg-[#48BBD4]
-                text-[11px]
+
+                text-xs
                 font-medium
                 text-white
               "

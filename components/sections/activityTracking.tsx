@@ -4,7 +4,7 @@ import Image from "next/image";
 import { ArrowUpRight, BicepsFlexed, Shirt, Zap } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
 
-import activityMain from "@/public/images/activity/activity-main.avif";
+import activityMain from "@/public/images/activity/activity-main.jpg";
 import activitySmall from "@/public/images/activity/activity-small.jpg";
 import basketballLeft from "@/public/images/program/basketball-left.png";
 
@@ -124,6 +124,9 @@ export function ActivityTracking() {
         dark:bg-[#17191e]
         dark:text-white
 
+        sm:pt-12
+        sm:pb-18
+
         lg:pt-10 
         lg:pb-16
       "
@@ -171,7 +174,7 @@ export function ActivityTracking() {
             }}
             className="
               relative
-              min-h-[320px]
+              min-h-80
               overflow-hidden
               rounded-[26px]
 
@@ -213,7 +216,6 @@ export function ActivityTracking() {
                 src={activityMain}
                 alt=""
                 fill
-                quality={100}
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 700px"
                 className="
                   scale-[1.03]
@@ -261,7 +263,9 @@ export function ActivityTracking() {
                 font-semibold
                 uppercase
 
-                sm:justify-start
+                sm:justify-center
+                sm:text-[14px]
+                lg:justify-start
                 xl:text-[14px]
               "
             >
@@ -302,8 +306,8 @@ export function ActivityTracking() {
                 leading-[0.98]
                 tracking-[-0.055em]
 
-                sm:text-[48px]
-                md:text-[54px]
+                sm:text-[42px]
+                md:text-[48px]
                 lg:text-left
                 lg:text-[56px]
                 xl:text-[62px]
@@ -311,19 +315,19 @@ export function ActivityTracking() {
             >
               <span className="block">Stay motivated with</span>
 
-              <span className="mt-1 flex flex-wrap items-center justify-center sm:justify-start lg:justify-start">
-                <span>activity</span>
-
+              <span className="mt-1 block sm:mt-2">
                 <span
                   className="
                     relative
-                    mx-2.5
-                    inline-block
+                    mx-auto
+                    block
                     h-10.5
                     w-17
-                    shrink-0
                     overflow-hidden
                     rounded-[14px]
+
+                    sm:mx-0
+                    sm:inline-block
 
                     xl:h-11.75
                     xl:w-19
@@ -338,8 +342,10 @@ export function ActivityTracking() {
                     className="object-cover object-center"
                   />
                 </span>
+              </span>
 
-                <span>tracking.</span>
+              <span className="mt-1 block">
+                activity tracking.
               </span>
             </motion.h2>
 
@@ -365,7 +371,7 @@ export function ActivityTracking() {
                 delay: 0.26,
                 ease: premiumEase,
               }}
-              className="mt-8 flex items-center justify-center gap-3 sm:justify-start"
+              className="mt-8 flex items-center justify-center gap-3 sm:justify-center lg:justify-start"
             >
               {/* DIAMONDS */}
               <button
@@ -380,11 +386,13 @@ export function ActivityTracking() {
                   text-[#111216]
                   shadow-[0_5px_18px_rgba(20,30,50,0.045)]
 
+                  sm:size-14
+
                   dark:bg-white/10
                   dark:text-white
                 "
               >
-                <DiamondClusterIcon className="h-5.5 w-6.5" />
+                <DiamondClusterIcon className="h-5.5 w-6.5 sm:h-6 sm:w-7" />
               </button>
 
               {/* JERSEY */}
@@ -400,11 +408,14 @@ export function ActivityTracking() {
                   text-[#111216]
                   shadow-[0_5px_18px_rgba(20,30,50,0.045)]
 
+                  sm:size-14
+
                   dark:bg-white/10
                   dark:text-white
                 "
               >
-                <Shirt size={21} strokeWidth={1.6} />
+                <Shirt size={21} strokeWidth={1.6} className="sm:hidden" />
+                <Shirt size={24} strokeWidth={1.6} className="hidden sm:block" />
               </button>
 
               {/* BICEPS */}
@@ -420,11 +431,14 @@ export function ActivityTracking() {
                   text-[#111216]
                   shadow-[0_5px_18px_rgba(20,30,50,0.045)]
 
+                  sm:size-14
+
                   dark:bg-white/10
                   dark:text-white
                 "
               >
-                <BicepsFlexed size={23} strokeWidth={1.6} />
+                <BicepsFlexed size={23} strokeWidth={1.6} className="sm:hidden" />
+                <BicepsFlexed size={26} strokeWidth={1.6} className="hidden sm:block" />
               </button>
 
               {/* 8+ */}
@@ -497,6 +511,7 @@ export function ActivityTracking() {
 
                       dark:text-white/65
 
+                      md:text-[18px]
                       xl:text-[18px]
                     "
                   >

@@ -49,6 +49,8 @@ export function FinalCTA() {
 
         dark:bg-[#17191e]
 
+        sm:pt-12
+
         lg:pt-10
       "
     >
@@ -67,6 +69,7 @@ export function FinalCTA() {
 
             sm:px-8
             sm:pt-10
+            sm:pb-12
 
             lg:px-12
             lg:pt-12
@@ -78,6 +81,8 @@ export function FinalCTA() {
               grid
               grid-cols-1
               gap-10
+
+              sm:gap-12
 
               lg:grid-cols-12
               lg:gap-8
@@ -228,7 +233,10 @@ export function FinalCTA() {
             {/* Main message */}
             <div
               className="
+                text-center
+
                 lg:col-span-6
+                lg:text-left
                 lg:pt-2
               "
             >
@@ -259,7 +267,8 @@ export function FinalCTA() {
                   leading-none
                   tracking-tighter
 
-                  sm:text-6xl
+                  sm:text-5xl
+                  md:text-6xl
 
                   lg:text-7xl
                 "
@@ -293,7 +302,10 @@ export function FinalCTA() {
                   flex
                   flex-wrap
                   items-center
+                  justify-center
                   gap-3
+
+                  lg:justify-start
                 "
               >
                 <span
@@ -406,7 +418,10 @@ export function FinalCTA() {
                 flex
                 flex-col
 
+                items-center
+
                 lg:col-span-3
+                lg:items-start
               "
             >
               <div
@@ -414,6 +429,10 @@ export function FinalCTA() {
                   grid
                   grid-cols-2
                   gap-6
+
+                  text-center
+
+                  lg:text-left
                 "
               >
                 <nav
@@ -541,7 +560,7 @@ export function FinalCTA() {
                   justify-center
                   pt-8
 
-                  sm:justify-end
+                  lg:justify-start
                 "
               >
                 <motion.div

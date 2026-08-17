@@ -56,7 +56,7 @@ export function SessionCard({
       }}
       className="
         relative
-        min-h-[340px]
+        min-h-85
         overflow-hidden
         rounded-[30px]
         bg-[#73B5D5]

@@ -1,21 +1,16 @@
 "use client";
 
 import Image from "next/image";
-import {
-  ArrowLeft,
-  ArrowRight,
-  Trophy,
-  Volleyball,
-} from "lucide-react";
-import {
-  motion,
-  useReducedMotion,
-} from "framer-motion";
+
+import { ArrowLeft, ArrowRight, Trophy, Volleyball } from "lucide-react";
+
+import { motion, useReducedMotion } from "framer-motion";
 
 import basketballLeft from "@/public/images/program/basketball-left.png";
 
 import { Container } from "@/components/ui/container";
 import { ProgramCard } from "@/components/shared/cards/programCard";
+
 import { premiumEase } from "@/lib/motion";
 
 export function FeaturedProgram() {
@@ -26,16 +21,18 @@ export function FeaturedProgram() {
       id="program"
       className="
         w-full
-        bg-[#F4F6FC]
+        bg-[#F1F3F8]
         pb-12
-        pt-5
+        pt-6
         text-[#111216]
 
         dark:bg-[#17191e]
         dark:text-white
 
+        sm:pb-14
+        sm:pt-8
+
         lg:pb-16
-        lg:pt-8
       "
     >
       <Container>
@@ -62,22 +59,42 @@ export function FeaturedProgram() {
           }}
           className="
             overflow-hidden
-            rounded-4xl
+            rounded-3xl
             bg-white
-            px-6
-            pb-8
+
+            px-5
+            pb-7
             pt-6
 
             dark:bg-[#202228]
 
-            sm:px-8
+            sm:rounded-4xl
+            sm:px-7
+            sm:pb-9
+            sm:pt-8
+
+            md:px-8
+
             lg:px-10
             lg:pb-10
+
             xl:px-12
           "
         >
-          {/* TOP */}
-          <div className="flex flex-col items-center gap-3 text-center sm:flex-row sm:flex-wrap sm:items-center sm:justify-between sm:text-left sm:gap-6">
+          {/* Top */}
+          <div
+            className="
+              flex
+              flex-col
+              items-center
+              gap-4
+              text-center
+
+              lg:flex-row
+              lg:justify-between
+              lg:text-left
+            "
+          >
             <motion.div
               initial={
                 reduceMotion
@@ -97,43 +114,67 @@ export function FeaturedProgram() {
                 delay: 0.1,
                 ease: premiumEase,
               }}
-              className="flex flex-wrap items-center justify-center gap-2"
+              className="
+                flex
+                flex-wrap
+                items-center
+                justify-center
+                gap-2
+
+                lg:justify-start
+              "
             >
               <div
                 className="
                   flex
-                  h-8
+                  h-9
                   items-center
-                  gap-1.5
+                  gap-2
+
                   rounded-full
-                  bg-[#F4F6FC]
+
+                  bg-[#F1F3F8]
+
                   px-3
+
                   text-sm
                   font-medium
 
                   dark:bg-white/10
+
+                  sm:px-4
+                  sm:text-base
                 "
               >
                 <Volleyball size={15} strokeWidth={1.8} />
+
                 <span>Virtual Challenges</span>
               </div>
 
               <div
                 className="
                   flex
-                  h-8
+                  h-9
                   items-center
-                  gap-1.5
+                  gap-2
+
                   rounded-full
-                  bg-[#F4F6FC]
+
+                  bg-[#F1F3F8]
+
                   px-3
+
                   text-sm
                   font-medium
 
                   dark:bg-white/10
+
+                  sm:px-4
+                  sm:text-base
                 "
               >
                 <Trophy size={15} strokeWidth={1.8} />
+
                 <span>Community Tournaments</span>
               </div>
             </motion.div>
@@ -163,25 +204,41 @@ export function FeaturedProgram() {
                 items-center
                 justify-center
                 gap-2
+
                 text-sm
                 font-semibold
                 uppercase
+                tracking-wide
+
+                sm:text-base
+
+                lg:justify-end
               "
             >
-              <span className="size-2 rounded-full bg-[#49BDD7]" />
+              <span
+                className="
+                  size-2
+                  rounded-full
+                  bg-[#49BDD7]
+                "
+              />
+
               <span>The Program</span>
             </motion.div>
           </div>
 
-          {/* HEADING */}
+          {/* Heading */}
           <div
             className="
-              mt-6
-              grid
-              gap-8
+              mt-8
 
-              lg:grid-cols-[minmax(0,1fr)_260px]
+              grid
+              grid-cols-1
+              gap-5
+
+              lg:grid-cols-12
               lg:items-end
+              lg:gap-8
             "
           >
             <motion.h2
@@ -207,39 +264,61 @@ export function FeaturedProgram() {
                 ease: premiumEase,
               }}
               className="
-                max-w-212.5
-                text-center
-                text-[34px]
-                font-normal
-                leading-[0.99]
-                tracking-[-0.055em]
+                mx-auto
 
-                sm:text-[50px]
+                max-w-4xl
+
+                text-center
+                text-3xl
+                font-normal
+                leading-none
+                tracking-tighter
+
+                sm:text-4xl
+
+                md:text-5xl
+
+                lg:col-span-9
+                lg:mx-0
                 lg:text-left
-                lg:text-[54px]
-                xl:text-[60px]
+                lg:text-5xl
+
+                xl:text-6xl
               "
             >
-              <span className="flex flex-col items-center sm:flex-row sm:flex-wrap sm:items-center">
+              <span
+                className="
+                  flex
+                  flex-wrap
+                  items-center
+                  justify-center
+                  gap-x-2
+                  gap-y-1
+
+                  lg:justify-start
+                "
+              >
                 <span>Elevate your</span>
 
                 <span
                   className="
                     relative
-                    mx-2.5
+
                     inline-block
-                    h-10
-                    w-18.5
+
+                    h-9
+                    w-16
                     shrink-0
+
                     overflow-hidden
-                    rounded-[14px]
+                    rounded-xl
 
-                    lg:h-11
-                    lg:w-20.5
+                    sm:h-10
+                    sm:w-20
 
-                    xl:h-12
-                    xl:w-22.5
-                    xl:rounded-2xl
+                    md:h-12
+                    md:w-24
+                    md:rounded-2xl
                   "
                 >
                   <Image
@@ -247,15 +326,26 @@ export function FeaturedProgram() {
                     alt=""
                     fill
                     quality={100}
-                    sizes="90px"
-                    className="object-cover object-center"
+                    sizes="
+                      (max-width: 640px) 64px,
+                      96px
+                    "
+                    className="
+                      object-cover
+                      object-center
+                    "
                   />
                 </span>
 
                 <span>experience</span>
               </span>
 
-              <span className="mt-1 block">
+              <span
+                className="
+                  mt-1
+                  block
+                "
+              >
                 with handpicked featured.
               </span>
             </motion.h2>
@@ -280,36 +370,43 @@ export function FeaturedProgram() {
                 ease: premiumEase,
               }}
               className="
-                max-w-62.5
+                mx-auto
+                max-w-sm
+
                 text-center
-                text-[14px]
+                text-sm
                 font-normal
-                leading-[1.45]
+                leading-relaxed
                 text-black/55
 
                 dark:text-white/55
 
-                sm:text-left
-                xl:text-[15px]
+                sm:text-base
+
+                lg:col-span-3
+                lg:mx-0
+                lg:max-w-xs
+                lg:text-left
               "
             >
-              Your sports journey starts
-              <br />
-              right here with us and the crew.
+              Your sports journey starts right here with us and the crew.
             </motion.p>
           </div>
 
-          {/* CONTENT */}
+          {/* Content */}
           <div
             className="
-              mt-8
+              mt-10
+
               grid
+              grid-cols-1
               gap-7
 
-              lg:grid-cols-[150px_minmax(0,1fr)]
+              lg:grid-cols-12
+              lg:gap-6
             "
           >
-            {/* COUNTER */}
+            {/* Counter */}
             <motion.div
               initial={
                 reduceMotion
@@ -331,29 +428,49 @@ export function FeaturedProgram() {
               }}
               className="
                 flex
-                min-h-auto
-                flex-col
-
                 items-center
-                text-center
+                justify-between
+                gap-5
 
-                sm:items-start
-                sm:text-left
-                sm:min-h-81.25
-                xl:min-h-87.5
+                border-b
+                border-black/10
+
+                pb-5
+
+                dark:border-white/10
+
+                lg:col-span-2
+                lg:min-h-80
+                lg:flex-col
+                lg:items-start
+                lg:border-b-0
+                lg:pb-0
+                lg:text-left
+
+                xl:min-h-96
               "
             >
               <div>
-                <div className="flex items-end">
+                <div
+                  className="
+                    flex
+                    items-end
+
+                    lg:justify-start
+                  "
+                >
                   <span
                     className="
-                      text-[44px]
+                      text-5xl
                       font-normal
                       leading-none
-                      tracking-[-0.07em]
+                      tracking-tighter
 
-                      sm:text-[60px]
-                      xl:text-[64px]
+                      sm:text-6xl
+
+                      lg:text-5xl
+
+                      xl:text-6xl
                     "
                   >
                     01
@@ -363,7 +480,8 @@ export function FeaturedProgram() {
                     className="
                       ml-1
                       pb-1
-                      text-[18px]
+
+                      text-lg
                       text-black/30
 
                       dark:text-white/30
@@ -376,11 +494,14 @@ export function FeaturedProgram() {
                 <div
                   className="
                     mt-2
-                    text-[12px]
-                    leading-[1.3]
+
+                    text-xs
+                    leading-snug
                     text-black/55
 
                     dark:text-white/55
+
+                    sm:text-sm
                   "
                 >
                   Upcoming
@@ -389,7 +510,15 @@ export function FeaturedProgram() {
                 </div>
               </div>
 
-              <div className="mt-auto flex items-center gap-3">
+              <div
+                className="
+                  flex
+                  items-center
+                  gap-3
+
+                  lg:mt-auto
+                "
+              >
                 <button
                   type="button"
                   aria-label="Previous program"
@@ -397,10 +526,19 @@ export function FeaturedProgram() {
                     grid
                     size-11
                     place-items-center
+
                     rounded-full
+
                     border
                     border-black/10
+
                     bg-white
+
+                    transition-transform
+                    duration-300
+
+                    hover:scale-105
+                    active:scale-95
 
                     dark:border-white/15
                     dark:bg-white/5
@@ -416,9 +554,13 @@ export function FeaturedProgram() {
                     grid
                     size-11
                     place-items-center
+
                     rounded-full
+
                     bg-[#FF5B14]
+
                     text-white
+
                     transition-transform
                     duration-300
 
@@ -431,17 +573,22 @@ export function FeaturedProgram() {
               </div>
             </motion.div>
 
-            {/* CARDS */}
-            <div className="grid gap-4 md:grid-cols-2">
-              <ProgramCard
-                variant="coach"
-                delay={0.4}
-              />
+            {/* Cards */}
+            <div
+              className="
+                grid
+                min-w-0
+                gap-5
 
-              <ProgramCard
-                variant="chemistry"
-                delay={0.52}
-              />
+                md:grid-cols-2
+
+                lg:col-span-10
+                lg:gap-4
+              "
+            >
+              <ProgramCard variant="coach" delay={0.4} />
+
+              <ProgramCard variant="chemistry" delay={0.52} />
             </div>
           </div>
         </motion.div>
