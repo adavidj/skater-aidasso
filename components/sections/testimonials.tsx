@@ -2,11 +2,11 @@
 
 import { useState } from "react";
 
-import sessionImage from "@/public/images/testimonials/session.jpg";
-
-import { MessageCircleMore } from "lucide-react";
+import { MessageCircleMore, Sparkles } from "lucide-react";
 
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+
+import sessionImage from "@/public/images/testimonials/session.jpg";
 
 import { Container } from "@/components/ui/container";
 
@@ -17,48 +17,49 @@ import { sessionHighlight, testimonials } from "@/lib/data/testimonials";
 
 import { premiumEase } from "@/lib/motion";
 
-function TestimonialWatermark() {
+function SkateWatermark() {
   return (
     <svg
       aria-hidden="true"
-      viewBox="0 0 420 420"
+      viewBox="0 0 500 360"
       fill="none"
       className="
+        pointer-events-none
+
         absolute
-        -left-37.5
-        -top-16.25
+        -left-32
+        -top-16
 
-        size-120
+        w-96
 
-        text-[#E8EBF3]
+        text-[#E6E9F1]
 
-        dark:text-white/2.5
+        dark:text-white/5
 
-        sm:-left-31.25
+        sm:w-full
+        sm:max-w-xl
 
-        lg:-left-26.25
-        lg:-top-21.25
-        lg:size-140
+        lg:-left-24
+        lg:-top-20
       "
     >
-      <circle
-        cx="210"
-        cy="210"
-        r="150"
+      <path
+        d="M75 175C110 175 119 132 156 132H344C381 132 390 175 425 175"
         stroke="currentColor"
-        strokeWidth="46"
+        strokeWidth="34"
+        strokeLinecap="round"
       />
 
-      <circle cx="210" cy="210" r="72" stroke="currentColor" strokeWidth="42" />
+      <circle cx="145" cy="218" r="30" stroke="currentColor" strokeWidth="22" />
+
+      <circle cx="355" cy="218" r="30" stroke="currentColor" strokeWidth="22" />
 
       <path
-        d="M70 263L349 203"
+        d="M160 184H340"
         stroke="currentColor"
-        strokeWidth="45"
-        strokeLinecap="square"
+        strokeWidth="18"
+        strokeLinecap="round"
       />
-
-      <path d="M185 270L225 405" stroke="currentColor" strokeWidth="44" />
     </svg>
   );
 }
@@ -88,23 +89,26 @@ export function Testimonials() {
       className="
         w-full
         overflow-hidden
-        bg-[#F4F6FC]
-        pt-10
+
+        bg-[#F1F3F8]
+
         pb-14
+        pt-10
 
         dark:bg-[#17191e]
 
+        sm:pb-16
         sm:pt-14
-        sm:pb-18
 
-        lg:pt-12
         lg:pb-16
+        lg:pt-12
       "
     >
       <Container>
         <div className="relative">
-          <TestimonialWatermark />
+          <SkateWatermark />
 
+          {/* Heading */}
           <div
             className="
               relative
@@ -113,7 +117,7 @@ export function Testimonials() {
               grid
               gap-7
 
-              lg:grid-cols-[1fr_auto]
+              lg:grid-cols-12
               lg:items-start
               lg:gap-10
             "
@@ -140,30 +144,33 @@ export function Testimonials() {
                 ease: premiumEase,
               }}
               className="
-                max-w-225
+                mx-auto
+                max-w-4xl
 
                 text-center
-                text-[30px]
+                text-4xl
                 font-normal
-                leading-[0.96]
-                tracking-[-0.055em]
-
+                leading-none
+                tracking-tighter
                 text-[#101114]
 
                 dark:text-white
 
-                sm:text-[38px]
-                md:text-[44px]
+                sm:text-5xl
 
+                lg:col-span-9
+                lg:mx-0
                 lg:text-left
-                lg:text-[60px]
+                lg:text-6xl
 
-                xl:text-[66px]
+                xl:text-7xl
               "
             >
-              What people are
-              <span className="hidden sm:inline"><br /></span>{" "}
-              honestly saying right now
+              What riders are
+              <span className="hidden sm:inline">
+                <br />
+              </span>{" "}
+              saying right now.
             </motion.h2>
 
             <motion.div
@@ -179,9 +186,7 @@ export function Testimonials() {
                 opacity: 1,
                 x: 0,
               }}
-              viewport={{
-                once: true,
-              }}
+              viewport={{ once: true }}
               transition={{
                 duration: 0.7,
                 delay: 0.12,
@@ -194,6 +199,7 @@ export function Testimonials() {
                 justify-center
                 gap-2
 
+                lg:col-span-3
                 lg:flex-col
                 lg:items-end
               "
@@ -203,13 +209,15 @@ export function Testimonials() {
                   flex
                   h-10
                   items-center
-                  gap-2.5
+                  gap-2
 
                   rounded-full
+
                   bg-white
+
                   px-4
 
-                  text-[13px]
+                  text-sm
                   font-medium
                   leading-none
                   text-[#111216]
@@ -218,17 +226,10 @@ export function Testimonials() {
                   dark:text-white
 
                   lg:h-11
-                  lg:text-[14px]
                 "
               >
-                <span
-                  className="
-                    size-2
-                    rounded-full
-                    bg-[#37AED3]
-                  "
-                />
-                Testimonial
+                <Sparkles size={16} strokeWidth={1.6} />
+                Rider Stories
               </span>
 
               <span
@@ -236,13 +237,15 @@ export function Testimonials() {
                   flex
                   h-10
                   items-center
-                  gap-2.5
+                  gap-2
 
                   rounded-full
+
                   bg-white
+
                   px-4
 
-                  text-[13px]
+                  text-sm
                   font-medium
                   leading-none
                   text-[#111216]
@@ -251,35 +254,35 @@ export function Testimonials() {
                   dark:text-white
 
                   lg:h-11
-                  lg:text-[14px]
                 "
               >
                 <MessageCircleMore size={17} strokeWidth={1.7} />
-                Customer Says
+                Skate Community
               </span>
             </motion.div>
           </div>
 
+          {/* Cards */}
           <div
             className="
               relative
               z-10
 
-              mt-12
+              mt-10
 
               grid
-              gap-3
+              items-stretch
+              gap-4
 
               sm:mt-14
-              sm:gap-4
 
               lg:mt-14
-              lg:grid-cols-[1.02fr_0.98fr]
+              lg:grid-cols-2
 
               xl:mt-16
             "
           >
-            <div className="relative">
+            <div className="relative h-full">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={testimonial.id}

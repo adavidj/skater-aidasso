@@ -1,23 +1,35 @@
 "use client";
 
 import Image from "next/image";
-import { ArrowUpRight, BicepsFlexed, Shirt, Zap } from "lucide-react";
-import { motion, useReducedMotion } from "framer-motion";
+
+import {
+  ArrowUpRight,
+  Gauge,
+  
+  Route,
+  Sparkles,
+  Zap,
+} from "lucide-react";
+
+import {
+  motion,
+  useReducedMotion,
+} from "framer-motion";
 
 import activityMain from "@/public/images/activity/activity-main.jpg";
 import activitySmall from "@/public/images/activity/activity-small.jpg";
-import basketballLeft from "@/public/images/program/basketball-left.png";
+import basketballLeft from "@/public/images/program/skate-left.png";
 
 import { ActivityStatsCard } from "@/components/shared/cards/activityStatsCard";
 import { Container } from "@/components/ui/container";
 
 import { premiumEase } from "@/lib/motion";
 
-/* =========================================================
-   FIRST ICON:
-   3 diamonds on top + 1 diamond centered below
-========================================================= */
-function DiamondClusterIcon({ className = "" }: { className?: string }) {
+function DiamondClusterIcon({
+  className = "",
+}: {
+  className?: string;
+}) {
   return (
     <svg
       viewBox="0 0 28 24"
@@ -25,7 +37,6 @@ function DiamondClusterIcon({ className = "" }: { className?: string }) {
       aria-hidden="true"
       className={className}
     >
-      {/* top left */}
       <rect
         x="3"
         y="3"
@@ -36,7 +47,6 @@ function DiamondClusterIcon({ className = "" }: { className?: string }) {
         fill="currentColor"
       />
 
-      {/* top center */}
       <rect
         x="11"
         y="3"
@@ -47,7 +57,6 @@ function DiamondClusterIcon({ className = "" }: { className?: string }) {
         fill="currentColor"
       />
 
-      {/* top right */}
       <rect
         x="19"
         y="3"
@@ -58,7 +67,6 @@ function DiamondClusterIcon({ className = "" }: { className?: string }) {
         fill="currentColor"
       />
 
-      {/* bottom center */}
       <rect
         x="11"
         y="11"
@@ -72,10 +80,11 @@ function DiamondClusterIcon({ className = "" }: { className?: string }) {
   );
 }
 
-/* =========================================================
-   SMALL CYAN ICON FOR VIEW MORE
-========================================================= */
-function SmallSportIcon({ className = "" }: { className?: string }) {
+function SmallSkateIcon({
+  className = "",
+}: {
+  className?: string;
+}) {
   return (
     <svg
       viewBox="0 0 24 24"
@@ -84,25 +93,31 @@ function SmallSportIcon({ className = "" }: { className?: string }) {
       className={className}
     >
       <path
-        d="M6 15.5C8.5 15.5 9.6 13.8 10.7 12.4L12.6 10C13 9.5 13.7 9.5 14.1 10L16 12.2C17 13.3 18.2 14 19.7 14.2"
+        d="M4 14C6 16 8 17 12 17C16 17 19 16 20 13"
         stroke="currentColor"
-        strokeWidth="1.8"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-
-      <path
-        d="M5 16.5H20"
-        stroke="currentColor"
-        strokeWidth="1.8"
+        strokeWidth="1.7"
         strokeLinecap="round"
       />
 
       <path
-        d="M7.5 13L9 14"
+        d="M5 13H19"
         stroke="currentColor"
-        strokeWidth="1.8"
+        strokeWidth="1.7"
         strokeLinecap="round"
+      />
+
+      <circle
+        cx="8"
+        cy="18"
+        r="1.3"
+        fill="currentColor"
+      />
+
+      <circle
+        cx="17"
+        cy="18"
+        r="1.3"
+        fill="currentColor"
       />
     </svg>
   );
@@ -117,38 +132,38 @@ export function ActivityTracking() {
       className="
         w-full
         bg-[#F4F6FC]
-        pt-8 
+
         pb-14
+        pt-8
+
         text-[#111216]
 
         dark:bg-[#17191e]
         dark:text-white
 
+        sm:pb-16
         sm:pt-12
-        sm:pb-18
 
-        lg:pt-10 
         lg:pb-16
+        lg:pt-10
       "
     >
       <Container>
         <div
-              className="
-                grid
-                gap-8
+          className="
+            grid
+            gap-10
 
-                sm:gap-12
+            sm:gap-12
 
-                lg:grid-cols-[minmax(0,1.05fr)_minmax(420px,0.95fr)]
-                lg:items-stretch
-                lg:gap-12
+            lg:grid-cols-2
+            lg:items-stretch
+            lg:gap-12
 
-                xl:gap-16
-              "
+            xl:gap-16
+          "
         >
-          {/* =================================================
-              LEFT IMAGE
-          ================================================= */}
+          {/* Main visual */}
           <motion.div
             initial={
               reduceMotion
@@ -174,23 +189,25 @@ export function ActivityTracking() {
             }}
             className="
               relative
-              min-h-80
+
+              min-h-96
+
               overflow-hidden
-              rounded-[26px]
+              rounded-3xl
 
-              sm:min-h-147.5
-              lg:min-h-155
-              xl:min-h-162.5
+              sm:min-h-144
 
-              lg:rounded-[34px]
+              lg:min-h-160
+
+              xl:min-h-168
             "
           >
-            {/* BLURRED IMAGE ONLY */}
             <motion.div
               className="
                 absolute
                 inset-0
                 z-0
+
                 overflow-hidden
               "
               initial={
@@ -216,25 +233,41 @@ export function ActivityTracking() {
                 src={activityMain}
                 alt=""
                 fill
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 700px"
+                quality={100}
+                sizes="
+                  (max-width: 1024px) 100vw,
+                  50vw
+                "
                 className="
-                  scale-[1.03]
+                  scale-105
                   object-cover
                   object-center
-                  blur-[2.5px]
+
+                  blur-sm
+                "
+              />
+
+              <div
+                className="
+                  absolute
+                  inset-0
+
+                  bg-black/5
                 "
               />
             </motion.div>
 
-            {/* SHARP CARD */}
             <ActivityStatsCard />
           </motion.div>
 
-          {/* =================================================
-              RIGHT CONTENT
-          ================================================= */}
-          <div className="flex flex-col">
-            {/* FEATURED FEATURES */}
+          {/* Content */}
+          <div
+            className="
+              flex
+              min-w-0
+              flex-col
+            "
+          >
             <motion.div
               initial={
                 reduceMotion
@@ -259,22 +292,29 @@ export function ActivityTracking() {
                 items-center
                 justify-center
                 gap-2
-                text-[13px]
+
+                text-sm
                 font-semibold
                 uppercase
+                tracking-wide
 
-                sm:justify-center
-                sm:text-[14px]
                 lg:justify-start
-                xl:text-[14px]
               "
             >
-              <span className="size-2 rounded-full bg-[#49BDD7]" />
+              <span
+                className="
+                  size-2
+                  rounded-full
+                  bg-[#FF5B14]
+                "
+              />
 
-              <span>Featured Features</span>
+              <span>
+                Ride Tracking
+              </span>
             </motion.div>
 
-            {/* TITLE */}
+            {/* Heading */}
             <motion.h2
               initial={
                 reduceMotion
@@ -298,39 +338,85 @@ export function ActivityTracking() {
                 ease: premiumEase,
               }}
               className="
+                mx-auto
                 mt-6
-                max-w-162.5
-                text-center
-                text-[34px]
-                font-normal
-                leading-[0.98]
-                tracking-[-0.055em]
+                max-w-2xl
 
-                sm:text-[42px]
-                md:text-[48px]
+                text-center
+                text-4xl
+                font-normal
+                leading-none
+                tracking-tighter
+
+                sm:text-5xl
+
+                lg:mx-0
                 lg:text-left
-                lg:text-[56px]
-                xl:text-[62px]
+                lg:text-5xl
+
+                xl:text-6xl
               "
             >
-              <span className="block">Stay motivated with</span>
+              <span className="block">
+                Track every line.
+              </span>
 
-              <span className="mt-1 block sm:mt-2">
-                <span
+              <span
+                className="
+                  mt-2
+
+                  flex
+                  flex-wrap
+                  items-center
+                  justify-center
+                  gap-2
+
+                  lg:justify-start
+                "
+              >
+                <span>
+                  Push
+                </span>
+
+                <motion.span
+                  initial={
+                    reduceMotion
+                      ? false
+                      : {
+                          opacity: 0,
+                          scale: 0.85,
+                          rotate: -4,
+                        }
+                  }
+                  whileInView={{
+                    opacity: 1,
+                    scale: 1,
+                    rotate: 0,
+                  }}
+                  viewport={{ once: true }}
+                  transition={{
+                    duration: 0.7,
+                    delay: 0.28,
+                    ease: premiumEase,
+                  }}
                   className="
                     relative
-                    mx-auto
-                    block
-                    h-10.5
-                    w-17
+
+                    inline-block
+
+                    h-9
+                    w-16
+                    shrink-0
+
                     overflow-hidden
-                    rounded-[14px]
+                    rounded-xl
 
-                    sm:mx-0
-                    sm:inline-block
+                    sm:h-10
+                    sm:w-20
 
-                    xl:h-11.75
-                    xl:w-19
+                    xl:h-12
+                    xl:w-24
+                    xl:rounded-2xl
                   "
                 >
                   <Image
@@ -338,20 +424,21 @@ export function ActivityTracking() {
                     alt=""
                     fill
                     quality={100}
-                    sizes="80px"
-                    className="object-cover object-center"
+                    sizes="96px"
+                    className="
+                      object-cover
+                      object-center
+                    "
                   />
-                </span>
-              </span>
+                </motion.span>
 
-              <span className="mt-1 block">
-                activity tracking.
+                <span>
+                  every session.
+                </span>
               </span>
             </motion.h2>
 
-            {/* =================================================
-                FEATURE BUTTONS
-            ================================================= */}
+            {/* Feature buttons */}
             <motion.div
               initial={
                 reduceMotion
@@ -371,115 +458,153 @@ export function ActivityTracking() {
                 delay: 0.26,
                 ease: premiumEase,
               }}
-              className="mt-8 flex items-center justify-center gap-3 sm:justify-center lg:justify-start"
+              className="
+                mt-8
+
+                flex
+                flex-wrap
+                items-center
+                justify-center
+                gap-3
+
+                lg:justify-start
+              "
             >
-              {/* DIAMONDS */}
               <button
                 type="button"
-                aria-label="Activity categories"
+                aria-label="Skate activity"
                 className="
                   grid
-                  size-13
+                  size-14
                   place-items-center
+
                   rounded-full
+
                   bg-white
                   text-[#111216]
-                  shadow-[0_5px_18px_rgba(20,30,50,0.045)]
 
-                  sm:size-14
+                  shadow-lg
+                  shadow-black/5
 
                   dark:bg-white/10
                   dark:text-white
                 "
               >
-                <DiamondClusterIcon className="h-5.5 w-6.5 sm:h-6 sm:w-7" />
+                <DiamondClusterIcon className="h-6 w-7" />
               </button>
 
-              {/* JERSEY */}
               <button
                 type="button"
-                aria-label="Jersey"
+                aria-label="Routes"
                 className="
                   grid
-                  size-13
+                  size-14
                   place-items-center
+
                   rounded-full
+
                   bg-white
                   text-[#111216]
-                  shadow-[0_5px_18px_rgba(20,30,50,0.045)]
 
-                  sm:size-14
+                  shadow-lg
+                  shadow-black/5
 
                   dark:bg-white/10
                   dark:text-white
                 "
               >
-                <Shirt size={21} strokeWidth={1.6} className="sm:hidden" />
-                <Shirt size={24} strokeWidth={1.6} className="hidden sm:block" />
+                <Route
+                  size={23}
+                  strokeWidth={1.6}
+                />
               </button>
 
-              {/* BICEPS */}
               <button
                 type="button"
-                aria-label="Workout"
+                aria-label="Performance"
                 className="
                   grid
-                  size-13
+                  size-14
                   place-items-center
+
                   rounded-full
+
                   bg-white
                   text-[#111216]
-                  shadow-[0_5px_18px_rgba(20,30,50,0.045)]
 
-                  sm:size-14
+                  shadow-lg
+                  shadow-black/5
 
                   dark:bg-white/10
                   dark:text-white
                 "
               >
-                <BicepsFlexed size={23} strokeWidth={1.6} className="sm:hidden" />
-                <BicepsFlexed size={26} strokeWidth={1.6} className="hidden sm:block" />
+                <Gauge
+                  size={23}
+                  strokeWidth={1.6}
+                />
               </button>
 
-              {/* 8+ */}
               <button
                 type="button"
-                aria-label="More activities"
+                aria-label="More tracking features"
                 className="
                   grid
-                  size-10
+                  size-14
                   place-items-center
+
                   rounded-full
+
                   bg-[#FF5B14]
-                  text-[12px]
+
+                  text-sm
                   font-semibold
                   leading-none
                   text-white
-                  shadow-[0_8px_20px_rgba(255,91,20,0.16)]
+
+                  shadow-lg
+                  shadow-[#FF5B14]/20
                 "
               >
                 8+
               </button>
             </motion.div>
 
-            {/* =================================================
-                LOWER CONTENT
-            ================================================= */}
+            {/* Lower content */}
             <div
               className="
                 mt-10
+
                 grid
                 flex-1
                 gap-8
 
-                sm:grid-cols-[minmax(0,1fr)_235px]
+                sm:grid-cols-5
                 sm:items-end
 
-                xl:grid-cols-[minmax(0,1fr)_255px]
+                lg:grid-cols-5
+                lg:items-end
+
+                xl:gap-10
               "
             >
-              {/* TEXT + CTA */}
-              <div className="flex h-full flex-col items-center text-center sm:items-start sm:text-left">
+              {/* Text + CTA */}
+              <div
+                className="
+                  flex
+                  h-full
+                  flex-col
+                  items-center
+
+                  text-center
+
+                  sm:col-span-3
+                  sm:items-start
+                  sm:text-left
+
+                  lg:col-span-3
+                "
+              >
                 <motion.div
                   initial={
                     reduceMotion
@@ -502,51 +627,67 @@ export function ActivityTracking() {
                 >
                   <p
                     className="
-                      max-w-75
-                      text-[17px]
+                      max-w-sm
+
+                      text-lg
                       font-normal
-                      leading-[1.45]
-                      tracking-[-0.018em]
+                      leading-relaxed
+                      tracking-tight
                       text-black/65
 
                       dark:text-white/65
-
-                      md:text-[18px]
-                      xl:text-[18px]
                     "
                   >
-                    Record — activities to
-                    <br />
-                    boost your performance.
+                    Record your rides, tricks and distance
+                    to understand every session and keep
+                    progressing.
                   </p>
 
                   <div
                     className="
                       mt-5
-                      text-[14px]
+
+                      flex
+                      items-center
+                      justify-center
+                      gap-2
+
+                      text-sm
                       font-semibold
                       uppercase
-                      tracking-[-0.01em]
+                      tracking-wide
 
-                      xl:text-[15px]
+                      sm:justify-start
                     "
                   >
-                    With GPT 4.0
+                    <Sparkles
+                      size={16}
+                      strokeWidth={1.6}
+                      className="text-[#FF5B14]"
+                    />
+
+                    <span>
+                      Smart Ride Insights
+                    </span>
                   </div>
                 </motion.div>
 
+                {/* CTA bottom line */}
                 <div
                   className="
-                    mt-auto
-                    flex
-                    items-end
-                    justify-center
-                    gap-6
-                    pt-12
+                    mt-10
 
-                    sm:justify-between
+                    flex
+                    w-full
+                    items-end
+                    justify-between
+                    gap-6
+
+                    sm:mt-auto
+                    sm:pt-12
                   "
                 >
+                  {/* Arrow stays left */}
                   <motion.a
                     href="#events"
                     initial={
@@ -576,29 +717,35 @@ export function ActivityTracking() {
                     }
                     className="
                       grid
-                      size-21.5
+                      size-20
                       shrink-0
                       place-items-center
+
                       rounded-full
+
                       bg-[#FF5B14]
                       text-white
 
-                      xl:size-23.5
+                      sm:size-24
                     "
                   >
-                    <ArrowUpRight size={29} strokeWidth={1.4} />
+                    <ArrowUpRight
+                      size={29}
+                      strokeWidth={1.4}
+                    />
                   </motion.a>
 
+                  {/* Text stays on the right, next to the image */}
                   <span
                     className="
+                      ml-auto
                       pb-1
+
                       text-right
-                      text-[11px]
+                      text-xs
                       font-semibold
                       uppercase
-                      leading-[1.05]
-
-                      xl:text-[12px]
+                      leading-none
                     "
                   >
                     Explore
@@ -608,9 +755,7 @@ export function ActivityTracking() {
                 </div>
               </div>
 
-              {/* =================================================
-                  SMALL IMAGE CARD
-              ================================================= */}
+              {/* Small image */}
               <motion.div
                 initial={
                   reduceMotion
@@ -637,21 +782,26 @@ export function ActivityTracking() {
                 }}
                 className="
                   relative
+
                   overflow-hidden
-                  rounded-[26px]
+                  rounded-3xl
+
                   bg-[#EEF0F4]
 
                   dark:bg-[#202228]
+
+                  sm:col-span-2
+
+                  lg:col-span-2
                 "
               >
-                {/* IMAGE */}
                 <div
                   className="
                     relative
-                    min-h-60
+                    min-h-64
                     overflow-hidden
 
-                    xl:min-h-67.5
+                    sm:min-h-72
                   "
                 >
                   <Image
@@ -659,37 +809,45 @@ export function ActivityTracking() {
                     alt=""
                     fill
                     quality={100}
-                    sizes="260px"
-                    className="object-cover object-center"
+                    sizes="
+                      (max-width: 1024px) 100vw,
+                      35vw
+                    "
+                    className="
+                      object-cover
+                      object-center
+                    "
                   />
 
                   <div
                     className="
                       absolute
                       inset-0
+
                       bg-linear-to-t
-                      from-black/25
+                      from-black/35
                       via-transparent
                       to-transparent
                     "
                   />
 
-                  {/* 2025 */}
                   <div
                     className="
                       absolute
                       right-4
                       top-4
                       z-20
+
                       flex
                       items-center
                       gap-2
+
                       text-white
                     "
                   >
                     <span
                       className="
-                        size-1.75
+                        size-2
                         rounded-full
                         bg-white
                       "
@@ -697,18 +855,15 @@ export function ActivityTracking() {
 
                     <span
                       className="
-                        text-[17px]
+                        text-lg
                         font-medium
                         leading-none
-
-                        xl:text-[19px]
                       "
                     >
-                      2025
+                      2026
                     </span>
                   </div>
 
-                  {/* VIEW MORE */}
                   <motion.a
                     href="#events"
                     whileHover={
@@ -721,67 +876,75 @@ export function ActivityTracking() {
                     className="
                       absolute
                       left-1/2
-                      top-[49%]
+                      top-1/2
                       z-30
+
                       flex
+
                       -translate-x-1/2
                       -translate-y-1/2
+
                       items-center
                       justify-center
                       gap-2
+
                       whitespace-nowrap
+
                       rounded-full
+
                       bg-white
+
                       px-4
                       py-2.5
-                      text-[12px]
+
+                      text-xs
                       font-semibold
                       text-[#111216]
-                      shadow-[0_8px_24px_rgba(0,0,0,0.08)]
 
-                      xl:text-[13px]
+                      shadow-lg
                     "
                   >
-                    <SmallSportIcon className="size-4.5 text-[#48BDD7]" />
+                    <SmallSkateIcon
+                      className="
+                        size-5
+                        text-[#48BDD7]
+                      "
+                    />
 
-                    <span>View More</span>
+                    <span>
+                      View Session
+                    </span>
                   </motion.a>
 
-                  {/* COMING SOON */}
                   <div
                     className="
                       absolute
                       inset-x-0
                       bottom-5
                       z-20
+
                       text-center
-                      text-[14px]
+                      text-sm
                       font-medium
                       uppercase
                       tracking-wide
                       text-white
-
-                      xl:text-[15px]
                     "
                   >
-                    1 / Coming Soon
+                    1 / Next Session
                   </div>
                 </div>
 
-                {/* =================================================
-                    MOOD BOOST - PARTIAL PROGRESS
-                ================================================= */}
                 <div
                   className="
                     relative
-                    h-13.5
+                    h-14
                     overflow-hidden
                     bg-[#ECEEF2]
 
                     dark:bg-white/5
                   "
                 >
-                  {/* filled portion */}
                   <motion.div
                     initial={
                       reduceMotion
@@ -803,17 +966,18 @@ export function ActivityTracking() {
                       absolute
                       inset-y-0
                       left-0
+
                       bg-white
 
-                      dark:bg-white/12
+                      dark:bg-white/10
                     "
                   />
 
-                  {/* CONTENT */}
                   <div
                     className="
                       relative
                       z-10
+
                       flex
                       h-full
                       items-center
@@ -830,16 +994,14 @@ export function ActivityTracking() {
 
                     <span
                       className="
-                        text-[13px]
+                        text-sm
                         font-semibold
                         text-[#111216]
 
                         dark:text-white
-
-                        xl:text-[14px]
                       "
                     >
-                      Mood Boost
+                      Session Boost
                     </span>
                   </div>
                 </div>

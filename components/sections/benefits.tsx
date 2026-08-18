@@ -2,7 +2,9 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import { Minus, Plus, Salad, Shirt } from "lucide-react";
+
+import { Footprints, Minus, Plus, Shirt } from "lucide-react";
+
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 
 import exploreImage from "@/public/images/benefits/explore.png";
@@ -24,18 +26,20 @@ export function Benefits() {
       className="
         w-full
         bg-[#F4F6FC]
-        pt-20
+
         pb-10
+        pt-16
+
         text-[#111216]
 
         dark:bg-[#17191e]
         dark:text-white
 
-        sm:pt-24
         sm:pb-14
+        sm:pt-20
 
-        lg:pt-24
         lg:pb-12
+        lg:pt-24
       "
     >
       <Container>
@@ -47,16 +51,21 @@ export function Benefits() {
 
             sm:gap-12
 
-            lg:grid-cols-[440px_minmax(0,1fr)]
+            lg:grid-cols-5
             lg:gap-8
 
-            xl:grid-cols-[500px_minmax(0,1fr)]
             xl:gap-10
           "
         >
-          {/* LEFT */}
-          <div className="flex flex-col">
-            {/* Eyebrow */}
+          {/* Left */}
+          <div
+            className="
+              flex
+              flex-col
+
+              lg:col-span-2
+            "
+          >
             <motion.div
               initial={
                 reduceMotion
@@ -75,11 +84,33 @@ export function Benefits() {
                 duration: 0.7,
                 ease: premiumEase,
               }}
-              className="flex items-center justify-center gap-2.5 lg:justify-start"
-            >
-              <span className="size-2 rounded-full bg-[#49BDD7]" />
+              className="
+                flex
+                items-center
+                justify-center
+                gap-2
 
-              <span className="text-normal font-semibold tracking-tight uppercase">
+                lg:justify-start
+              "
+            >
+              <span
+                className="
+                  size-2
+                  rounded-full
+                  bg-[#FF5B14]
+                "
+              />
+
+              <span
+                className="
+                  text-sm
+                  font-semibold
+                  uppercase
+                  tracking-wide
+
+                  sm:text-base
+                "
+              >
                 The benefit
               </span>
             </motion.div>
@@ -88,20 +119,20 @@ export function Benefits() {
             <h2
               className="
                 mt-6
-                text-center
-                text-[34px]
-                font-normal
-                leading-[1.02]
-                tracking-[-0.055em]
 
-                sm:text-[48px]
-                md:text-[52px]
+                text-center
+                text-4xl
+                font-normal
+                leading-none
+                tracking-tighter
+
+                sm:text-5xl
+
                 lg:text-left
-                lg:text-[52px]
-                xl:text-[58px]
+
+                xl:text-6xl
               "
             >
-              {/* First line */}
               <motion.span
                 initial={
                   reduceMotion
@@ -120,11 +151,17 @@ export function Benefits() {
                   duration: 0.85,
                   ease: premiumEase,
                 }}
-                className="flex items-center flex-wrap justify-center lg:justify-start"
+                className="
+                  flex
+                  flex-wrap
+                  items-center
+                  justify-center
+
+                  lg:justify-start
+                "
               >
                 <span>Explore</span>
 
-                {/* Explore image */}
                 <motion.span
                   initial={
                     reduceMotion
@@ -148,19 +185,22 @@ export function Benefits() {
                   }}
                   className="
                     relative
-                    mx-2.5
+                    mx-2
+
                     inline-block
-                    h-10
-                    w-17.5
+
+                    h-9
+                    w-16
                     shrink-0
+
                     overflow-hidden
-                    rounded-[14px]
+                    rounded-xl
 
-                    md:h-11
-                    md:w-19
+                    sm:h-10
+                    sm:w-20
 
-                    xl:h-11.25
-                    xl:w-19.5
+                    xl:h-12
+                    xl:w-24
                     xl:rounded-2xl
                   "
                 >
@@ -169,15 +209,17 @@ export function Benefits() {
                     alt=""
                     fill
                     quality={100}
-                    sizes="80px"
-                    className="object-cover"
+                    sizes="96px"
+                    className="
+                      object-cover
+                      object-center
+                    "
                   />
                 </motion.span>
 
-                <span>our</span>
+                <span>your</span>
               </motion.span>
 
-              {/* Second line */}
               <motion.span
                 initial={
                   reduceMotion
@@ -197,9 +239,13 @@ export function Benefits() {
                   delay: 0.12,
                   ease: premiumEase,
                 }}
-                className="mt-1 block pb-1"
+                className="
+                  mt-1
+                  block
+                  pb-1
+                "
               >
-                flexible of activity.
+                freedom to ride.
               </motion.span>
             </h2>
 
@@ -223,7 +269,17 @@ export function Benefits() {
                 delay: 0.35,
                 ease: premiumEase,
               }}
-              className="mt-8 flex flex-wrap items-center justify-center gap-3 lg:justify-start"
+              className="
+                mt-8
+
+                flex
+                flex-wrap
+                items-center
+                justify-center
+                gap-3
+
+                lg:justify-start
+              "
             >
               <div
                 className="
@@ -231,21 +287,28 @@ export function Benefits() {
                   h-10
                   items-center
                   gap-2
+
                   rounded-full
                   bg-white
+
                   px-4
-                  text-[14px]
+
+                  text-sm
                   font-medium
-                  tracking-[-0.02em]
-                  shadow-[0_5px_18px_rgba(25,40,70,0.07)]
+                  tracking-tight
+
+                  shadow-lg
+                  shadow-black/5
 
                   dark:bg-white/10
                   dark:shadow-none
+
+                  sm:text-base
                 "
               >
-                <Salad size={16} strokeWidth={1.8} />
+                <Footprints size={16} strokeWidth={1.8} />
 
-                <span>Eating After the Game</span>
+                <span>Street Sessions</span>
               </div>
 
               <div
@@ -254,21 +317,28 @@ export function Benefits() {
                   h-10
                   items-center
                   gap-2
+
                   rounded-full
                   bg-white
+
                   px-4
-                  text-[14px]
+
+                  text-sm
                   font-medium
-                  tracking-[-0.02em]
-                  shadow-[0_5px_18px_rgba(25,40,70,0.07)]
+                  tracking-tight
+
+                  shadow-lg
+                  shadow-black/5
 
                   dark:bg-white/10
                   dark:shadow-none
+
+                  sm:text-base
                 "
               >
                 <Shirt size={16} strokeWidth={1.8} />
 
-                <span>Game Jersey</span>
+                <span>Skate Gear</span>
               </div>
             </motion.div>
 
@@ -292,7 +362,16 @@ export function Benefits() {
                 delay: 0.5,
                 ease: premiumEase,
               }}
-              className="mt-16 space-y-2 sm:mt-20 xl:mt-20"
+              className="
+                mt-12
+
+                space-y-2
+
+                sm:mt-16
+
+                lg:mt-auto
+                lg:pt-16
+              "
             >
               {benefitItems.map((item) => {
                 const isActive = activeItem === item.id;
@@ -303,13 +382,14 @@ export function Benefits() {
                     layout
                     className={`
                       overflow-hidden
-                      rounded-[20px]
+                      rounded-2xl
+
                       transition-colors
                       duration-300
 
                       ${
                         isActive
-                          ? "bg-white shadow-[0_5px_20px_rgba(25,40,70,0.035)] dark:bg-white/10 dark:shadow-none"
+                          ? "bg-white shadow-lg shadow-black/5 dark:bg-white/10 dark:shadow-none"
                           : "bg-transparent"
                       }
                     `}
@@ -326,20 +406,33 @@ export function Benefits() {
                         w-full
                         items-center
                         justify-between
+                        gap-4
+
                         px-5
                         py-4
+
                         text-left
                       "
                     >
-                      <span className="text-[18px] font-medium tracking-[-0.03em] xl:text-[19px]">
+                      <span
+                        className="
+                          text-lg
+                          font-medium
+                          tracking-tight
+
+                          sm:text-xl
+                        "
+                      >
                         {item.title}
                       </span>
 
-                      {isActive ? (
-                        <Minus size={18} strokeWidth={1.5} />
-                      ) : (
-                        <Plus size={18} strokeWidth={1.5} />
-                      )}
+                      <span className="shrink-0">
+                        {isActive ? (
+                          <Minus size={18} strokeWidth={1.5} />
+                        ) : (
+                          <Plus size={18} strokeWidth={1.5} />
+                        )}
+                      </span>
                     </button>
 
                     <AnimatePresence initial={false}>
@@ -365,16 +458,20 @@ export function Benefits() {
                         >
                           <p
                             className="
-                              max-w-102.5
+                              max-w-md
+
                               px-5
                               pb-5
-                              text-[15px]
+
+                              text-sm
                               font-normal
-                              leading-normal
-                              tracking-[-0.015em]
+                              leading-relaxed
+                              tracking-tight
                               text-black/55
 
                               dark:text-white/55
+
+                              sm:text-base
                             "
                           >
                             {item.description}
@@ -388,8 +485,16 @@ export function Benefits() {
             </motion.div>
           </div>
 
-          {/* RIGHT */}
-          <BenefitCard />
+          {/* Right */}
+          <div
+            className="
+              min-w-0
+
+              lg:col-span-3
+            "
+          >
+            <BenefitCard />
+          </div>
         </div>
       </Container>
     </section>

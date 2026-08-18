@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowUpRight, FileText, Link2 } from "lucide-react";
+import { ArrowUpRight, FileText, MapPin } from "lucide-react";
 
 import { motion, useReducedMotion } from "framer-motion";
 
@@ -14,7 +14,7 @@ export function Footer() {
     <footer
       className="
         w-full
-        bg-[#F4F6FC]
+        bg-[#F1F3F8]
         pb-8
 
         dark:bg-[#17191e]
@@ -28,8 +28,10 @@ export function Footer() {
             overflow-hidden
             rounded-b-3xl
             bg-white
-            px-6
+
+            px-5
             pb-8
+
             text-[#111216]
 
             dark:bg-[#202228]
@@ -41,7 +43,7 @@ export function Footer() {
             lg:pb-10
           "
         >
-          {/* Liens légaux */}
+          {/* Legal */}
           <motion.div
             initial={
               reduceMotion
@@ -64,7 +66,7 @@ export function Footer() {
               relative
               z-30
 
-              -mx-6
+              -mx-5
 
               bg-white
 
@@ -79,14 +81,19 @@ export function Footer() {
               className="
                 grid
                 grid-cols-1
+                justify-items-center
                 gap-4
 
-                px-6
+                px-5
                 py-6
+
+                text-center
 
                 sm:grid-cols-3
                 sm:items-center
+                sm:justify-items-stretch
                 sm:px-8
+                sm:text-left
 
                 lg:px-12
               "
@@ -119,7 +126,7 @@ export function Footer() {
                   sm:text-base
                 "
               >
-                EST — 2018
+                WEST — 2018
               </span>
 
               <a
@@ -148,12 +155,12 @@ export function Footer() {
             </div>
           </motion.div>
 
-          {/* Le haut du logo passe sous la zone blanche */}
+          {/* Giant wordmark */}
           <div
             className="
               relative
 
-              -mx-6
+              -mx-5
               -mt-8
 
               h-64
@@ -205,7 +212,7 @@ export function Footer() {
               <svg
                 viewBox="0 0 1200 300"
                 preserveAspectRatio="none"
-                aria-label="granger"
+                aria-label="Skater"
                 role="img"
                 className="
                   block
@@ -229,16 +236,16 @@ export function Footer() {
                   fill="currentColor"
                   fontSize="310"
                   fontWeight="500"
-                  fontFamily="var(--font-granger)"
-                  letterSpacing="-14"
+                  fontFamily="var(--font-montserrat)"
+                  letterSpacing="-10"
                 >
-                  Granger
+                  Skater
                 </text>
               </svg>
             </motion.div>
           </div>
 
-          {/* Bas du footer */}
+          {/* Bottom */}
           <motion.div
             initial={
               reduceMotion
@@ -263,13 +270,17 @@ export function Footer() {
 
               flex
               flex-col
+              items-center
               gap-6
+
+              text-center
 
               sm:mt-3
 
               md:flex-row
               md:items-center
               md:justify-between
+              md:text-left
 
               lg:gap-0
             "
@@ -279,11 +290,14 @@ export function Footer() {
                 flex
                 flex-wrap
                 items-center
+                justify-center
                 gap-3
+
+                md:justify-start
               "
             >
               <motion.a
-                href="#"
+                href="#events"
                 whileHover={
                   reduceMotion
                     ? undefined
@@ -305,7 +319,7 @@ export function Footer() {
                   gap-2
 
                   rounded-full
-                  bg-[#F4F6FC]
+                  bg-[#F1F3F8]
 
                   px-4
 
@@ -318,8 +332,8 @@ export function Footer() {
                   sm:px-5
                 "
               >
-                <Link2 size={16} strokeWidth={1.6} />
-                Website Attachment
+                <MapPin size={16} strokeWidth={1.6} />
+                Skate Spots
               </motion.a>
 
               <motion.a
@@ -345,7 +359,7 @@ export function Footer() {
                   gap-2
 
                   rounded-full
-                  bg-[#F4F6FC]
+                  bg-[#F1F3F8]
 
                   px-4
 
@@ -366,16 +380,15 @@ export function Footer() {
             <div
               className="
                 text-sm
+                font-medium
                 text-black
 
                 dark:text-white
 
                 sm:text-base
-
-                font-medium
               "
             >
-              ©2025 Granger. All Rights Reserved
+              ©2026 Skater. All Rights Reserved
             </div>
           </motion.div>
         </div>

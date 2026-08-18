@@ -2,11 +2,11 @@
 
 import Image from "next/image";
 
-import { ArrowRight, Gift, Target, Zap } from "lucide-react";
+import { ArrowRight, Gauge, Target, Zap } from "lucide-react";
 
 import { motion, useReducedMotion } from "framer-motion";
 
-import rightTennis from "@/public/images/benefits/right-tennis.jpg";
+import rightSkate from "@/public/images/benefits/right-skate.jpg";
 
 import { CountUp } from "@/components/shared/motion/countUp";
 import { premiumEase } from "@/lib/motion";
@@ -40,23 +40,29 @@ export function BenefitCard() {
       }}
       className="
         grid
+        h-full
         w-full
+
         gap-6
+
         overflow-hidden
         rounded-3xl
+
         bg-white
+
         p-5
+
         text-[#111216]
 
         dark:bg-[#202228]
         dark:text-white
 
-        sm:gap-8
         sm:p-6
 
+        md:grid-cols-5
+        md:gap-6
         md:p-8
 
-        lg:grid-cols-5
         lg:gap-8
 
         xl:gap-10
@@ -69,11 +75,12 @@ export function BenefitCard() {
           flex
           flex-col
           items-center
+
           text-center
 
-          lg:col-span-3
-          lg:items-start
-          lg:text-left
+          md:col-span-3
+          md:items-start
+          md:text-left
         "
       >
         <motion.div
@@ -101,18 +108,18 @@ export function BenefitCard() {
             gap-2
           "
         >
-          <Target size={18} strokeWidth={2} className="text-[#F15A32]" />
+          <Target size={18} strokeWidth={2} className="text-[#FF5B14]" />
 
           <span
             className="
               text-sm
               font-semibold
-              tracking-tight
+              tracking-wide
 
               sm:text-base
             "
           >
-            EST — 1997
+            WEST — 1997
           </span>
         </motion.div>
 
@@ -149,13 +156,13 @@ export function BenefitCard() {
 
             sm:text-lg
 
-            lg:max-w-xs
+            md:max-w-xs
 
             xl:mt-7
           "
         >
-          Smart features designed to move with you — fast, flexible, and built
-          for everyday action.
+          Built for every ride — discover new spots, track your progress and
+          keep pushing your style further.
         </motion.p>
 
         <div
@@ -165,7 +172,7 @@ export function BenefitCard() {
 
             sm:mt-12
 
-            lg:mt-auto
+            md:mt-auto
           "
         >
           <motion.h3
@@ -196,9 +203,9 @@ export function BenefitCard() {
               sm:text-4xl
             "
           >
-            Visionary
+            Push Limits
             <br />
-            Precision Play
+            Own Your Line
           </motion.h3>
 
           <motion.a
@@ -241,7 +248,7 @@ export function BenefitCard() {
 
               no-underline
 
-              lg:mx-0
+              md:mx-0
             "
           >
             <span
@@ -257,7 +264,7 @@ export function BenefitCard() {
                 text-white
               "
             >
-              Join Now!
+              Start Riding
             </span>
 
             <span
@@ -293,7 +300,7 @@ export function BenefitCard() {
         </div>
       </div>
 
-      {/* Image */}
+      {/* Skate visual */}
       <motion.div
         initial={
           reduceMotion
@@ -316,7 +323,7 @@ export function BenefitCard() {
         className="
           relative
 
-          h-64
+          h-72
           w-full
 
           overflow-hidden
@@ -324,19 +331,18 @@ export function BenefitCard() {
 
           sm:h-80
 
-          lg:col-span-2
-          lg:h-auto
-          lg:min-h-96
+          md:col-span-2
+          md:h-auto
+          md:min-h-96
         "
       >
         <Image
-          src={rightTennis}
+          src={rightSkate}
           alt=""
           fill
           quality={100}
           sizes="
-            (max-width: 640px) 100vw,
-            (max-width: 1024px) 90vw,
+            (max-width: 768px) 100vw,
             40vw
           "
           className="
@@ -345,7 +351,7 @@ export function BenefitCard() {
           "
         />
 
-        {/* Sale */}
+        {/* Session badge */}
         <motion.div
           initial={
             reduceMotion
@@ -385,13 +391,17 @@ export function BenefitCard() {
             text-xs
             font-medium
             text-black
+
+            sm:h-9
+            sm:px-4
+            sm:text-sm
           "
         >
-          <Gift size={13} strokeWidth={1.8} />
-          February Sale
+          <Gauge size={14} strokeWidth={1.8} />
+          Street Session
         </motion.div>
 
-        {/* Stats */}
+        {/* Progress card */}
         <motion.div
           initial={
             reduceMotion
@@ -425,6 +435,7 @@ export function BenefitCard() {
             rounded-2xl
 
             text-black
+
             shadow-xl
 
             sm:w-44
@@ -433,7 +444,6 @@ export function BenefitCard() {
           <div
             className="
               rounded-t-2xl
-
               bg-white
 
               px-4
@@ -444,11 +454,13 @@ export function BenefitCard() {
             <div
               className="
                 text-center
+
                 text-xs
+                font-medium
                 text-black/55
               "
             >
-              Tenis Outdor
+              Trick Progress
             </div>
 
             <div
@@ -482,7 +494,7 @@ export function BenefitCard() {
                   text-black/65
                 "
               >
-                Member
+                Level
               </span>
             </div>
           </div>
@@ -548,7 +560,7 @@ export function BenefitCard() {
                 justify-center
                 gap-1.5
 
-                bg-[#48BBD4]
+                bg-[#FF5B14]
 
                 text-xs
                 font-medium

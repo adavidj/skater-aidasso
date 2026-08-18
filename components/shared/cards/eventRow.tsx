@@ -1,7 +1,7 @@
 "use client";
 
 import { ArrowUpRight } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 
 import { premiumEase } from "@/lib/motion";
 
@@ -10,17 +10,20 @@ interface EventRowProps {
   delay?: number;
 }
 
-export function EventRow({
-  label,
-  delay = 0,
-}: EventRowProps) {
+export function EventRow({ label, delay = 0 }: EventRowProps) {
+  const reduceMotion = useReducedMotion();
+
   return (
     <motion.a
       href="#"
-      initial={{
-        opacity: 0,
-        y: 14,
-      }}
+      initial={
+        reduceMotion
+          ? false
+          : {
+              opacity: 0,
+              y: 14,
+            }
+      }
       whileInView={{
         opacity: 1,
         y: 0,
@@ -33,22 +36,37 @@ export function EventRow({
       }}
       className="
         group
+
         flex
-        min-h-14.5
+        min-h-16
         items-center
         justify-between
+        gap-4
+
         border-b
         border-white/15
+
+        py-4
+
         text-white
+
+        sm:min-h-20
+        sm:py-5
       "
     >
       <span
         className="
-          text-[16px]
+          text-base
           font-normal
-          tracking-[-0.02em]
+          tracking-wide
+          text-white/85
 
-          xl:text-[17px]
+          transition-colors
+          duration-300
+
+          group-hover:text-white
+
+          sm:text-lg
         "
       >
         {label}
@@ -58,8 +76,11 @@ export function EventRow({
         size={18}
         strokeWidth={1.4}
         className="
-          text-white/70
-          transition-transform
+          shrink-0
+
+          text-white/60
+
+          transition-all
           duration-300
 
           group-hover:-translate-y-0.5

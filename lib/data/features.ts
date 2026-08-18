@@ -1,14 +1,14 @@
 export const benefitItems = [
   {
     id: "connections",
-    title: "Connections",
+    title: "Skate Community",
     description:
-      "Built to connect — with people, purpose, and the momentum that moves you forward.",
+      "Connect with riders, local crews, and a community built around progression, creativity, and the freedom to skate your own way.",
   },
   {
     id: "sport-package",
-    title: "Sport Package",
+    title: "Ride Essentials",
     description:
-      "A flexible package designed around your activity, rhythm, and everyday wellness.",
+      "Everything you need for every session — from skate spots and challenges to gear, progression tracking, and events around you.",
   },
 ] as const;

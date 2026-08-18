@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 
-import { Flower, Radio } from "lucide-react";
+import { Radio, Zap } from "lucide-react";
 
 import { motion, useReducedMotion } from "framer-motion";
 
@@ -36,19 +36,19 @@ function ProfileStack({ size = "normal" }: { size?: "normal" | "small" }) {
         <span
           key={profile}
           className={`
-              relative
-              ${dimensions}
+            relative
+            ${dimensions}
 
-              overflow-hidden
-              rounded-full
+            overflow-hidden
+            rounded-full
 
-              border-2
-              border-white
+            border-2
+            border-white
 
-              bg-[#dedede]
+            bg-[#dedede]
 
-              ${index > 0 ? "-ml-2" : ""}
-            `}
+            ${index > 0 ? "-ml-2" : ""}
+          `}
           style={{
             zIndex: profiles.length - index,
           }}
@@ -122,6 +122,7 @@ export function ProgramCard({ variant, delay = 0 }: ProgramCardProps) {
           xl:p-7
         "
       >
+        {/* Main copy */}
         <div
           className="
             mx-auto
@@ -146,7 +147,7 @@ export function ProgramCard({ variant, delay = 0 }: ProgramCardProps) {
             xl:text-4xl
           "
         >
-          <span className="block">The coach experts</span>
+          <span className="block">Meet the skate crew</span>
 
           <span
             className="
@@ -163,7 +164,7 @@ export function ProgramCard({ variant, delay = 0 }: ProgramCardProps) {
           >
             <ProfileStack />
 
-            <span>and simple</span>
+            <span>and riders</span>
           </span>
 
           <span
@@ -177,16 +178,24 @@ export function ProgramCard({ variant, delay = 0 }: ProgramCardProps) {
               lg:justify-start
             "
           >
-            <span>software</span>
+            <span>built to push</span>
 
-            <Flower size={28} strokeWidth={1.8} className="shrink-0" />
+            <Zap
+              size={26}
+              strokeWidth={1.8}
+              className="
+                shrink-0
+                text-[#FF5B14]
+              "
+            />
 
-            <span>for better</span>
+            <span>your limits</span>
           </span>
 
-          <span className="block">sportainment.</span>
+          <span className="block">every session.</span>
         </div>
 
+        {/* Footer */}
         <motion.div
           initial={
             reduceMotion
@@ -208,10 +217,12 @@ export function ProgramCard({ variant, delay = 0 }: ProgramCardProps) {
           }}
           className="
             mt-auto
+
             flex
             items-center
             justify-between
             gap-4
+
             pt-10
           "
         >
@@ -249,7 +260,7 @@ export function ProgramCard({ variant, delay = 0 }: ProgramCardProps) {
               sm:text-base
             "
           >
-            granger.com
+            skater.com
           </span>
         </motion.div>
       </motion.article>
@@ -297,7 +308,7 @@ export function ProgramCard({ variant, delay = 0 }: ProgramCardProps) {
         xl:min-h-96
       "
     >
-      {/* Photo */}
+      {/* Image */}
       <motion.div
         className="
           absolute
@@ -342,13 +353,13 @@ export function ProgramCard({ variant, delay = 0 }: ProgramCardProps) {
           inset-0
 
           bg-linear-to-t
-          from-black/60
+          from-black/65
           via-black/10
           to-transparent
         "
       />
 
-      {/* Sportcenter */}
+      {/* Spot */}
       <motion.div
         initial={
           reduceMotion
@@ -394,10 +405,10 @@ export function ProgramCard({ variant, delay = 0 }: ProgramCardProps) {
           sm:text-sm
         "
       >
-        Sportcenter
+        Street Spot
       </motion.div>
 
-      {/* Membership */}
+      {/* Riders */}
       <motion.div
         initial={
           reduceMotion
@@ -503,7 +514,7 @@ export function ProgramCard({ variant, delay = 0 }: ProgramCardProps) {
             sm:text-xl
           "
         >
-          2.88k
+          5.55k
         </span>
 
         <span
@@ -516,7 +527,7 @@ export function ProgramCard({ variant, delay = 0 }: ProgramCardProps) {
             text-white/80
           "
         >
-          Membership
+          Riders
         </span>
       </motion.div>
 
@@ -587,7 +598,7 @@ export function ProgramCard({ variant, delay = 0 }: ProgramCardProps) {
               sm:text-base
             "
           >
-            1.20K Membership
+            2.50K Riders
           </span>
         </div>
 
@@ -608,9 +619,9 @@ export function ProgramCard({ variant, delay = 0 }: ProgramCardProps) {
             xl:text-4xl
           "
         >
-          Chemistry
+          Street Skills
           <br />
-          Sports Partner
+          Skate Session
         </h3>
 
         <div

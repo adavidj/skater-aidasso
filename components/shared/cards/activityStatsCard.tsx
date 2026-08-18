@@ -1,25 +1,26 @@
 "use client";
 
 import { Flame } from "lucide-react";
-import {
-  motion,
-  useReducedMotion,
-} from "framer-motion";
+
+import { motion, useReducedMotion } from "framer-motion";
 
 import { premiumEase } from "@/lib/motion";
 
 const activityStats = [
   {
-    label: "Walking",
-    value: "127",
+    label: "Distance",
+    value: "12.7",
+    unit: "Km",
   },
   {
-    label: "Running",
-    value: "386",
+    label: "Tricks",
+    value: "38",
+    unit: "Done",
   },
   {
-    label: "Workout",
-    value: "249",
+    label: "Ride Time",
+    value: "84",
+    unit: "Min",
   },
 ] as const;
 
@@ -53,41 +54,67 @@ export function ActivityStatsCard() {
       }}
       className="
         absolute
-        left-[21%]
-        top-[22%]
+        left-1/2
+        top-1/2
         z-20
-        w-[62%]
-        max-w-88.75
+
+        w-4/5
+        max-w-sm
+
+        -translate-x-1/2
+        -translate-y-1/2
+
         rounded-3xl
         bg-white
-        p-6
-        text-[#111216]
-        shadow-[0_20px_55px_rgba(20,35,65,0.14)]
 
-        xl:max-w-95
+        p-5
+
+        text-[#111216]
+
+        shadow-2xl
+
+        sm:w-3/4
+        sm:p-6
+
+        lg:w-3/5
+
+        xl:max-w-md
         xl:p-7
       "
     >
-      {/* HEADER */}
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-3">
+      {/* Header */}
+      <div
+        className="
+          flex
+          items-center
+          justify-between
+          gap-4
+        "
+      >
+        <div
+          className="
+            flex
+            items-center
+            gap-3
+          "
+        >
           <Flame
             size={20}
             strokeWidth={2}
             fill="currentColor"
-            className="text-black"
+            className="text-[#111216]"
           />
 
           <span
             className="
-              text-[16px]
+              text-base
               font-medium
               tracking-tight
 
-              xl:text-[17px]
+              sm:text-lg
             "
           >
-            Activity
+            Ride Activity
           </span>
         </div>
 
@@ -95,77 +122,86 @@ export function ActivityStatsCard() {
           className="
             rounded-full
             bg-[#FF5B14]
+
             px-3
             py-1.5
-            text-[11px]
+
+            text-xs
             font-semibold
             leading-none
             text-white
-
-            xl:text-[12px]
           "
         >
           +87%
         </span>
       </div>
 
-      {/* MAIN NUMBER */}
-      <div className="mt-8">
-        <div className="flex items-end gap-2">
+      {/* Main value */}
+      <div className="mt-7">
+        <div
+          className="
+            flex
+            items-end
+            gap-2
+          "
+        >
           <span
             className="
-              text-[45px]
+              text-4xl
               font-normal
               leading-none
-              tracking-[-0.065em]
+              tracking-tighter
 
-              xl:text-[50px]
+              sm:text-5xl
             "
           >
-            2,780
+            84
           </span>
 
           <span
             className="
               pb-1
-              text-[15px]
+
+              text-sm
               font-normal
               text-black/35
 
-              xl:text-[16px]
+              sm:text-base
             "
           >
-            Cal
+            Min
           </span>
         </div>
 
         <p
           className="
             mt-2
-            text-[11px]
-            font-normal
-            text-black/25
 
-            xl:text-[12px]
+            text-xs
+            font-normal
+            text-black/30
           "
         >
-          You improved overall well-being
+          Your strongest skate session this week
         </p>
       </div>
 
-      {/* GRAPH */}
+      {/* Graph */}
       <div
         className="
           relative
-          mt-4
-          h-22.5
+          mt-5
+          h-24
           overflow-hidden
         "
       >
-        {/* dotted background */}
         <div
           aria-hidden="true"
-          className="absolute inset-0 opacity-[0.12]"
+          className="
+            absolute
+            inset-0
+            opacity-10
+          "
           style={{
             backgroundImage:
               "radial-gradient(circle, rgba(17,18,22,0.45) 1px, transparent 1px)",
@@ -173,15 +209,16 @@ export function ActivityStatsCard() {
           }}
         />
 
-        {/* vertical guide */}
         <div
           aria-hidden="true"
           className="
             absolute
             bottom-2
-            left-[50%]
+            left-1/2
             top-1
+
             w-px
+
             bg-black/5
           "
         />
@@ -192,19 +229,22 @@ export function ActivityStatsCard() {
           className="
             absolute
             inset-0
+
             h-full
             w-full
+
             overflow-visible
           "
         >
           <path
             d="
-              M84 52
-              C96 45 104 43 114 48
-              C125 55 133 52 143 41
-              C152 30 160 31 168 42
-              C180 58 189 63 199 53
-              C207 45 214 48 221 53
+              M30 62
+              C48 58 61 51 75 54
+              C92 58 104 43 119 46
+              C135 50 145 26 160 31
+              C174 36 181 61 198 53
+              C215 44 226 48 242 39
+              C254 32 264 34 277 25
             "
             fill="none"
             stroke="#FF5B14"
@@ -213,76 +253,68 @@ export function ActivityStatsCard() {
             strokeLinejoin="round"
           />
 
-          <circle
-            cx="160"
-            cy="31"
-            r="5"
-            fill="#FF5B14"
-          />
+          <circle cx="160" cy="31" r="5" fill="#FF5B14" />
 
-          <circle
-            cx="160"
-            cy="31"
-            r="10"
-            fill="#FF5B14"
-            opacity="0.10"
-          />
+          <circle cx="160" cy="31" r="10" fill="#FF5B14" opacity="0.1" />
         </svg>
       </div>
 
-      {/* STATS */}
+      {/* Stats */}
       <div
         className="
           mt-4
+
           grid
           grid-cols-3
-          gap-4
+          gap-2
+
+          sm:gap-4
         "
       >
         {activityStats.map((stat) => (
-          <div key={stat.label}>
-            {/* POINT + LABEL */}
+          <div key={stat.label} className="min-w-0">
             <div
               className="
                 flex
                 items-center
                 gap-2
-                text-[11px]
+
+                text-xs
                 font-normal
                 text-black/35
-
-                xl:text-[12px]
               "
             >
               <span
                 className="
-                  size-1.75
+                  size-1.5
                   shrink-0
+
                   rounded-full
                   bg-[#FF5B14]
                 "
               />
 
-              <span>{stat.label}</span>
+              <span className="truncate">{stat.label}</span>
             </div>
 
-            {/* VALUE */}
             <div
               className="
                 mt-2
+
                 flex
+                flex-wrap
                 items-end
-                gap-1.5
+                gap-1
               "
             >
               <span
                 className="
-                  text-[24px]
+                  text-xl
                   font-medium
                   leading-none
-                  tracking-[-0.04em]
+                  tracking-tight
 
-                  xl:text-[27px]
+                  sm:text-2xl
                 "
               >
                 {stat.value}
@@ -291,12 +323,13 @@ export function ActivityStatsCard() {
               <span
                 className="
                   pb-0.5
-                  text-[11px]
+
+                  text-xs
                   font-normal
                   text-black/35
                 "
               >
-                Cal
+                {stat.unit}
               </span>
             </div>
           </div>

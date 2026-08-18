@@ -2,11 +2,11 @@
 
 import Image from "next/image";
 
-import { ArrowLeft, ArrowRight, Trophy, Volleyball } from "lucide-react";
+import { ArrowLeft, ArrowRight, Trophy, Zap } from "lucide-react";
 
 import { motion, useReducedMotion } from "framer-motion";
 
-import basketballLeft from "@/public/images/program/basketball-left.png";
+import basketballLeft from "@/public/images/program/skate-left.png";
 
 import { Container } from "@/components/ui/container";
 import { ProgramCard } from "@/components/shared/cards/programCard";
@@ -88,6 +88,7 @@ export function FeaturedProgram() {
               flex-col
               items-center
               gap-4
+
               text-center
 
               lg:flex-row
@@ -132,7 +133,6 @@ export function FeaturedProgram() {
                   gap-2
 
                   rounded-full
-
                   bg-[#F1F3F8]
 
                   px-3
@@ -146,9 +146,9 @@ export function FeaturedProgram() {
                   sm:text-base
                 "
               >
-                <Volleyball size={15} strokeWidth={1.8} />
+                <Zap size={15} strokeWidth={1.8} />
 
-                <span>Virtual Challenges</span>
+                <span>Trick Challenges</span>
               </div>
 
               <div
@@ -159,7 +159,6 @@ export function FeaturedProgram() {
                   gap-2
 
                   rounded-full
-
                   bg-[#F1F3F8]
 
                   px-3
@@ -175,7 +174,7 @@ export function FeaturedProgram() {
               >
                 <Trophy size={15} strokeWidth={1.8} />
 
-                <span>Community Tournaments</span>
+                <span>Community Skate Jams</span>
               </div>
             </motion.div>
 
@@ -219,7 +218,7 @@ export function FeaturedProgram() {
                 className="
                   size-2
                   rounded-full
-                  bg-[#49BDD7]
+                  bg-[#FF5B14]
                 "
               />
 
@@ -265,7 +264,6 @@ export function FeaturedProgram() {
               }}
               className="
                 mx-auto
-
                 max-w-4xl
 
                 text-center
@@ -300,7 +298,27 @@ export function FeaturedProgram() {
               >
                 <span>Elevate your</span>
 
-                <span
+                <motion.span
+                  initial={
+                    reduceMotion
+                      ? false
+                      : {
+                          opacity: 0,
+                          scale: 0.85,
+                          rotate: -4,
+                        }
+                  }
+                  whileInView={{
+                    opacity: 1,
+                    scale: 1,
+                    rotate: 0,
+                  }}
+                  viewport={{ once: true }}
+                  transition={{
+                    duration: 0.7,
+                    delay: 0.28,
+                    ease: premiumEase,
+                  }}
                   className="
                     relative
 
@@ -335,19 +353,12 @@ export function FeaturedProgram() {
                       object-center
                     "
                   />
-                </span>
+                </motion.span>
 
-                <span>experience</span>
+                <span>ride</span>
               </span>
 
-              <span
-                className="
-                  mt-1
-                  block
-                "
-              >
-                with handpicked featured.
-              </span>
+              <span className="mt-1 block">with handpicked sessions.</span>
             </motion.h2>
 
             <motion.p
@@ -389,11 +400,11 @@ export function FeaturedProgram() {
                 lg:text-left
               "
             >
-              Your sports journey starts right here with us and the crew.
+              Your next skate session starts right here with the crew.
             </motion.p>
           </div>
 
-          {/* Content */}
+          {/* Programs */}
           <div
             className="
               mt-10
@@ -445,20 +456,12 @@ export function FeaturedProgram() {
                 lg:items-start
                 lg:border-b-0
                 lg:pb-0
-                lg:text-left
 
                 xl:min-h-96
               "
             >
               <div>
-                <div
-                  className="
-                    flex
-                    items-end
-
-                    lg:justify-start
-                  "
-                >
+                <div className="flex items-end">
                   <span
                     className="
                       text-5xl
@@ -506,7 +509,7 @@ export function FeaturedProgram() {
                 >
                   Upcoming
                   <br />
-                  Event
+                  Session
                 </div>
               </div>
 
@@ -521,7 +524,7 @@ export function FeaturedProgram() {
               >
                 <button
                   type="button"
-                  aria-label="Previous program"
+                  aria-label="Previous session"
                   className="
                     grid
                     size-11
@@ -549,7 +552,7 @@ export function FeaturedProgram() {
 
                 <button
                   type="button"
-                  aria-label="Next program"
+                  aria-label="Next session"
                   className="
                     grid
                     size-11

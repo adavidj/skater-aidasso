@@ -3,20 +3,16 @@
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
-import { ArrowUpRight, Leaf, Shirt, Zap } from "lucide-react";
+import { ArrowUpRight, Shirt, Sparkles, Zap } from "lucide-react";
 
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 
-import basketballLeft from "@/public/images/program/basketball-left.png";
+import skateLeft from "@/public/images/program/skate-left.png";
 
 import { Container } from "@/components/ui/container";
+
 import { currentEvents } from "@/lib/data/events";
 import { premiumEase } from "@/lib/motion";
-
-// Icône maison pour garder le même style que le reste de la section.
-/* =========================================================
-   SOLID COMMUNITY ICON
-========================================================= */
 
 function FlowerPotIcon({ className = "" }: { className?: string }) {
   return (
@@ -55,17 +51,13 @@ function FlowerPotIcon({ className = "" }: { className?: string }) {
 export function CurrentEvents() {
   const reduceMotion = useReducedMotion();
 
-  // Sert à savoir quelle carte doit être mise en avant à l'écran.
   const [activeEvent, setActiveEvent] = useState<string>("youth");
 
-  // On attend un peu avant de basculer pour éviter les changements trop nerveux.
   const hoverTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  // On récupère l'objet complet de l'événement actif pour l'image et les labels.
   const currentEvent =
     currentEvents.find((event) => event.id === activeEvent) ?? currentEvents[1];
 
-  // Démarre un changement différé quand on entre sur une ligne.
   function handleEventEnter(eventId: string) {
     if (eventId === activeEvent) {
       return;
@@ -81,7 +73,6 @@ export function CurrentEvents() {
     }, 120);
   }
 
-  // Annule le changement si la souris quitte la ligne trop vite.
   function handleEventLeave() {
     if (!hoverTimer.current) {
       return;
@@ -92,7 +83,6 @@ export function CurrentEvents() {
   }
 
   useEffect(() => {
-    // Nettoyage simple pour ne pas laisser de timeout actif.
     return () => {
       if (hoverTimer.current) {
         clearTimeout(hoverTimer.current);
@@ -105,21 +95,21 @@ export function CurrentEvents() {
       id="events"
       className="
         w-full
-        bg-[#F4F6FC]
-        pt-6
+        bg-[#F1F3F8]
+
         pb-14
+        pt-6
 
         dark:bg-[#17191e]
 
+        sm:pb-16
         sm:pt-10
-        sm:pb-18
 
-        lg:pt-8
         lg:pb-16
+        lg:pt-8
       "
     >
       <Container>
-        {/* Bloc principal : il contient toute la carte sombre de la section. */}
         <motion.div
           initial={
             reduceMotion
@@ -145,37 +135,38 @@ export function CurrentEvents() {
           }}
           className="
             overflow-hidden
-            rounded-[26px]
+            rounded-3xl
+
             bg-[#050505]
-            px-6
-            pt-8
-            pb-9
+
+            px-5
+            pb-8
+            pt-7
+
             text-white
 
             sm:px-8
-            sm:pt-10
             sm:pb-10
+            sm:pt-10
 
             lg:px-10
-            lg:pt-9
             lg:pb-10
+            lg:pt-9
 
             xl:px-12
             xl:pt-10
-            xl:pb-11
           "
         >
-          {/* En haut : label à gauche, titre large à droite. */}
+          {/* Heading */}
           <div
             className="
               grid
-              gap-10
+              gap-8
 
-              lg:grid-cols-[0.31fr_0.69fr]
+              lg:grid-cols-12
               lg:gap-10
             "
           >
-            {/* Petit label de section. */}
             <motion.div
               initial={
                 reduceMotion
@@ -198,22 +189,24 @@ export function CurrentEvents() {
               className="
                 flex
                 items-start
-                gap-2.5
-                pt-1
+                justify-center
+                gap-2
 
-                text-[16px]
+                text-sm
                 font-semibold
                 uppercase
-                tracking-[-0.02em]
+                tracking-wide
 
-                lg:text-[17px]
-                xl:text-[18px]
+                sm:text-base
+
+                lg:col-span-4
+                lg:justify-start
               "
             >
               <span
                 className="
                   mt-1.5
-                  size-1.75
+                  size-2
                   shrink-0
                   rounded-full
                   bg-white
@@ -223,7 +216,6 @@ export function CurrentEvents() {
               <span>Current Events</span>
             </motion.div>
 
-            {/* Titre éditorial en plusieurs morceaux pour mixer texte et visuels. */}
             <motion.h2
               initial={
                 reduceMotion
@@ -247,149 +239,237 @@ export function CurrentEvents() {
                 ease: premiumEase,
               }}
               className="
-                max-w-230
+                mx-auto
+                max-w-4xl
 
-                text-[30px]
+                text-center
+                text-3xl
                 font-normal
-                leading-[1.01]
-                tracking-[-0.045em]
+                leading-none
+                tracking-tighter
 
-                sm:text-[38px]
-                md:text-[43px]
-                lg:text-[50px]
-                xl:text-[55px]
+                sm:text-4xl
+
+                md:text-5xl
+
+                lg:col-span-8
+                lg:mx-0
+                lg:text-left
+
+                xl:text-6xl
               "
             >
-              {/* Première ligne du titre principal. */}
               <span
                 className="
                   flex
                   flex-wrap
                   items-center
+                  justify-center
+                  gap-x-2
+
+                  lg:justify-start
                 "
               >
-                <span>To win over</span>
+                <span>Made for riders</span>
 
-                <span
+                <motion.span
+                  initial={
+                    reduceMotion
+                      ? false
+                      : {
+                          opacity: 0,
+                          scale: 0.85,
+                          rotate: -4,
+                        }
+                  }
+                  whileInView={{
+                    opacity: 1,
+                    scale: 1,
+                    rotate: 0,
+                  }}
+                  viewport={{ once: true }}
+                  transition={{
+                    duration: 0.7,
+                    delay: 0.28,
+                    ease: premiumEase,
+                  }}
                   className="
                     relative
-                    mx-2.5
+
                     inline-block
-                    h-7.75
-                    w-13.5
+
+                    h-8
+                    w-14
                     shrink-0
+
                     overflow-hidden
-                    rounded-[10px]
+                    rounded-xl
 
-                    lg:h-8.75
-                    lg:w-15.25
+                    sm:h-9
+                    sm:w-16
 
-                    xl:h-9.5
-                    xl:w-16.5
+                    md:h-10
+                    md:w-20
                   "
                 >
                   <Image
-                    src={basketballLeft}
+                    src={skateLeft}
                     alt=""
                     fill
                     quality={100}
-                    sizes="70px"
+                    sizes="80px"
                     className="
                       object-cover
                       object-center
                     "
                   />
-                </span>
+                </motion.span>
 
-                <span>sports-minded</span>
+                <span>who</span>
               </span>
 
-              {/* Deuxième ligne du titre principal. */}
               <span
                 className="
                   mt-1
+
                   flex
                   flex-wrap
                   items-center
+                  justify-center
+                  gap-x-2
+
+                  lg:justify-start
                 "
               >
-                <span>consumers with</span>
+                <span>turn every street into</span>
 
                 <span
                   className="
-                    mx-2.5
                     inline-grid
-                    size-8.5
+                    size-9
                     shrink-0
                     place-items-center
-                    rounded-full
-                    text-[#35B96E]
-                    
 
-                    xl:size-9.5
+                    text-[#FF5B14]
                   "
                 >
-                  <Leaf size={40} strokeWidth={1.8} fill="currentColor" />
+                  <Sparkles size={32} strokeWidth={1.5} />
                 </span>
 
-                <span>products own</span>
+                <span>a place</span>
               </span>
 
-              <span className="mt-1 block">technology and excellent.</span>
+              <span className="mt-1 block">to move, connect and progress.</span>
             </motion.h2>
           </div>
 
-            {/* Partie interactive : liste des événements et image flottante. */}
+          {/* Mobile / tablet image */}
           <div
-          className="
-            relative
+            className="
+              relative
 
-            mt-18
+              mt-10
+              h-64
 
-            sm:mt-22
+              overflow-hidden
+              rounded-3xl
 
-            lg:mt-22
+              sm:h-80
 
-            xl:mt-24.5
-          "
+              lg:hidden
+            "
           >
-            {/* Aperçu visuel lié à l'événement actif, visible surtout sur desktop. */}
+            <AnimatePresence initial={false} mode="wait">
+              <motion.div
+                key={currentEvent.image}
+                initial={
+                  reduceMotion
+                    ? false
+                    : {
+                        opacity: 0,
+                        scale: 1.03,
+                      }
+                }
+                animate={{
+                  opacity: 1,
+                  scale: 1,
+                }}
+                exit={
+                  reduceMotion
+                    ? undefined
+                    : {
+                        opacity: 0,
+                        scale: 0.99,
+                      }
+                }
+                transition={{
+                  duration: 0.3,
+                  ease: premiumEase,
+                }}
+                className="
+                  absolute
+                  inset-0
+                "
+              >
+                <Image
+                  src={currentEvent.image}
+                  alt=""
+                  fill
+                  quality={100}
+                  sizes="100vw"
+                  className="
+                    object-cover
+                    object-center
+                  "
+                />
+              </motion.div>
+            </AnimatePresence>
+          </div>
+
+          {/* Events */}
+          <div
+            className="
+              relative
+
+              mt-10
+
+              sm:mt-14
+
+              lg:mt-20
+
+              xl:mt-24
+            "
+          >
+            {/* One fixed image */}
             <div
               className="
                 pointer-events-none
+
                 absolute
-
-                right-[12%]
-                top-9
-
+                right-24
+                top-8
                 z-30
 
                 hidden
 
-                h-71.25
-                w-61.25
+                h-80
+                w-72
 
-                rotate-[4deg]
+                rotate-3
 
                 overflow-hidden
-                rounded-[22px]
+                rounded-3xl
 
-                shadow-[0_18px_40px_rgba(0,0,0,0.28)]
+                shadow-2xl
 
                 lg:block
-            
-                xl:right-[12.5%]
-                xl:top-7.5
-                xl:h-81.25
-                xl:w-70
 
-                2xl:right-[13%]
-                2xl:h-100
-                2xl:w-73.75
+                xl:right-28
+                xl:h-96
+                xl:w-80
               "
             >
               <AnimatePresence initial={false} mode="wait">
-                {/* Le key force le remplacement propre quand l'image change. */}
                 <motion.div
                   key={currentEvent.image}
                   initial={
@@ -409,11 +489,11 @@ export function CurrentEvents() {
                       ? undefined
                       : {
                           opacity: 0,
-                          scale: 0.985,
+                          scale: 0.99,
                         }
                   }
                   transition={{
-                    duration: 0.32,
+                    duration: 0.28,
                     ease: premiumEase,
                   }}
                   className="
@@ -426,7 +506,7 @@ export function CurrentEvents() {
                     alt=""
                     fill
                     quality={100}
-                    sizes="300px"
+                    sizes="320px"
                     className="
                       object-cover
                       object-center
@@ -436,7 +516,6 @@ export function CurrentEvents() {
               </AnimatePresence>
             </div>
 
-            {/* On affiche chaque événement comme une ligne cliquable. */}
             {currentEvents.map((event) => {
               const isActive = activeEvent === event.id;
 
@@ -449,482 +528,259 @@ export function CurrentEvents() {
                     border-white/15
                   "
                 >
-                  <AnimatePresence initial={false} mode="wait">
-                    {!isActive ? (
-                      /* État normal : ligne simple avec titre + badges + flèche. */
-                      <motion.button
-                        key={`${event.id}-normal`}
-                        type="button"
-                        onMouseEnter={() => handleEventEnter(event.id)}
-                        onMouseLeave={handleEventLeave}
-                        onFocus={() => setActiveEvent(event.id)}
-                        onClick={() => setActiveEvent(event.id)}
-                        initial={{
-                          opacity: 0,
-                        }}
-                        animate={{
-                          opacity: 1,
-                        }}
-                        exit={{
-                          opacity: 0,
-                        }}
-                        transition={{
-                          duration: 0.18,
-                        }}
-                        className="
-                          group
+                  {/* Single row: no DOM swap */}
+                  <motion.button
+                    type="button"
+                    onMouseEnter={() =>
+                      handleEventEnter(event.id)
+                    }
+                    onMouseLeave={handleEventLeave}
+                    onFocus={() =>
+                      setActiveEvent(event.id)
+                    }
+                    onClick={() =>
+                      setActiveEvent(event.id)
+                    }
+                    animate={{
+                      backgroundColor: isActive
+                        ? "#E94C09"
+                        : "rgba(0,0,0,0)",
+                      borderColor: isActive
+                        ? "rgba(255,255,255,0.20)"
+                        : "rgba(255,255,255,0)",
+                    }}
+                    transition={{
+                      duration: 0.24,
+                      ease: premiumEase,
+                    }}
+                    className="
+                      group
+                      relative
 
-                          flex
-                          min-h-18
-                          w-full
+                      flex
+                      min-h-20
+                      w-full
+                      items-center
+
+                      overflow-hidden
+                      rounded-2xl
+
+                      border
+
+                      px-4
+                      py-4
+
+                      text-left
+                      text-white
+
+                      sm:min-h-24
+                      sm:px-6
+
+                      lg:h-24
+                      lg:px-8
+                      lg:py-0
+
+                      xl:h-28
+                    "
+                  >
+                    {/* Content */}
+                    <div
+                      className="
+                        flex
+                        min-w-0
+                        flex-1
+                        flex-col
+                        items-start
+                        justify-center
+                        gap-2
+
+                        pr-14
+
+                        sm:pr-16
+
+                        lg:max-w-2xl
+                        lg:pr-0
+                      "
+                    >
+                      <span
+                        className={`
+                          font-normal
+                          leading-tight
+                          tracking-wide
+
+                          transition-colors
+                          duration-300
+
+                          ${
+                            isActive
+                              ? "text-white"
+                              : "text-white/80 group-hover:text-white"
+                          }
+
+                          text-lg
+                          sm:text-xl
+                          lg:text-2xl
+                          xl:text-3xl
+                        `}
+                      >
+                        {event.label}
+                      </span>
+
+                      <div
+                        className="
+                          hidden
+                          flex-wrap
                           items-center
-                          justify-between
+                          gap-2
 
-                          px-5
-
-                          text-left
-                          text-white
-
-                          sm:h-23
-                          sm:px-6
-
-                          lg:h-24
-                          lg:px-8
-
-                          xl:h-25.5
-                          xl:px-9
+                          sm:flex
                         "
                       >
-                        <div className="flex flex-1 flex-col items-start gap-1.5">
-                          {/* Le libellé reste léger et un peu transparent. */}
-                          <span
-                            className="
-                            text-[20px]
-                            font-normal
-                            leading-none
-                            tracking-wide
+                        <span
+                          className={`
+                            flex
+                            items-center
+                            gap-1.5
 
-                            text-white/85
-
-                            transition-colors
-                            duration-300
-
-                            group-hover:text-white
-
-                            sm:text-[22px]
-                            md:text-[24px]
-                            lg:text-[25px]
-
-                            xl:text-[27px]
-                            "
-                          >
-                            {event.label}
-                          </span>
-
-                          {/* Badges — toujours visibles. */}
-                          <div
-                            className="
-                              hidden
-                              flex-wrap
-                              items-center
-                              gap-2
-                              sm:flex
-                            "
-                          >
-                            <span
-                              className="
-                                flex
-                                h-6
-                                items-center
-                                gap-1
-                                rounded-full
-                                border
-                                border-white/25
-                                px-2.5
-                                text-[10px]
-                                font-normal
-                                text-white/65
-
-                                xl:h-6.5
-                                xl:px-3
-                                xl:text-[11px]
-                              "
-                            >
-                              Coach & Trainer
-                            </span>
-
-                            <span
-                              className="
-                                flex
-                                h-6
-                                items-center
-                                gap-1
-                                rounded-full
-                                border
-                                border-white/25
-                                px-2.5
-                                text-[10px]
-                                font-normal
-                                text-white/65
-
-                                xl:h-6.5
-                                xl:px-3
-                                xl:text-[11px]
-                              "
-                            >
-                              Solid Community
-                            </span>
-
-                            <span
-                              className="
-                                flex
-                                h-6
-                                items-center
-                                gap-1
-                                rounded-full
-                                border
-                                border-white/25
-                                px-2.5
-                                text-[10px]
-                                font-normal
-                                text-white/65
-
-                                xl:h-6.5
-                                xl:px-3
-                                xl:text-[11px]
-                              "
-                            >
-                              Team Uniform
-                            </span>
-                          </div>
-                        </div>
-
-                        {/* Indique qu'on peut interagir avec cette ligne. */}
-                        <ArrowUpRight
-                          size={25}
-                          strokeWidth={1.4}
-                          className="
-                            shrink-0
-                            text-white/60
-
-                            transition-all
-                            duration-300
-
-                            group-hover:-translate-y-0.5
-                            group-hover:translate-x-0.5
-                            group-hover:text-white
-                          "
-                        />
-                      </motion.button>
-                    ) : (
-                      /* État actif : la ligne se transforme en vraie carte. */
-                      <motion.div
-                        key={`${event.id}-active`}
-                        initial={{
-                          opacity: 0,
-                        }}
-                        animate={{
-                          opacity: 1,
-                        }}
-                        exit={{
-                          opacity: 0,
-                        }}
-                        transition={{
-                          duration: 0.2,
-                        }}
-                        className="
-                          relative
-
-                          min-h-18
-                          w-full
-
-                          overflow-visible
-
-                          sm:h-23
-
-                          lg:h-24
-
-                          xl:h-25.5
-                        "
-                      >
-                        {/* Fond orange pour signaler clairement la sélection. */}
-                        <div
-                          className="
-                            relative
-
-                            h-full
-                            w-full
-
-                            rounded-[18px]
-
+                            rounded-full
                             border
-                            border-white/20
 
-                            bg-[#e94c09]
+                            px-3
+                            py-1
 
-                            text-white
-                          "
+                            text-xs
+
+                            ${
+                              isActive
+                                ? "border-white/60 text-white/80"
+                                : "border-white/25 text-white/55"
+                            }
+                          `}
                         >
-                            {/* Contenu principal de la carte active. */}
-                          <div
-                            className="
-                              relative
-                              z-20
-
-                              flex
-                              h-full
-                              flex-col
-                              justify-center
-
-                              px-5
-                              pr-16
-
-                              text-white
-
-                              sm:px-6
-                              sm:pr-20
-
-                              lg:px-8
-                              lg:pr-125
-
-                              xl:px-9
-                              xl:pr-142.5
-                            "
-                            style={{
-                              color: "#ffffff",
-                            }}
-                          >
-                            {/* Titre principal de l'événement sélectionné. */}
-                            <h3
-                              className="
-                                text-[20px]
-                                font-medium
-                                leading-none
-                                tracking-wide
-
-                                text-white
-                                opacity-100
-
-                                sm:text-[23px]
-                                md:text-[25px]
-                                lg:text-[27px]
-
-                                xl:text-[29px]
-                              "
-                              style={{
-                                color: "#ffffff",
-                              }}
-                            >
-                              {event.label}
-                            </h3>
-
-                            {/* Petits badges pour résumer l'offre d'un coup d'œil. */}
-                            <div
-                              className="
-                                mt-2.5
-
-                                flex
-                                flex-wrap
-                                items-center
-                                gap-2.5
-
-                                text-white
-                              "
-                            >
-                              {/* Badge Coach & Trainer. */}
-                              <span
-                                className="
-                                  flex
-                                  h-7
-                                  items-center
-                                  gap-1.5
-
-                                  rounded-full
-
-                                  border
-                                  border-white/65
-
-                                  px-3.5
-
-                                  text-[10px]
-                                  font-normal
-                                  leading-none
-                                  text-white
-
-                                  xl:h-7.5
-                                  xl:px-4
-                                  xl:text-[11px]
-                                "
-                              >
-                                <Zap
-                                  size={13}
-                                  strokeWidth={1.35}
-                                  fill="currentColor"
-                                  className="
-                                    shrink-0
-                                    text-white/65
-                                  "
-                                />
-
-                                <span
-                                  className="
-                                    whitespace-nowrap
-                                    text-white/75
-                                    text-sm
-                                  "
-                                >
-                                  Coach & Trainer
-                                </span>
-                              </span>
-
-                              {/* Badge Solid Community. */}
-                              <span
-                                className="
-                                  flex
-                                  h-7
-                                  items-center
-                                  gap-1.5
-
-                                  rounded-full
-
-                                  border
-                                  border-white/75
-
-                                  px-3.5
-
-                                  text-[10px]
-                                  font-normal
-                                  leading-none
-                                  text-white
-
-                                  xl:h-7.5
-                                  xl:px-4
-                                  xl:text-[11px]
-                                "
-                              >
-                                <FlowerPotIcon
-                                  className="
-                                    size-3.5
-                                    shrink-0
-                                    text-white/75
-                                  "
-                                />
-
-                                <span
-                                  className="
-                                    whitespace-nowrap
-                                    text-white/75
-                                    text-sm
-                                  "
-                                >
-                                  Solid Community
-                                </span>
-                              </span>
-
-                              {/* Badge Team Uniform. */}
-                              <span
-                                className="
-                                  hidden
-                                  h-7
-                                  items-center
-                                  gap-1.5
-
-                                  rounded-full
-
-                                  border
-                                  border-white/75
-
-                                  px-3.5
-
-                                  text-[10px]
-                                  font-normal
-                                  leading-none
-                                  text-white
-
-                                  sm:flex
-
-                                  xl:h-7.5
-                                  xl:px-4
-                                  xl:text-[11px]
-                                "
-                              >
-                                <Shirt
-                                  size={13}
-                                  strokeWidth={1.6}
-                                  className="
-                                    shrink-0
-                                    text-white/75
-                                  "
-                                />
-
-                                <span
-                                  className="
-                                    whitespace-nowrap
-                                    text-white/75
-                                    text-sm
-                                  "
-                                >
-                                  Team Uniform
-                                </span>
-                              </span>
-                            </div>
-                          </div>
-
-                            {/* Bouton rond à droite, surtout là pour le signal visuel. */}
-                          <motion.button
-                            type="button"
-                            aria-label={`View ${event.label}`}
-                            whileHover={
-                              reduceMotion
-                                ? undefined
-                                : {
-                                    scale: 1.07,
-                                  }
-                            }
-                            whileTap={
-                              reduceMotion
-                                ? undefined
-                                : {
-                                    scale: 0.96,
-                                  }
-                            }
-                            className="
-                              absolute
-
-                              right-5
-                              top-1/2
-
-                              z-40
-
-                              grid
-                              size-11
-                              -translate-y-1/2
-                              place-items-center
-
-                              rounded-full
-
-                              bg-white
-                              text-[#111111]
-
-                              lg:right-6
-                              lg:size-12
-
-                              xl:right-7
-                              xl:size-12.5
-                            "
-                          >
-                            <ArrowUpRight
-                              size={21}
-                              strokeWidth={1.6}
-                              className="
-                                text-[#111111]
-                              "
+                          {isActive && (
+                            <Zap
+                              size={12}
+                              strokeWidth={1.4}
+                              fill="currentColor"
                             />
-                          </motion.button>
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
+                          )}
+
+                          Riders & Mentors
+                        </span>
+
+                        <span
+                          className={`
+                            flex
+                            items-center
+                            gap-1.5
+
+                            rounded-full
+                            border
+
+                            px-3
+                            py-1
+
+                            text-xs
+
+                            ${
+                              isActive
+                                ? "border-white/60 text-white/80"
+                                : "border-white/25 text-white/55"
+                            }
+                          `}
+                        >
+                          {isActive && (
+                            <FlowerPotIcon className="size-3.5" />
+                          )}
+
+                          Skate Community
+                        </span>
+
+                        <span
+                          className={`
+                            flex
+                            items-center
+                            gap-1.5
+
+                            rounded-full
+                            border
+
+                            px-3
+                            py-1
+
+                            text-xs
+
+                            ${
+                              isActive
+                                ? "border-white/60 text-white/80"
+                                : "border-white/25 text-white/55"
+                            }
+                          `}
+                        >
+                          {isActive && (
+                            <Shirt
+                              size={12}
+                              strokeWidth={1.5}
+                            />
+                          )}
+
+                          Street Gear
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Arrow */}
+                    <motion.span
+                      animate={{
+                        backgroundColor: isActive
+                          ? "#FFFFFF"
+                          : "rgba(255,255,255,0)",
+                        color: isActive
+                          ? "#111111"
+                          : "rgba(255,255,255,0.60)",
+                      }}
+                      transition={{
+                        duration: 0.22,
+                        ease: premiumEase,
+                      }}
+                      className={`
+                        absolute
+                        right-2
+                        top-1/2
+                        z-40
+
+                        grid
+                        -translate-y-1/2
+                        place-items-center
+
+                        rounded-full
+
+                        sm:right-4
+
+                        lg:right-6
+
+                        xl:right-8
+
+                        ${
+                          isActive
+                            ? "size-11 lg:size-12"
+                            : "size-9"
+                        }
+                      `}
+                    >
+                      <ArrowUpRight
+                        size={isActive ? 21 : 23}
+                        strokeWidth={1.5}
+                        className="
+                          transition-transform
+                          duration-300
+
+                          group-hover:-translate-y-0.5
+                          group-hover:translate-x-0.5
+                        "
+                      />
+                    </motion.span>
+                  </motion.button>
                 </div>
               );
             })}

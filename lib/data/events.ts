@@ -1,27 +1,27 @@
 export const currentEvents = [
   {
     id: "fitness",
-    label: "Online Fitness Challenge",
-    image: "/images/events/fitness.jpg",
+    label: "Online Trick Challenge",
+    image: "/images/events/challenge.jpg",
   },
   {
     id: "youth",
-    label: "Youth Sports Camp - 20yo",
-    image: "/images/events/tennis.jpg",
+    label: "Youth Skate Camp - 20yo",
+    image: "/images/events/camp.jpg",
   },
   {
     id: "obstacle",
-    label: "Obstacle Course Race",
+    label: "Street Obstacle Jam",
     image: "/images/events/obstacle.jpg",
   },
   {
     id: "game",
-    label: "Sport x Game Day",
+    label: "Skate x Game Day",
     image: "/images/events/game.jpg",
   },
   {
     id: "trainer",
-    label: "Trainer Meet & Greet",
+    label: "Pro Skater Meet & Greet",
     image: "/images/events/trainer.jpg",
   },
 ] as const;

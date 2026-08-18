@@ -1,18 +1,13 @@
 "use client";
 
-import Image from "next/image";
 import { Crown } from "lucide-react";
 import {
   motion,
   useReducedMotion,
 } from "framer-motion";
 
-import basketball from "@/public/images/hero/basket.png";
-import heroBg from "@/public/images/hero/hero.png";
-
 import { Header } from "@/components/shared/layout/header";
 import { Container } from "@/components/ui/container";
-
 import { premiumEase } from "@/lib/motion";
 
 export function Hero() {
@@ -27,13 +22,13 @@ export function Hero() {
         min-h-dvh
         w-full
         overflow-hidden
-        bg-[#087ead]
+        bg-[#060c10]
         text-white
       "
     >
       <Header />
 
-      {/* Background */}
+      {/* Background video */}
       <motion.div
         className="absolute inset-0 z-0"
         initial={
@@ -41,7 +36,7 @@ export function Hero() {
             ? false
             : {
                 opacity: 0,
-                scale: 1.04,
+                scale: 1.03,
               }
         }
         animate={{
@@ -49,24 +44,22 @@ export function Hero() {
           scale: 1,
         }}
         transition={{
-          duration: 1.5,
+          duration: 1.2,
           ease: premiumEase,
         }}
       >
-        <Image
-          src={heroBg}
-          alt=""
-          fill
-          priority
-          quality={100}
-          sizes="100vw"
-          className="
-            object-cover
-            object-center
-          "
-        />
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute inset-0 h-full w-full object-cover "
+        >
+          <source src="images/hero/skate.mp4" type="video/mp4" />
+        </video>
 
-        <div className="absolute inset-0 bg-[#007dae]/5" />
+        <div className="absolute inset-0 bg-black/35" />
+        <div className="absolute inset-0 bg-[#04131d]/25" />
       </motion.div>
 
       <Container className="relative z-10 h-full">
@@ -116,7 +109,7 @@ export function Hero() {
                 xl:text-base
               "
             >
-              Custom Wellness
+              Urban Skate Culture
             </motion.span>
 
             <motion.a
@@ -154,14 +147,7 @@ export function Hero() {
                 xl:text-base
               "
             >
-              <span
-                className="
-                  inline-block
-                  border-b
-                  border-current
-                  pb-1
-                "
-              >
+              <span className="inline-block border-b border-current pb-1">
                 Get in touch
               </span>
             </motion.a>
@@ -215,7 +201,7 @@ export function Hero() {
                 sm:text-base
               "
             >
-              Custom Wellness
+              Urban Skate Culture
             </motion.span>
           </div>
 
@@ -254,13 +240,7 @@ export function Hero() {
                 xl:text-6xl
               "
             >
-              <span
-                className="
-                  block
-                  overflow-hidden
-                  pb-1
-                "
-              >
+              <span className="block overflow-hidden pb-1">
                 <motion.span
                   className="block"
                   initial={
@@ -270,26 +250,18 @@ export function Hero() {
                           y: "115%",
                         }
                   }
-                  animate={{
-                    y: "0%",
-                  }}
+                  animate={{ y: "0%" }}
                   transition={{
                     duration: 1,
                     delay: 0.55,
                     ease: premiumEase,
                   }}
                 >
-                  A new species
+                  A new wave
                 </motion.span>
               </span>
 
-              <span
-                className="
-                  block
-                  overflow-hidden
-                  pb-1
-                "
-              >
+              <span className="block overflow-hidden pb-1">
                 <motion.span
                   className="block"
                   initial={
@@ -299,16 +271,14 @@ export function Hero() {
                           y: "115%",
                         }
                   }
-                  animate={{
-                    y: "0%",
-                  }}
+                  animate={{ y: "0%" }}
                   transition={{
                     duration: 1,
                     delay: 0.67,
                     ease: premiumEase,
                   }}
                 >
-                  of sportainment.
+                  of skate culture.
                 </motion.span>
               </span>
             </h1>
@@ -392,7 +362,7 @@ export function Hero() {
                   sm:text-base
                 "
               >
-                Improve your health — performance well
+                Ride harder — move freer — live better
               </p>
             </motion.div>
           </div>
@@ -445,19 +415,12 @@ export function Hero() {
               lg:hidden
             "
           >
-            <span
-              className="
-                inline-block
-                border-b
-                border-current
-                pb-1
-              "
-            >
+            <span className="inline-block border-b border-current pb-1">
               Get in touch
             </span>
           </motion.a>
 
-          {/* Giant Granger */}
+          {/* Giant wordmark */}
           <motion.div
             aria-hidden="true"
             initial={
@@ -498,11 +461,7 @@ export function Hero() {
             <svg
               viewBox="0 0 1000 280"
               preserveAspectRatio="none"
-              className="
-                block
-                h-auto
-                w-full
-              "
+              className="block h-auto w-full"
             >
               <text
                 x="0"
@@ -512,163 +471,12 @@ export function Hero() {
                 fill="currentColor"
                 fontSize={280}
                 fontWeight={500}
-                fontFamily="var(--font-granger)"
+                fontFamily="var(--font-montserrat)"
               >
-                Granger
+                Skater
               </text>
             </svg>
           </motion.div>
-
-          {/* Basketball */}
-          <div
-            className="
-              pointer-events-none
-              absolute
-              left-1/2
-              top-1/2
-              z-20
-
-              aspect-square
-              w-64
-
-              -translate-x-1/2
-
-              sm:left-auto
-              sm:right-0
-              sm:top-1/3
-              sm:w-3/5
-              sm:max-w-xl
-              sm:translate-x-0
-
-              lg:top-auto
-              lg:bottom-4
-              lg:-right-4
-              lg:w-3/5
-              lg:max-w-none
-
-              xl:bottom-2
-              xl:-right-8
-              xl:w-3/5
-            "
-          >
-            {/* Entrance */}
-            <motion.div
-              initial={
-                reduceMotion
-                  ? false
-                  : {
-                      opacity: 0,
-                      x: 100,
-                      y: -20,
-                      scale: 0.88,
-                      rotate: 7,
-                    }
-              }
-              animate={{
-                opacity: 1,
-                x: 0,
-                y: 0,
-                scale: 1,
-                rotate: 0,
-              }}
-              transition={{
-                duration: 1.35,
-                delay: 0.35,
-                ease: premiumEase,
-              }}
-              className="
-                absolute
-                inset-0
-              "
-            >
-              {/* Floating */}
-              <motion.div
-                className="
-                  absolute
-                  inset-0
-                  overflow-visible
-                "
-                animate={
-                  reduceMotion
-                    ? undefined
-                    : {
-                        y: [0, -9, 0],
-                        rotate: [0, -0.8, 0],
-                      }
-                }
-                transition={
-                  reduceMotion
-                    ? undefined
-                    : {
-                        duration: 5.8,
-                        delay: 1.7,
-                        repeat: Infinity,
-                        ease: "easeInOut",
-                      }
-                }
-              >
-                {/* Shadow */}
-                <div
-                  aria-hidden="true"
-                  className="
-                    pointer-events-none
-                    absolute
-                    z-0
-
-                    hidden
-
-                    rounded-full
-
-                    sm:block
-                  "
-                  style={{
-                    right: "43%",
-                    top: "34%",
-                    height: "56%",
-                    width: "130%",
-                    transformOrigin: "100% 50%",
-                    transform: "rotate(28deg)",
-                    background:
-                      "rgba(0, 27, 50, 0.42)",
-                    filter: "blur(9px)",
-                    WebkitMaskImage:
-                      "linear-gradient(to left, black 0%, black 60%, transparent 100%)",
-                    maskImage:
-                      "linear-gradient(to left, black 0%, black 60%, transparent 100%)",
-                  }}
-                />
-
-                {/* Ball */}
-                <div
-                  className="
-                    absolute
-                    inset-0
-                    z-10
-                  "
-                >
-                  <Image
-                    src={basketball}
-                    alt=""
-                    fill
-                    priority
-                    quality={100}
-                    sizes="
-                      (max-width: 640px) 256px,
-                      (max-width: 1024px) 60vw,
-                      60vw
-                    "
-                    className="
-                      object-contain
-                    "
-                    style={{
-                      filter:
-                        "drop-shadow(-8px 10px 12px rgba(0,0,0,0.10))",
-                    }}
-                  />
-                </div>
-              </motion.div>
-            </motion.div>
-          </div>
         </div>
       </Container>
     </section>

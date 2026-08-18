@@ -2,8 +2,11 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+
+
 :root {
   --font-granger: "PP Neue Montreal";
+  --font-montserrat: "Montserrat";
   --background: #f4f4fa;
   --foreground: #090909;
 
@@ -26,14 +29,14 @@ body {
   margin: 0;
   padding: 0;
   width: 100%;
-  font-family: var(--font-granger);
+  font-family: var(--font-montserrat);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   overflow-x: clip;
-  font-family: var(--font-granger);
+  font-family: var(--font-montserrat);
 }
 
 button,

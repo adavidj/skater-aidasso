@@ -2,7 +2,7 @@
 
 import Image, { type StaticImageData } from "next/image";
 
-import { ArrowUpRight, Gift, Medal } from "lucide-react";
+import { ArrowUpRight, Medal, ShoppingBag } from "lucide-react";
 
 import { motion, useReducedMotion } from "framer-motion";
 
@@ -56,23 +56,19 @@ export function SessionCard({
       }}
       className="
         relative
-        min-h-85
+
+        h-full
+        min-h-96
+
         overflow-hidden
-        rounded-[30px]
+        rounded-3xl
+
         bg-[#73B5D5]
+
         text-white
-
-        sm:min-h-125
-
-        lg:min-h-140
-        lg:rounded-[34px]
-
-        xl:min-h-147.5
       "
     >
-      {/* =================================================
-          REAL BACKGROUND IMAGE
-      ================================================= */}
+      {/* Image */}
       <motion.div
         initial={
           reduceMotion
@@ -84,9 +80,7 @@ export function SessionCard({
         whileInView={{
           scale: 1,
         }}
-        viewport={{
-          once: true,
-        }}
+        viewport={{ once: true }}
         transition={{
           duration: 1.25,
           ease: premiumEase,
@@ -98,12 +92,12 @@ export function SessionCard({
       >
         <Image
           src={image}
-          alt="Single training session"
+          alt="Skate street session"
           fill
           quality={100}
           sizes="
             (max-width: 1024px) 100vw,
-            680px
+            50vw
           "
           className="
             object-cover
@@ -112,11 +106,6 @@ export function SessionCard({
         />
       </motion.div>
 
-      {/* =================================================
-          VERY LIGHT IMAGE OVERLAY
-
-          We keep the actual image visible.
-      ================================================= */}
       <div
         aria-hidden="true"
         className="
@@ -125,15 +114,13 @@ export function SessionCard({
           inset-0
 
           bg-linear-to-t
-          from-black/20
-          via-black/2
-          to-black/4
+          from-black/35
+          via-black/5
+          to-black/10
         "
       />
 
-      {/* =================================================
-          TOP LEFT TAGS
-      ================================================= */}
+      {/* Tags */}
       <motion.div
         initial={
           reduceMotion
@@ -147,9 +134,7 @@ export function SessionCard({
           opacity: 1,
           y: 0,
         }}
-        viewport={{
-          once: true,
-        }}
+        viewport={{ once: true }}
         transition={{
           duration: 0.65,
           delay: 0.3,
@@ -157,8 +142,8 @@ export function SessionCard({
         }}
         className="
           absolute
-          left-5
-          top-5
+          left-4
+          top-4
           z-20
 
           flex
@@ -176,57 +161,63 @@ export function SessionCard({
         <span
           className="
             flex
-            h-10
+            h-9
             items-center
-            gap-2.5
+            gap-2
 
             rounded-full
-            bg-white
-            px-4
 
-            text-[14px]
+            bg-white
+
+            px-3
+
+            text-xs
             font-medium
             leading-none
             text-[#111216]
 
             shadow-sm
 
-            lg:text-[15px]
+            sm:h-10
+            sm:px-4
+            sm:text-sm
           "
         >
-          <Medal size={18} strokeWidth={1.7} />
-          Professional Trainer
+          <Medal size={17} strokeWidth={1.7} />
+          Pro Skate Coach
         </span>
 
         <span
           className="
             flex
-            h-10
+            h-9
             items-center
-            gap-2.5
+            gap-2
 
             rounded-full
-            bg-white
-            px-4
 
-            text-[14px]
+            bg-white
+
+            px-3
+
+            text-xs
             font-medium
             leading-none
             text-[#111216]
 
             shadow-sm
 
-            lg:text-[15px]
+            sm:h-10
+            sm:px-4
+            sm:text-sm
           "
         >
-          <Gift size={18} strokeWidth={1.7} />
-          Merchandise
+          <ShoppingBag size={17} strokeWidth={1.7} />
+          Skate Gear
         </span>
       </motion.div>
 
-      {/* =================================================
-          DATE
-      ================================================= */}
+      {/* Date */}
       <motion.span
         initial={
           reduceMotion
@@ -240,9 +231,7 @@ export function SessionCard({
           opacity: 1,
           x: 0,
         }}
-        viewport={{
-          once: true,
-        }}
+        viewport={{ once: true }}
         transition={{
           duration: 0.6,
           delay: 0.35,
@@ -250,29 +239,30 @@ export function SessionCard({
         }}
         className="
           absolute
-          right-5
-          top-7
+          right-4
+          top-5
           z-20
 
-          text-[15px]
+          text-xs
           font-medium
+          uppercase
           leading-none
-          tracking-[-0.02em]
+          tracking-wide
           text-white
 
           sm:right-6
+          sm:top-7
+          sm:text-sm
 
           lg:right-8
           lg:top-9
-          lg:text-[17px]
+          lg:text-base
         "
       >
         {date}
       </motion.span>
 
-      {/* =================================================
-          CENTER
-      ================================================= */}
+      {/* Main content */}
       <motion.div
         initial={
           reduceMotion
@@ -286,9 +276,7 @@ export function SessionCard({
           opacity: 1,
           y: 0,
         }}
-        viewport={{
-          once: true,
-        }}
+        viewport={{ once: true }}
         transition={{
           duration: 0.8,
           delay: 0.42,
@@ -297,10 +285,10 @@ export function SessionCard({
         className="
           absolute
           left-1/2
-          top-[48%]
+          top-1/2
           z-20
 
-          w-[92%]
+          w-11/12
 
           -translate-x-1/2
           -translate-y-1/2
@@ -310,17 +298,15 @@ export function SessionCard({
       >
         <h3
           className="
-            text-[39px]
+            text-4xl
             font-medium
-            leading-[0.96]
+            leading-none
             tracking-tighter
             text-white
 
-            sm:text-[44px]
+            sm:text-5xl
 
-            lg:text-[48px]
-
-            xl:text-[52px]
+            xl:text-6xl
           "
         >
           {title}
@@ -328,22 +314,24 @@ export function SessionCard({
 
         <p
           className="
-            mt-2
+            mx-auto
+            mt-3
+            max-w-sm
 
-            text-[14px]
+            text-sm
             font-normal
-            leading-none
-            text-white/95
+            leading-snug
+            text-white/90
 
-            sm:text-[15px]
+            sm:text-base
 
-            lg:text-[17px]
+            lg:text-lg
           "
         >
           {subtitle}
         </p>
 
-        {/* PRICE */}
+        {/* Price */}
         <motion.div
           whileHover={
             reduceMotion
@@ -357,30 +345,32 @@ export function SessionCard({
             mt-7
 
             flex
-            h-15.5
+            h-14
             w-fit
             items-center
 
             rounded-full
+
             bg-white
-            px-6
+
+            px-5
 
             text-[#101114]
 
             shadow-sm
 
-            lg:h-17
-            lg:px-8
+            sm:h-16
+            sm:px-7
           "
         >
           <span
             className="
-              text-[28px]
+              text-2xl
               font-medium
               leading-none
-              tracking-[-0.045em]
+              tracking-tight
 
-              lg:text-[32px]
+              sm:text-3xl
             "
           >
             {price}
@@ -390,12 +380,12 @@ export function SessionCard({
             className="
               ml-2
 
-              text-[14px]
+              text-sm
               font-normal
               leading-none
               text-[#676A70]
 
-              lg:text-[16px]
+              sm:text-base
             "
           >
             {priceLabel}
@@ -403,9 +393,7 @@ export function SessionCard({
         </motion.div>
       </motion.div>
 
-      {/* =================================================
-          BOTTOM LEFT
-      ================================================= */}
+      {/* Status */}
       <motion.div
         initial={
           reduceMotion
@@ -419,9 +407,7 @@ export function SessionCard({
           opacity: 1,
           x: 0,
         }}
-        viewport={{
-          once: true,
-        }}
+        viewport={{ once: true }}
         transition={{
           duration: 0.65,
           delay: 0.52,
@@ -429,28 +415,32 @@ export function SessionCard({
         }}
         className="
           absolute
-          bottom-6
-          left-6
+          bottom-5
+          left-5
           z-20
 
           flex
           items-center
           gap-2
 
-          text-[14px]
+          text-xs
           font-medium
           uppercase
           leading-none
+          tracking-wide
           text-white
+
+          sm:bottom-6
+          sm:left-6
+          sm:text-sm
 
           lg:bottom-8
           lg:left-8
-          lg:text-[15px]
         "
       >
         <span
           className="
-            size-2.25
+            size-2
             rounded-full
             bg-white
           "
@@ -459,12 +449,10 @@ export function SessionCard({
         {status}
       </motion.div>
 
-      {/* =================================================
-          BOTTOM RIGHT CTA
-      ================================================= */}
+      {/* CTA */}
       <motion.button
         type="button"
-        aria-label="View session"
+        aria-label="View skate session"
         whileHover={
           reduceMotion
             ? undefined
@@ -482,15 +470,16 @@ export function SessionCard({
         }
         className="
           absolute
-          bottom-5
-          right-5
+          bottom-4
+          right-4
           z-30
 
           grid
-          size-14.5
+          size-12
           place-items-center
 
           rounded-full
+
           bg-white
           text-[#111216]
 
@@ -498,6 +487,7 @@ export function SessionCard({
 
           sm:bottom-6
           sm:right-6
+          sm:size-14
 
           lg:bottom-8
           lg:right-8

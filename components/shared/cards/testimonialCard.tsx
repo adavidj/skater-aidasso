@@ -19,21 +19,37 @@ interface TestimonialCardProps {
 
 function RatingStar({ fillAmount }: { fillAmount: number }) {
   return (
-    <span className="relative block h-6.25 w-6.25 lg:h-6.75 lg:w-6.75">
-      {/* étoile vide */}
+    <span className="relative block size-6 lg:size-7">
       <Star
-        className="absolute inset-0 h-full w-full text-[#FF9D00]"
+        className="
+          absolute
+          inset-0
+          h-full
+          w-full
+          text-[#FF9D00]
+        "
         strokeWidth={1.6}
         fill="none"
       />
 
-      {/* partie remplie */}
       <span
-        className="absolute inset-0 overflow-hidden"
-        style={{ width: `${fillAmount * 100}%` }}
+        className="
+          absolute
+          inset-0
+          overflow-hidden
+        "
+        style={{
+          width: `${fillAmount * 100}%`,
+        }}
       >
         <Star
-          className="absolute inset-0 h-full w-full text-[#FF9D00]"
+          className="
+            absolute
+            inset-0
+            h-full
+            w-full
+            text-[#FF9D00]
+          "
           strokeWidth={1.6}
           fill="currentColor"
         />
@@ -42,10 +58,9 @@ function RatingStar({ fillAmount }: { fillAmount: number }) {
   );
 }
 
-
 function RatingStars({ rating }: { rating: number }) {
   return (
-    <div className="flex items-center gap-0.75">
+    <div className="flex items-center gap-1">
       {Array.from({ length: 5 }).map((_, index) => {
         const fillAmount = Math.min(Math.max(rating - index, 0), 1);
 
@@ -89,29 +104,31 @@ export function TestimonialCard({
       }}
       className="
         relative
+
         flex
-        min-h-[auto]
+        h-full
+        min-h-96
         flex-col
-        rounded-[30px]
+
+        rounded-3xl
+
         bg-white
-        p-6
+
+        p-5
+
         text-[#101114]
 
         dark:bg-[#202228]
         dark:text-white
 
-        sm:min-h-125
         sm:p-8
 
-        lg:min-h-140
-        lg:rounded-[34px]
         lg:p-10
 
-        xl:min-h-147.5
-        xl:p-11
+        xl:p-12
       "
     >
-      {/* Numéro du témoignage */}
+      {/* Counter */}
       <div
         className="
           flex
@@ -128,16 +145,16 @@ export function TestimonialCard({
             items-center
             gap-2
 
-            text-[15px]
+            text-sm
             font-medium
             leading-none
 
-            lg:text-[16px]
+            sm:text-base
           "
         >
           <span
             className="
-              size-2.25
+              size-2
               rounded-full
               bg-[#36ACD3]
             "
@@ -152,6 +169,7 @@ export function TestimonialCard({
           className="
             h-px
             flex-1
+
             bg-[#DADCE1]
 
             dark:bg-white/15
@@ -159,7 +177,7 @@ export function TestimonialCard({
         />
       </div>
 
-      {/* Témoignage */}
+      {/* Quote */}
       <motion.blockquote
         key={quote}
         initial={
@@ -180,25 +198,25 @@ export function TestimonialCard({
         }}
         className="
           mt-8
-          max-w-140
+          max-w-xl
 
-          text-[25px]
+          text-2xl
           font-normal
-          leading-[1.18]
-          tracking-[-0.04em]
+          leading-tight
+          tracking-tight
 
-          sm:text-[28px]
+          sm:text-3xl
 
           lg:mt-10
-          lg:text-[30px]
+          lg:text-3xl
 
-          xl:text-[32px]
+          xl:text-4xl
         "
       >
         “{quote}”
       </motion.blockquote>
 
-      {/* Note */}
+      {/* Rating */}
       <motion.div
         key={`rating-${rating}-${index}`}
         initial={
@@ -219,7 +237,8 @@ export function TestimonialCard({
           ease: premiumEase,
         }}
         className="
-          mt-8
+          mt-7
+
           flex
           items-center
           gap-4
@@ -229,27 +248,30 @@ export function TestimonialCard({
 
         <span
           className="
-            text-[18px]
+            text-lg
             font-medium
             leading-none
 
-            lg:text-[20px]
+            lg:text-xl
           "
         >
           {rating.toFixed(1)}
         </span>
       </motion.div>
 
+      {/* Footer */}
       <div
         className="
           mt-auto
+
           flex
           items-end
           justify-between
-          gap-6
+          gap-5
+
+          pt-10
         "
       >
-        {/* Auteur */}
         <motion.div
           key={`${name}-${role}`}
           initial={
@@ -269,15 +291,18 @@ export function TestimonialCard({
             delay: 0.08,
             ease: premiumEase,
           }}
+          className="min-w-0"
         >
           <div
             className="
-              text-[20px]
+              text-lg
               font-medium
               leading-none
-              tracking-[-0.03em]
+              tracking-tight
 
-              lg:text-[23px]
+              sm:text-xl
+
+              lg:text-2xl
             "
           >
             {name}
@@ -285,15 +310,16 @@ export function TestimonialCard({
 
           <div
             className="
-              mt-1.5
-              text-[12px]
+              mt-2
+
+              text-xs
               font-normal
-              leading-none
+              leading-snug
               text-[#73757B]
 
               dark:text-white/55
 
-              lg:text-[13px]
+              sm:text-sm
             "
           >
             {role}
@@ -304,11 +330,15 @@ export function TestimonialCard({
         <div
           className="
             relative
+
             flex
-            h-14
-            w-23.5
+            h-12
+            w-20
             shrink-0
             items-center
+
+            sm:h-14
+            sm:w-24
           "
         >
           <motion.button
@@ -334,10 +364,11 @@ export function TestimonialCard({
               left-0
 
               grid
-              size-14
+              size-12
               place-items-center
 
               rounded-full
+
               border
               border-[#D4D6DC]
 
@@ -347,6 +378,8 @@ export function TestimonialCard({
               dark:border-white/20
               dark:bg-[#202228]
               dark:text-white
+
+              sm:size-14
             "
           >
             <ArrowLeft size={19} strokeWidth={1.5} />
@@ -376,7 +409,7 @@ export function TestimonialCard({
               right-0
 
               grid
-              size-14
+              size-12
               place-items-center
 
               rounded-full
@@ -384,7 +417,10 @@ export function TestimonialCard({
               bg-[#FF5B14]
               text-white
 
-              shadow-[0_8px_20px_rgba(255,91,20,0.18)]
+              shadow-lg
+              shadow-[#FF5B14]/20
+
+              sm:size-14
             "
           >
             <ArrowRight size={20} strokeWidth={1.5} />

@@ -1,7 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import { ArrowUpRight, Badge, Bike, Zap } from "lucide-react";
+
+import { ArrowUpRight, Badge, Route, UsersRound, Zap } from "lucide-react";
+
 import { motion, useReducedMotion } from "framer-motion";
 
 import exploreImage from "@/public/images/finalCTA/explore.jpg";
@@ -44,7 +46,7 @@ export function FinalCTA() {
       id="contact"
       className="
         w-full
-        bg-[#F4F6FC]
+        bg-[#F1F3F8]
         pt-8
 
         dark:bg-[#17191e]
@@ -59,21 +61,23 @@ export function FinalCTA() {
           className="
             rounded-t-3xl
             bg-white
-            px-6
-            pt-8
+
+            px-5
             pb-10
+            pt-8
+
             text-black
 
             dark:bg-[#202228]
             dark:text-white
 
             sm:px-8
-            sm:pt-10
             sm:pb-12
+            sm:pt-10
 
             lg:px-12
-            lg:pt-12
             lg:pb-12
+            lg:pt-12
           "
         >
           <div
@@ -88,7 +92,7 @@ export function FinalCTA() {
               lg:gap-8
             "
           >
-            {/* Explore card */}
+            {/* Explore */}
             <motion.a
               href="#program"
               initial={
@@ -118,14 +122,22 @@ export function FinalCTA() {
               className="
                 group
                 relative
-                h-64
+
+                mx-auto
+                h-72
+                w-full
+                max-w-md
+
                 overflow-hidden
                 rounded-3xl
 
                 sm:h-96
+                sm:max-w-xl
 
                 lg:col-span-3
+                lg:mx-0
                 lg:h-80
+                lg:max-w-none
               "
             >
               <Image
@@ -133,7 +145,10 @@ export function FinalCTA() {
                 alt=""
                 fill
                 quality={100}
-                sizes="(max-width: 1024px) 100vw, 20rem"
+                sizes="
+                  (max-width: 1024px) 100vw,
+                  25vw
+                "
                 className="
                   object-cover
                   object-center
@@ -150,24 +165,30 @@ export function FinalCTA() {
                 className="
                   absolute
                   inset-0
-                  bg-black/15
+                  bg-black/25
                 "
               />
 
               <div
                 className="
                   absolute
-                  left-6
-                  top-6
+                  left-5
+                  top-5
                   z-10
 
                   flex
                   items-center
                   gap-2
 
-                  text-sm
+                  text-xs
                   font-medium
+                  uppercase
+                  tracking-wide
                   text-white
+
+                  sm:left-6
+                  sm:top-6
+                  sm:text-sm
                 "
               >
                 <span
@@ -177,14 +198,14 @@ export function FinalCTA() {
                     bg-white
                   "
                 />
-                NEW EXPERIENCE
+                Keep Riding
               </div>
 
               <div
                 className="
                   absolute
                   bottom-12
-                  left-6
+                  left-5
                   z-10
 
                   text-4xl
@@ -192,6 +213,8 @@ export function FinalCTA() {
                   leading-none
                   tracking-tighter
                   text-white
+
+                  sm:left-6
 
                   lg:text-5xl
                 "
@@ -211,8 +234,8 @@ export function FinalCTA() {
                 }
                 className="
                   absolute
-                  bottom-6
-                  right-6
+                  bottom-5
+                  right-5
                   z-20
 
                   grid
@@ -220,9 +243,12 @@ export function FinalCTA() {
                   place-items-center
 
                   rounded-full
+
                   bg-white
                   text-black
 
+                  sm:bottom-6
+                  sm:right-6
                   sm:size-16
                 "
               >
@@ -230,14 +256,19 @@ export function FinalCTA() {
               </motion.span>
             </motion.a>
 
-            {/* Main message */}
+            {/* Main */}
             <div
               className="
+                flex
+                flex-col
+                items-center
+
                 text-center
 
                 lg:col-span-6
-                lg:text-left
+                lg:items-start
                 lg:pt-2
+                lg:text-left
               "
             >
               <motion.h2
@@ -262,21 +293,61 @@ export function FinalCTA() {
                 className="
                   max-w-4xl
 
-                  text-[32px]
+                  text-4xl
                   font-normal
                   leading-none
                   tracking-tighter
 
                   sm:text-5xl
+
                   md:text-6xl
 
-                  lg:text-7xl
+                  lg:text-6xl
+
+                  xl:text-7xl
                 "
               >
-                We’re doing everything
-                <br className="hidden sm:block" /> for future healthiness.
+                We’re shaping the
+                <br className="hidden sm:block" /> future of skate culture.
               </motion.h2>
 
+              <motion.p
+                initial={
+                  reduceMotion
+                    ? false
+                    : {
+                        opacity: 0,
+                        y: 16,
+                      }
+                }
+                whileInView={{
+                  opacity: 1,
+                  y: 0,
+                }}
+                viewport={{ once: true }}
+                transition={{
+                  duration: 0.7,
+                  delay: 0.2,
+                  ease: premiumEase,
+                }}
+                className="
+                  mt-6
+                  max-w-xl
+
+                  text-base
+                  leading-relaxed
+                  text-black/55
+
+                  dark:text-white/55
+
+                  sm:text-lg
+                "
+              >
+                Discover sessions, connect with riders, track your progression
+                and keep pushing every line further.
+              </motion.p>
+
+              {/* Pills */}
               <motion.div
                 initial={
                   reduceMotion
@@ -293,7 +364,7 @@ export function FinalCTA() {
                 viewport={{ once: true }}
                 transition={{
                   duration: 0.7,
-                  delay: 0.25,
+                  delay: 0.3,
                   ease: premiumEase,
                 }}
                 className="
@@ -314,27 +385,29 @@ export function FinalCTA() {
                     h-10
                     items-center
                     gap-2
-                    font-medium
+
                     rounded-full
 
                     border
                     border-black/10
 
                     bg-white
+
                     px-4
 
                     text-sm
+                    font-medium
 
                     dark:border-white/10
                     dark:bg-white/5
                   "
                 >
-                  <Bike
+                  <UsersRound
                     size={17}
                     strokeWidth={1.7}
                     className="text-emerald-400"
                   />
-                  Trainer & Coach Access
+                  Skate Coach Access
                 </span>
 
                 <span
@@ -343,7 +416,6 @@ export function FinalCTA() {
                     h-10
                     items-center
                     gap-2
-                    font-medium
 
                     rounded-full
 
@@ -351,16 +423,18 @@ export function FinalCTA() {
                     border-black/10
 
                     bg-white
+
                     px-4
 
                     text-sm
+                    font-medium
 
                     dark:border-white/10
                     dark:bg-white/5
                   "
                 >
                   <Zap size={17} strokeWidth={1.7} className="text-[#FF5B14]" />
-                  Priority Event
+                  Priority Sessions
                 </span>
 
                 <span
@@ -371,14 +445,16 @@ export function FinalCTA() {
                     gap-2
 
                     rounded-full
-                    font-medium
+
                     border
                     border-black/10
 
                     bg-white
+
                     px-4
 
                     text-sm
+                    font-medium
 
                     dark:border-white/10
                     dark:bg-white/5
@@ -389,7 +465,38 @@ export function FinalCTA() {
                     strokeWidth={1.7}
                     className="text-cyan-400"
                   />
-                  Badges
+                  Progress Badges
+                </span>
+
+                <span
+                  className="
+                    flex
+                    h-10
+                    items-center
+                    gap-2
+
+                    rounded-full
+
+                    border
+                    border-black/10
+
+                    bg-white
+
+                    px-4
+
+                    text-sm
+                    font-medium
+
+                    dark:border-white/10
+                    dark:bg-white/5
+                  "
+                >
+                  <Route
+                    size={17}
+                    strokeWidth={1.7}
+                    className="text-[#8E966F]"
+                  />
+                  Street Spots
                 </span>
               </motion.div>
             </div>
@@ -417,7 +524,6 @@ export function FinalCTA() {
               className="
                 flex
                 flex-col
-
                 items-center
 
                 lg:col-span-3
@@ -428,10 +534,11 @@ export function FinalCTA() {
                 className="
                   grid
                   grid-cols-2
-                  gap-6
+                  gap-8
 
                   text-center
 
+                  lg:w-full
                   lg:text-left
                 "
               >
@@ -439,6 +546,7 @@ export function FinalCTA() {
                   className="
                     flex
                     flex-col
+                    gap-2
 
                     text-base
                     leading-tight
@@ -449,6 +557,7 @@ export function FinalCTA() {
                     className="
                       transition-opacity
                       duration-300
+
                       hover:opacity-50
                     "
                   >
@@ -460,6 +569,7 @@ export function FinalCTA() {
                     className="
                       transition-opacity
                       duration-300
+
                       hover:opacity-50
                     "
                   >
@@ -471,10 +581,11 @@ export function FinalCTA() {
                     className="
                       transition-opacity
                       duration-300
+
                       hover:opacity-50
                     "
                   >
-                    Event
+                    Events
                   </a>
 
                   <a
@@ -482,6 +593,7 @@ export function FinalCTA() {
                     className="
                       transition-opacity
                       duration-300
+
                       hover:opacity-50
                     "
                   >
@@ -503,15 +615,18 @@ export function FinalCTA() {
                     className="
                       flex
                       items-center
+                      justify-center
                       gap-1
 
                       transition-opacity
                       duration-300
 
                       hover:opacity-50
+
+                      lg:justify-start
                     "
                   >
-                    X (Twitter)
+                    X
                     <ArrowUpRight size={14} strokeWidth={1.5} />
                   </a>
 
@@ -520,12 +635,15 @@ export function FinalCTA() {
                     className="
                       flex
                       items-center
+                      justify-center
                       gap-1
 
                       transition-opacity
                       duration-300
 
                       hover:opacity-50
+
+                      lg:justify-start
                     "
                   >
                     Instagram
@@ -537,12 +655,15 @@ export function FinalCTA() {
                     className="
                       flex
                       items-center
+                      justify-center
                       gap-1
 
                       transition-opacity
                       duration-300
 
                       hover:opacity-50
+
+                      lg:justify-start
                     "
                   >
                     Linkedin
@@ -551,16 +672,17 @@ export function FinalCTA() {
                 </nav>
               </div>
 
-              {/* Le cercle reste au bas de cette colonne */}
+              {/* Dot */}
               <div
                 className="
-                  mt-auto
+                  mt-10
 
                   flex
                   justify-center
-                  pt-8
 
+                  lg:mt-auto
                   lg:justify-start
+                  lg:pt-8
                 "
               >
                 <motion.div
@@ -580,12 +702,21 @@ export function FinalCTA() {
                           ease: "easeInOut",
                         }
                   }
+                  whileHover={
+                    reduceMotion
+                      ? undefined
+                      : {
+                          scale: 1.05,
+                          rotate: 12,
+                        }
+                  }
                   className="
                     grid
                     size-28
                     place-items-center
 
                     rounded-full
+
                     bg-[#FF4B0B]
                     text-white
 
@@ -598,20 +729,49 @@ export function FinalCTA() {
             </motion.div>
           </div>
 
-          {/* Contact information */}
-          <div
+          {/* Contact */}
+          <motion.div
+            initial={
+              reduceMotion
+                ? false
+                : {
+                    opacity: 0,
+                    y: 18,
+                  }
+            }
+            whileInView={{
+              opacity: 1,
+              y: 0,
+            }}
+            viewport={{ once: true }}
+            transition={{
+              duration: 0.7,
+              delay: 0.35,
+              ease: premiumEase,
+            }}
             className="
               mt-12
 
               grid
               grid-cols-1
               gap-8
+
+              border-t
+              border-black/10
+
+              pt-8
+
+              text-center
               font-medium
+
+              dark:border-white/10
+
               sm:grid-cols-2
 
               lg:mt-16
               lg:grid-cols-12
               lg:items-end
+              lg:text-left
             "
           >
             <div
@@ -634,8 +794,9 @@ export function FinalCTA() {
                 gap-2
 
                 text-base
-                font-medium
+
                 sm:items-end
+                sm:text-right
 
                 lg:col-span-9
                 lg:flex-row
@@ -645,7 +806,7 @@ export function FinalCTA() {
               "
             >
               <a
-                href="mailto:hello@granger.com"
+                href="mailto:hello@skater.com"
                 className="
                   transition-opacity
                   duration-300
@@ -653,12 +814,12 @@ export function FinalCTA() {
                   hover:opacity-50
                 "
               >
-                hello@granger.com
+                hello@skater.com
               </a>
 
-              <span>©2025 Design by Granger</span>
+              <span>©2026 Design by Skater</span>
             </div>
-          </div>
+          </motion.div>
         </div>
       </Container>
     </section>

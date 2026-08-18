@@ -2,170 +2,170 @@ export const testimonials = [
   {
     id: 1,
     quote:
-      "The activity tracker keeps me on track, and the community pushes me to keep going. It’s the perfect mix of fun and fitness.",
+      "Tracking my sessions changed the way I skate. I can actually see the tricks I’m landing more consistently and where I still need work.",
     rating: 4.5,
     name: "Benedeta Chan",
-    role: "Housewife in China",
+    role: "Street Skater — Shanghai",
   },
   {
     id: 2,
     quote:
-      "I finally found a routine that feels natural. I can train, check my progress and still enjoy every session without pressure.",
+      "I started as a complete beginner. The sessions gave me enough structure to progress without taking away the freedom that made me love skating.",
     rating: 5,
     name: "Maya Wilson",
-    role: "Marketing Manager",
+    role: "Beginner Rider — London",
   },
   {
     id: 3,
     quote:
-      "The coaching experience is simple and clear. I always know what I should focus on next and how much progress I’ve made.",
+      "The best part is discovering new spots and seeing what other riders are doing there. Every session feels like there’s something new to try.",
     rating: 4.5,
     name: "Andrew Miles",
-    role: "Product Designer",
+    role: "Street Skater — Los Angeles",
   },
   {
     id: 4,
     quote:
-      "What I enjoy most is how everything feels connected. Training, community and tracking all work together without becoming complicated.",
+      "Skating alone is fun, but having a crew around you changes everything. The community keeps every session fresh and motivating.",
     rating: 5,
     name: "Sophia Lee",
-    role: "Entrepreneur",
+    role: "Skate Community Member — Seoul",
   },
   {
     id: 5,
     quote:
-      "It keeps me motivated even on busy weeks. The small progress updates make a bigger difference than I expected.",
+      "Seeing my ride time, distance and trick progress in one place gives me a reason to keep pushing even when a session gets difficult.",
     rating: 4.5,
     name: "Daniel Morgan",
-    role: "Software Engineer",
+    role: "Urban Rider — Toronto",
   },
   {
     id: 6,
     quote:
-      "I started for the fitness features, but the community is what made me stay. It makes every challenge feel more enjoyable.",
+      "I joined for the challenges and ended up finding riders I now skate with every week. That community side makes the whole experience different.",
     rating: 5,
     name: "Amelia Scott",
-    role: "Creative Director",
+    role: "Street Skater — Melbourne",
   },
   {
     id: 7,
     quote:
-      "The platform gives me enough structure without making my workouts feel rigid. That balance works perfectly for me.",
+      "It gives me direction without telling me how I should skate. I can work on my own style while still having clear goals for each session.",
     rating: 4.5,
     name: "James Carter",
-    role: "Business Consultant",
+    role: "Freestyle Rider — Bristol",
   },
   {
     id: 8,
     quote:
-      "Tracking my activity used to feel like a chore. Here it feels effortless, and I actually look forward to seeing my progress.",
+      "I never cared about tracking before, but seeing how much ground I cover during a real street session is surprisingly addictive.",
     rating: 5,
     name: "Naomi Brown",
-    role: "Photographer",
+    role: "Skate Photographer — Tokyo",
   },
   {
     id: 9,
     quote:
-      "The sessions are easy to follow, and the feedback helps me understand where I’m improving instead of just showing numbers.",
+      "The trick challenges pushed me to finally work on things I had been avoiding for months. Landing one of them felt incredible.",
     rating: 4.5,
     name: "Lucas Martin",
-    role: "Student",
+    role: "Student & Skater — Paris",
   },
   {
     id: 10,
     quote:
-      "Everything feels thoughtfully designed. I can quickly find what I need and spend more time moving instead of managing an app.",
+      "Everything stays out of the way when I’m riding. I can check the session, find the spot and get back to skating without wasting time.",
     rating: 5,
     name: "Olivia Harris",
-    role: "Interior Designer",
+    role: "Creative Rider — Amsterdam",
   },
   {
     id: 11,
     quote:
-      "I like having my workouts and progress in one place. It has made staying consistent much easier for me.",
+      "Having my sessions and progression together makes consistency much easier. I’m skating more often and with much more purpose.",
     rating: 4.5,
     name: "Ethan Walker",
-    role: "Financial Analyst",
+    role: "Street Rider — Chicago",
   },
   {
     id: 12,
     quote:
-      "The challenges are fun without feeling overwhelming. They give me a reason to come back and keep pushing a little further.",
+      "The community challenges are competitive enough to push you, but still feel fun. That balance keeps me coming back.",
     rating: 5,
     name: "Isabella Young",
-    role: "Content Creator",
+    role: "Content Creator & Skater — Madrid",
   },
   {
     id: 13,
     quote:
-      "I can see how my habits change over time, and that makes the whole experience feel much more meaningful.",
+      "Looking back at older sessions and seeing how much my skating has changed is probably my favorite part of the whole experience.",
     rating: 4.5,
     name: "Liam Thompson",
-    role: "Architect",
+    role: "Transition Skater — Copenhagen",
   },
   {
     id: 14,
     quote:
-      "The mix of personal training and community motivation works really well. I never feel like I’m doing everything alone.",
+      "You can find a session, meet a crew and discover a new spot without making the experience feel complicated. That’s exactly what skating needs.",
     rating: 5,
     name: "Ava Martinez",
-    role: "Project Manager",
+    role: "Community Rider — Barcelona",
   },
   {
     id: 15,
     quote:
-      "It feels more like a lifestyle platform than a basic fitness tracker. That’s what makes it different for me.",
+      "It feels more connected to skate culture than a normal sports app. The focus is on riding, progression and the people around it.",
     rating: 4.5,
     name: "Noah Anderson",
-    role: "Developer",
+    role: "Skater & Developer — Berlin",
   },
   {
     id: 16,
     quote:
-      "I love how easy it is to jump into a session, track what I did and move on with the rest of my day.",
+      "I can finish a session, check what I achieved and move on. It gives me useful information without turning skating into homework.",
     rating: 5,
     name: "Mia Clark",
-    role: "Brand Strategist",
+    role: "Street Skater — New York",
   },
   {
     id: 17,
     quote:
-      "The experience is smooth and focused. Nothing feels unnecessary, and the important information is always easy to understand.",
+      "Finding nearby sessions and riders has completely changed how often I skate. There’s almost always something happening now.",
     rating: 4.5,
     name: "Henry Evans",
-    role: "Operations Manager",
+    role: "Urban Rider — Manchester",
   },
   {
     id: 18,
     quote:
-      "The community challenges completely changed how I approach exercise. Now I actually enjoy setting new goals for myself.",
+      "The trick challenges got me out of my comfort zone. I’m trying new lines instead of repeating the same things every session.",
     rating: 5,
     name: "Chloe Adams",
-    role: "Fashion Designer",
+    role: "Skate Designer — Milan",
   },
   {
     id: 19,
     quote:
-      "Being able to measure progress while still keeping the experience fun is exactly what I was looking for.",
+      "Progress still feels natural because the numbers never take over the experience. At the end of the day, it’s still about the ride.",
     rating: 4.5,
     name: "Leo Turner",
-    role: "Sales Manager",
+    role: "Street Skater — Lisbon",
   },
   {
     id: 20,
     quote:
-      "It helped me build a routine I can realistically maintain. I feel healthier, more active and much more consistent.",
+      "I went from skating occasionally to having a real weekly rhythm. I’m more confident, more consistent and enjoying every session more.",
     rating: 5,
     name: "Emma Collins",
-    role: "Teacher",
+    role: "Beginner Rider — Sydney",
   },
 ] as const;
 
 export const sessionHighlight = {
-  date: "apr — may 2025",
-  title: "Single Session",
-  subtitle: "Individualized Training - Beginner",
-  price: "$99",
+  date: "aug — sep 2026",
+  title: "Street Session",
+  subtitle: "Guided Skate Session — Beginner",
+  price: "$59",
   priceLabel: "/ Session",
-  status: "FULL GAME",
+  status: "OPEN SESSION",
 } as const;
