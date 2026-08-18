@@ -687,7 +687,7 @@ export function ActivityTracking() {
                     sm:pt-12
                   "
                 >
-                  {/* Arrow stays left */}
+                  {/* Arrow  */}
                   <motion.a
                     href="#events"
                     initial={
@@ -732,6 +732,7 @@ export function ActivityTracking() {
                     <ArrowUpRight
                       size={29}
                       strokeWidth={1.4}
+                      className="text-white"
                     />
                   </motion.a>
 

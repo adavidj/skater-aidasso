@@ -36,7 +36,7 @@ export function SessionCard({
           ? false
           : {
               opacity: 0,
-              x: 65,
+              x: 45,
               scale: 0.975,
             }
       }
@@ -58,7 +58,8 @@ export function SessionCard({
         relative
 
         h-full
-        min-h-96
+        w-full
+        min-w-0
 
         overflow-hidden
         rounded-3xl
@@ -68,7 +69,7 @@ export function SessionCard({
         text-white
       "
     >
-      {/* Image */}
+      {/* Background */}
       <motion.div
         initial={
           reduceMotion
@@ -147,6 +148,7 @@ export function SessionCard({
           z-20
 
           flex
+          max-w-3/5
           flex-col
           items-start
           gap-2
@@ -162,6 +164,7 @@ export function SessionCard({
           className="
             flex
             h-9
+            max-w-full
             items-center
             gap-2
 
@@ -183,8 +186,9 @@ export function SessionCard({
             sm:text-sm
           "
         >
-          <Medal size={17} strokeWidth={1.7} />
-          Pro Skate Coach
+          <Medal size={17} strokeWidth={1.7} className="shrink-0" />
+
+          <span className="truncate">Pro Skate Coach</span>
         </span>
 
         <span
@@ -212,7 +216,7 @@ export function SessionCard({
             sm:text-sm
           "
         >
-          <ShoppingBag size={17} strokeWidth={1.7} />
+          <ShoppingBag size={17} strokeWidth={1.7} className="shrink-0" />
           Skate Gear
         </span>
       </motion.div>
@@ -262,7 +266,7 @@ export function SessionCard({
         {date}
       </motion.span>
 
-      {/* Main content */}
+      {/* Center */}
       <motion.div
         initial={
           reduceMotion
@@ -289,6 +293,7 @@ export function SessionCard({
           z-20
 
           w-11/12
+          min-w-0
 
           -translate-x-1/2
           -translate-y-1/2
@@ -298,6 +303,8 @@ export function SessionCard({
       >
         <h3
           className="
+            wrap-break-word
+
             text-4xl
             font-medium
             leading-none
@@ -317,6 +324,8 @@ export function SessionCard({
             mx-auto
             mt-3
             max-w-sm
+
+            wrap-break-word
 
             text-sm
             font-normal
@@ -347,6 +356,7 @@ export function SessionCard({
             flex
             h-14
             w-fit
+            max-w-full
             items-center
 
             rounded-full
@@ -365,6 +375,8 @@ export function SessionCard({
         >
           <span
             className="
+              shrink-0
+
               text-2xl
               font-medium
               leading-none
@@ -379,6 +391,8 @@ export function SessionCard({
           <span
             className="
               ml-2
+
+              whitespace-nowrap
 
               text-sm
               font-normal
@@ -441,6 +455,7 @@ export function SessionCard({
         <span
           className="
             size-2
+            shrink-0
             rounded-full
             bg-white
           "

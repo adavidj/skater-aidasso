@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { MessageCircleMore, Sparkles } from "lucide-react";
 
@@ -17,6 +17,8 @@ import { sessionHighlight, testimonials } from "@/lib/data/testimonials";
 
 import { premiumEase } from "@/lib/motion";
 
+const AUTO_PLAY_DELAY = 5000;
+
 function SkateWatermark() {
   return (
     <svg
@@ -25,13 +27,10 @@ function SkateWatermark() {
       fill="none"
       className="
         pointer-events-none
-
         absolute
         -left-32
         -top-16
-
         w-96
-
         text-[#E6E9F1]
 
         dark:text-white/5
@@ -69,6 +68,8 @@ export function Testimonials() {
 
   const [activeIndex, setActiveIndex] = useState(0);
 
+  const [isPaused, setIsPaused] = useState(false);
+
   const testimonial = testimonials[activeIndex];
 
   function handleNext() {
@@ -83,15 +84,29 @@ export function Testimonials() {
     );
   }
 
+  useEffect(() => {
+    if (isPaused) {
+      return;
+    }
+
+    const timer = window.setTimeout(() => {
+      setActiveIndex((current) =>
+        current === testimonials.length - 1 ? 0 : current + 1,
+      );
+    }, AUTO_PLAY_DELAY);
+
+    return () => {
+      window.clearTimeout(timer);
+    };
+  }, [activeIndex, isPaused]);
+
   return (
     <section
       id="testimonials"
       className="
         w-full
         overflow-hidden
-
         bg-[#F1F3F8]
-
         pb-14
         pt-10
 
@@ -271,6 +286,9 @@ export function Testimonials() {
               mt-10
 
               grid
+              w-full
+              min-w-0
+              grid-cols-1
               items-stretch
               gap-4
 
@@ -282,8 +300,31 @@ export function Testimonials() {
               xl:mt-16
             "
           >
-            <div className="relative h-full">
-              <AnimatePresence mode="wait">
+            {/* Testimonial */}
+            <div
+              className="
+                relative
+                min-w-0
+                w-full
+
+                sm:h-128
+
+                lg:h-144
+
+                xl:h-152
+              "
+              onMouseEnter={() => setIsPaused(true)}
+              onMouseLeave={() => setIsPaused(false)}
+              onFocusCapture={() => setIsPaused(true)}
+              onBlurCapture={(event) => {
+                if (
+                  !event.currentTarget.contains(event.relatedTarget as Node)
+                ) {
+                  setIsPaused(false);
+                }
+              }}
+            >
+              <AnimatePresence mode="wait" initial={false}>
                 <motion.div
                   key={testimonial.id}
                   initial={
@@ -291,7 +332,7 @@ export function Testimonials() {
                       ? false
                       : {
                           opacity: 0,
-                          x: 18,
+                          x: 22,
                         }
                   }
                   animate={{
@@ -303,14 +344,18 @@ export function Testimonials() {
                       ? undefined
                       : {
                           opacity: 0,
-                          x: -18,
+                          x: -22,
                         }
                   }
                   transition={{
-                    duration: 0.35,
+                    duration: 0.4,
                     ease: premiumEase,
                   }}
-                  className="h-full"
+                  className="
+                    h-full
+                    w-full
+                    min-w-0
+                  "
                 >
                   <TestimonialCard
                     index={activeIndex + 1}
@@ -326,15 +371,29 @@ export function Testimonials() {
               </AnimatePresence>
             </div>
 
-            <SessionCard
-              image={sessionImage}
-              date={sessionHighlight.date}
-              title={sessionHighlight.title}
-              subtitle={sessionHighlight.subtitle}
-              price={sessionHighlight.price}
-              priceLabel={sessionHighlight.priceLabel}
-              status={sessionHighlight.status}
-            />
+            {/* Session */}
+            <div
+              className="
+                min-w-0
+                w-full
+
+                sm:h-128
+
+                lg:h-144
+
+                xl:h-152
+              "
+            >
+              <SessionCard
+                image={sessionImage}
+                date={sessionHighlight.date}
+                title={sessionHighlight.title}
+                subtitle={sessionHighlight.subtitle}
+                price={sessionHighlight.price}
+                priceLabel={sessionHighlight.priceLabel}
+                status={sessionHighlight.status}
+              />
+            </div>
           </div>
         </div>
       </Container>

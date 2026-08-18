@@ -19,7 +19,15 @@ interface TestimonialCardProps {
 
 function RatingStar({ fillAmount }: { fillAmount: number }) {
   return (
-    <span className="relative block size-6 lg:size-7">
+    <span
+      className="
+        relative
+        block
+        size-6
+
+        lg:size-7
+      "
+    >
       <Star
         className="
           absolute
@@ -60,7 +68,14 @@ function RatingStar({ fillAmount }: { fillAmount: number }) {
 
 function RatingStars({ rating }: { rating: number }) {
   return (
-    <div className="flex items-center gap-1">
+    <div
+      className="
+        flex
+        shrink-0
+        items-center
+        gap-1
+      "
+    >
       {Array.from({ length: 5 }).map((_, index) => {
         const fillAmount = Math.min(Math.max(rating - index, 0), 1);
 
@@ -89,17 +104,15 @@ export function TestimonialCard({
           ? false
           : {
               opacity: 0,
-              x: -35,
               scale: 0.985,
             }
       }
       animate={{
         opacity: 1,
-        x: 0,
         scale: 1,
       }}
       transition={{
-        duration: 0.65,
+        duration: 0.55,
         ease: premiumEase,
       }}
       className="
@@ -107,9 +120,11 @@ export function TestimonialCard({
 
         flex
         h-full
-        min-h-96
+        w-full
+        min-w-0
         flex-col
 
+        overflow-hidden
         rounded-3xl
 
         bg-white
@@ -132,6 +147,8 @@ export function TestimonialCard({
       <div
         className="
           flex
+          w-full
+          min-w-0
           items-center
           gap-5
 
@@ -168,6 +185,7 @@ export function TestimonialCard({
         <div
           className="
             h-px
+            min-w-0
             flex-1
 
             bg-[#DADCE1]
@@ -178,86 +196,100 @@ export function TestimonialCard({
       </div>
 
       {/* Quote */}
-      <motion.blockquote
-        key={quote}
-        initial={
-          reduceMotion
-            ? false
-            : {
-                opacity: 0,
-                y: 16,
-              }
-        }
-        animate={{
-          opacity: 1,
-          y: 0,
-        }}
-        transition={{
-          duration: 0.5,
-          ease: premiumEase,
-        }}
+      <div
         className="
-          mt-8
-          max-w-xl
-
-          text-2xl
-          font-normal
-          leading-tight
-          tracking-tight
-
-          sm:text-3xl
-
-          lg:mt-10
-          lg:text-3xl
-
-          xl:text-4xl
+          min-w-0
+          flex-1
         "
       >
-        “{quote}”
-      </motion.blockquote>
-
-      {/* Rating */}
-      <motion.div
-        key={`rating-${rating}-${index}`}
-        initial={
-          reduceMotion
-            ? false
-            : {
-                opacity: 0,
-                y: 8,
-              }
-        }
-        animate={{
-          opacity: 1,
-          y: 0,
-        }}
-        transition={{
-          duration: 0.45,
-          delay: 0.08,
-          ease: premiumEase,
-        }}
-        className="
-          mt-7
-
-          flex
-          items-center
-          gap-4
-        "
-      >
-        <RatingStars rating={rating} />
-
-        <span
+        <motion.blockquote
+          key={quote}
+          initial={
+            reduceMotion
+              ? false
+              : {
+                  opacity: 0,
+                  y: 16,
+                }
+          }
+          animate={{
+            opacity: 1,
+            y: 0,
+          }}
+          transition={{
+            duration: 0.45,
+            ease: premiumEase,
+          }}
           className="
-            text-lg
-            font-medium
-            leading-none
+            mt-8
 
-            lg:text-xl
+            w-full
+            max-w-xl
+
+            wrap-break-word
+
+            text-2xl
+            font-normal
+            leading-tight
+            tracking-tight
+
+            sm:text-3xl
+
+            lg:mt-10
+            lg:text-3xl
+
+            xl:text-4xl
           "
         >
-          {rating.toFixed(1)}
-        </span>
-      </motion.div>
+          “{quote}”
+        </motion.blockquote>
+
+        {/* Rating */}
+        <motion.div
+          key={`rating-${rating}-${index}`}
+          initial={
+            reduceMotion
+              ? false
+              : {
+                  opacity: 0,
+                  y: 8,
+                }
+          }
+          animate={{
+            opacity: 1,
+            y: 0,
+          }}
+          transition={{
+            duration: 0.45,
+            delay: 0.08,
+            ease: premiumEase,
+          }}
+          className="
+            mt-7
+
+            flex
+            flex-wrap
+            items-center
+            gap-4
+          "
+        >
+          <RatingStars rating={rating} />
+
+          <span
+            className="
+              shrink-0
+
+              text-lg
+              font-medium
+              leading-none
+
+              lg:text-xl
+            "
+          >
+            {rating.toFixed(1)}
+          </span>
+        </motion.div>
+      </div>
 
       {/* Footer */}
       <div
@@ -265,13 +297,19 @@ export function TestimonialCard({
           mt-auto
 
           flex
+          w-full
+          min-w-0
           items-end
           justify-between
-          gap-5
+          gap-4
 
-          pt-10
+          pt-8
+
+          sm:gap-5
+          sm:pt-10
         "
       >
+        {/* Rider */}
         <motion.div
           key={`${name}-${role}`}
           initial={
@@ -291,10 +329,15 @@ export function TestimonialCard({
             delay: 0.08,
             ease: premiumEase,
           }}
-          className="min-w-0"
+          className="
+            min-w-0
+            flex-1
+          "
         >
           <div
             className="
+              truncate
+
               text-lg
               font-medium
               leading-none
@@ -311,6 +354,8 @@ export function TestimonialCard({
           <div
             className="
               mt-2
+
+              wrap-break-word
 
               text-xs
               font-normal
