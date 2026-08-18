@@ -34,7 +34,7 @@ export default function RootLayout({
         /> */}
       </head>
 
-      <body className="min-h-dvh overflow-x-clip">
+      <body className="min-h-dvh w-full">
         <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>
